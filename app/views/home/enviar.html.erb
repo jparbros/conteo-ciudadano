@@ -1,0 +1,68 @@
+<h1>Enviar resultados de casilla</h1>
+<%= form_for(@box,:html => { :multipart => true },:url=>'/send-ok') do |f| %>
+  <% if @box.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@box.errors.count, "error") %> prohibe que esta casilla sea guardada:</h2>
+
+      <ul>
+      <% @box.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <table>
+  	<tr>
+  		<td>Estado</td><td><%= f.select(:state_id,State.all.collect {|st| [st.name,st.id]}, :include_blank => true)  %></td>
+  		<td>Municipio</td><td><%= f.select :municipality_id,{} %></td>
+  	</tr>
+  	<tr>
+  		<td>Seccion</td><td><%=f.number_field :secction%></td>
+  		<td>Distrito</td><td><%=f.number_field :district%></td>
+  	</tr>
+  	<tr>
+  		<td>Numero de casilla</td><td><%= f.number_field :number %></td>
+  		<td>Boleta</td><td><%= f.file_field :ticket_voting %></td>
+  	</tr>
+  	<tr>
+  		<td>Ubicación de casilla</td><td colspan="3"><%= f.text_field :location %></td>
+  	</tr>
+  	<tr>
+  		<td><img src="/assets/logo_pri.png"></td><td><%= f.number_field :pri %></td><td><img src="/assets/logo_pan.png"></td><td><%= f.number_field :pan %></td>
+  	</tr>
+  	<tr>
+  		<td><img src="/assets/logo_prd.png"></td><td><%= f.number_field :prd %></td><td><img src="/assets/logo_vem.png"></td><td><%= f.number_field :vem %></td>
+  	</tr>
+  	<tr>
+  		<td><img src="/assets/logo_pt.jpg"></td><td><%= f.number_field :pt %></td><td><img src="/assets/logo_movimiento_ciudadano.jpg"></td><td><%= f.number_field :movimiento_ciudadano %></td>
+  	</tr>
+  	<tr>
+  		<td><img src="/assets/logo_nueva_alianza.png"></td><td><%= f.number_field :nueva_alianza %></td><td><img src="/assets/logo_otro_candidato.png"><td><%= f.number_field :otro %></td>
+  	</tr>
+  	<tr>
+  		<td><img src="/assets/logo_votos_nulos.png"></td><td><%=f.number_field :nulo%></td><td></td><td></td>
+  	</tr>
+  	<tr>
+  		<td colspan="4"><%= show_simple_captcha %></td>
+  	</tr>
+  	<tr>
+  		<td colspan="4">
+  			*Todos los campos son obligatorios
+  		</td>
+  	</tr>
+  	<tr>
+  		<td colspan="4"><%= f.submit 'Enviar' %></td>
+  	</tr>
+  </table>
+<% end %>
+<script>
+	$(document).ready(function(){
+		if($('#box_state_id').val()!=''){
+			$.get('/get-municipalities.js',{state:$('#box_state_id').val()});
+		}
+	});
+	
+	$('#box_state_id').change(function(){
+		$.get('/get-municipalities.js',{state:$(this).val()});
+	});
+</script>

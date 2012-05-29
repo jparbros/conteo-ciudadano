@@ -1,0 +1,12 @@
+.bundle
+db/*.sqlite3
+db/development.sqlite3
+db/production.sqlite3
+log/*.log
+log/development.log
+log/production.log
+tmp/*
+public/system
+public/system/*
+.DS_Store
+.orig

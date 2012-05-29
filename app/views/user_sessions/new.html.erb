@@ -1,0 +1,24 @@
+<h1 style="text-align:center">Login</h1>
+<%=form_for @user_session, :url=> user_sessions_path do |f|%>
+	<% if @user_session.errors.any? %>
+    	<div id="error_explanation">
+      		<h3><%= pluralize(@user_session.errors.count, "error") %> ocurrio al intentar iniciar sesión:</h3>
+      		<ul>
+      		<% @user_session.errors.full_messages.each do |msg| %>
+        		<li><%= msg %></li>
+      		<% end %>
+      		</ul>
+    	</div>
+	<% end %>
+	<table width="400">
+		<tr>
+			<td><%=image_tag "user.png",:alt=>"username"%> Usuario:</td><td><%=f.text_field :email%></td>
+		</tr>
+		<tr>
+			<td><%=image_tag"key.png",:alt=>"password"%> Password:</td><td><%=f.password_field :password%></td>
+		</tr>
+		<tr>
+			<td colspan="2" style="text-align: center;"><%=f.submit "Iniciar"%></td>
+		</tr>
+	</table>
+<%end%>

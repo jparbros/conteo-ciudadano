@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin Conteo</title>
+  <link href="/assets/panel.css" rel="stylesheet" type="text/css" media="screen" />
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+	<div id="admin-container">
+		<nav>
+			<%=link_to "Panel","/admin"%> |
+			<%=link_to "Estados",states_path%> |
+			<%=link_to "Municipios",municipalities_path%> |
+			<%=link_to "Casillas",boxes_path%> |
+			<%=link_to "Usuarios",users_path%> |
+			<%=link_to "Salir",:logout%>
+	</nav>
+	<div id="admin-content">
+		<%=yield%>
+	</div>
+</div>
+</body>
+</html>

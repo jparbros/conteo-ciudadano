@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Conteo</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+	<div id="fb-root"></div>
+	<script>(function(d, s, id) {
+  		var js, fjs = d.getElementsByTagName(s)[0];
+  		if (d.getElementById(id)) return;
+  		js = d.createElement(s); js.id = id;
+  		js.src = "//connect.facebook.net/es_LA/all.js#xfbml=1";
+  		fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));
+	</script>
+	<div id="container">
+	<nav id="menu">
+		<ul>
+			<li><%=link_to "Inicio",root_path%></li>
+			<li><%=link_to "Enviar resultados",'/send'%></li>
+			<li><%=link_to "Consultar Resultados",'/search'%></li>
+			<li><%=link_to "Nacional",'/nacional'%></li>
+		</ul>
+	</nav>
+	<div id="content">
+		<%= yield %>
+	</div><!-- Fin de id="content" -->
+	</div><!--Fin de id="container" -->
+</body>
+</html>

@@ -1,0 +1,2 @@
+#!/bin/sh
+ln -s /home/dotcloud/data/system /home/dotcloud/current/public/system
