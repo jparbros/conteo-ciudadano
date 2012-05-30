@@ -1,0 +1,10 @@
+/*
+ *
+ *= require 'bootstrap.min'
+ *= require_self
+ *= require_tree .
+*/
+
+body > .container {
+  background: url('/assets/pattern.png') repeat fixed #ffffff;
+}

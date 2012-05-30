@@ -1,0 +1,34 @@
+!!! 5
+%head
+  %title
+    Conteo Ciudadano
+  = stylesheet_link_tag    "application", :media => "all"
+  = javascript_include_tag "application"
+  = csrf_meta_tags
+
+%body
+  #fb-root
+
+  .navbar
+    .navbar-inner
+      .container
+        %ul#main-nav.nav
+          %li
+            =link_to "Inicio",root_path
+          %li
+            =link_to "Enviar resultados",'/send'
+          %li
+            =link_to "Consultar Resultados",'/search'
+          %li
+            =link_to "Nacional",'/nacional'
+  .container
+    = yield
+
+%script
+  function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/es_LA/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
