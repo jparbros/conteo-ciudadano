@@ -1,0 +1,2 @@
+class BuscarCasillasController < ApplicationController
+end

@@ -13,13 +13,16 @@ Conteo::Application.routes.draw do
   match '/nacional' => 'home#nacional'
   match '/get-municipalities' => 'home#get_municipalities'
 
+  resource :buscar_casillas, only: [:new, :show], path: '/casillas/buscar'
+  resources :casillas, only: [:show, :update]
+
   namespace :admin do
     root to: 'panel#index'
 
     resources :boxes
     resources :admins
     resources :panel
-    resources :user_sessions, :only=> [:new,:create,:destroy]
+    resources :user_sessions, only: [:new,:create,:destroy]
   end
 
   # The priority is based upon order of creation:

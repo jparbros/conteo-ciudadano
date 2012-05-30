@@ -1,0 +1,2 @@
+class CasillasController < ApplicationController
+end

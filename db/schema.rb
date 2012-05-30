@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120530143025) do
+ActiveRecord::Schema.define(:version => 20120530162653) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -36,17 +36,8 @@ ActiveRecord::Schema.define(:version => 20120530143025) do
     t.integer  "municipality_id"
     t.integer  "number"
     t.integer  "district"
-    t.integer  "secction"
+    t.integer  "section"
     t.string   "location"
-    t.integer  "pri"
-    t.integer  "pan"
-    t.integer  "prd"
-    t.integer  "vem"
-    t.integer  "pt"
-    t.integer  "movimiento_ciudadano"
-    t.integer  "nueva_alianza"
-    t.integer  "nulo"
-    t.integer  "otro"
     t.boolean  "active"
     t.datetime "created_at",                 :null => false
     t.datetime "updated_at",                 :null => false
@@ -54,10 +45,28 @@ ActiveRecord::Schema.define(:version => 20120530143025) do
     t.string   "ticket_voting_content_type"
     t.integer  "ticket_voting_file_size"
     t.datetime "ticket_voting_updated_at"
+    t.string   "address"
+    t.string   "references"
   end
 
-  add_index "boxes", ["municipality_id"], :name => "index_boxes_on_municipality_id"
+  add_index "boxes", ["state_id", "section"], :name => "index_boxes_on_state_id_and_section"
   add_index "boxes", ["state_id"], :name => "index_boxes_on_state_id"
+
+  create_table "results", :force => true do |t|
+    t.integer  "pan"
+    t.integer  "pri"
+    t.integer  "prd"
+    t.integer  "pvem"
+    t.integer  "pt"
+    t.integer  "movimiento_ciudadano"
+    t.integer  "nueva_alianza"
+    t.integer  "null"
+    t.integer  "others"
+    t.integer  "state"
+    t.integer  "box_id"
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
+  end
 
   create_table "simple_captcha_data", :force => true do |t|
     t.string   "key",        :limit => 40
