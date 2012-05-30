@@ -1,8 +1,8 @@
-class MunicipalitiesController < ApplicationController
+class Admin::MunicipalitiesController < ApplicationController
   before_filter :require_user
   load_and_authorize_resource
   layout "admin"
-  
+
   # GET /municipalities
   # GET /municipalities.json
   def index

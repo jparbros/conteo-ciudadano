@@ -1,8 +1,8 @@
-class StatesController < ApplicationController
+class Admin::StatesController < ApplicationController
   before_filter :require_user
   load_and_authorize_resource
   layout "admin"
-  
+
   # GET /states
   # GET /states.json
   def index

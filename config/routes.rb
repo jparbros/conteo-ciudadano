@@ -1,7 +1,6 @@
 Conteo::Application.routes.draw do
+  root :to => 'home#index'
 
-  get "home/index"
-  
   match '/results' => 'home#results'
   match '/send' => 'home#enviar'
   match '/send-ok' => 'home#save_results', :via => :post
@@ -10,16 +9,19 @@ Conteo::Application.routes.draw do
   match '/casilla/:id' => 'home#box'
   match '/nacional' => 'home#nacional'
   match '/get-municipalities' => 'home#get_municipalities'
-  match '/admin' => 'panel#index'
-  match '/admin/login' => 'user_sessions#new', :as =>  :login
-  match '/admin/logout' => 'user_sessions#destroy', :as => :logout
-  
-  resources :boxes,:path=> "/admin/boxes"
-  resources :municipalities,:path=> "/admin/municipalities"
-  resources :users,:path=> "/admin/users"
-  resources :states,:path=> "/admin/states"
-  resources :panel,:path=> "/admin/panel"
-  resources :user_sessions, :only=> [:new,:create,:destroy],:path=> "/admin/user_sessions"
+
+  namespace :admin do
+    root to: 'panel#index'
+    match '/login' => 'user_sessions#new', :as =>  :login
+    match '/logout' => 'user_sessions#destroy', :as => :logout
+
+    resources :boxes
+    resources :municipalities
+    resources :users
+    resources :states
+    resources :panel
+    resources :user_sessions, :only=> [:new,:create,:destroy]
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -70,7 +72,6 @@ Conteo::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-   root :to => 'home#index'
 
   # See how all your routes lay out with "rake routes"
 

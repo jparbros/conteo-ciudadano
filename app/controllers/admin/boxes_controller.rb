@@ -1,8 +1,8 @@
-class BoxesController < ApplicationController
+class Admin::BoxesController < ApplicationController
   before_filter :require_user
   load_and_authorize_resource
   layout "admin"
-  
+
   # GET /boxes
   # GET /boxes.json
   def index
