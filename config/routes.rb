@@ -15,13 +15,9 @@ Conteo::Application.routes.draw do
 
   namespace :admin do
     root to: 'panel#index'
-    match '/login' => 'user_sessions#new', :as =>  :login
-    match '/logout' => 'user_sessions#destroy', :as => :logout
 
     resources :boxes
-    resources :municipalities
     resources :admins
-    resources :states
     resources :panel
     resources :user_sessions, :only=> [:new,:create,:destroy]
   end
