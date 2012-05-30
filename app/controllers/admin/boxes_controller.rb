@@ -1,7 +1,4 @@
-class Admin::BoxesController < ApplicationController
-  before_filter :require_user
-  load_and_authorize_resource
-  layout "admin"
+class Admin::BoxesController < Admin::BaseController
 
   # GET /boxes
   # GET /boxes.json

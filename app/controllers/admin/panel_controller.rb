@@ -1,6 +1,4 @@
-class Admin::PanelController < ApplicationController
-  before_filter :require_user
-  layout "admin"
+class Admin::PanelController < Admin::BaseController
 
   def index
   end

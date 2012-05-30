@@ -1,4 +1,7 @@
 Conteo::Application.routes.draw do
+
+  devise_for :admins
+
   root :to => 'home#index'
 
   match '/results' => 'home#results'
@@ -17,7 +20,7 @@ Conteo::Application.routes.draw do
 
     resources :boxes
     resources :municipalities
-    resources :users
+    resources :admins
     resources :states
     resources :panel
     resources :user_sessions, :only=> [:new,:create,:destroy]

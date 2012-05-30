@@ -1,0 +1,27 @@
+%h2
+  Ingresar
+
+= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |form|
+  .clearfix
+    = form.label :email
+    .input
+      = form.text_field :email
+
+  .clearfix
+    = form.label :password
+    .input
+      = form.password_field :password
+
+  - if devise_mapping.rememberable?
+    .clearfix
+      .input
+        %ul.inputs-list
+          %li
+            %label
+              = form.check_box :remember_me
+              %span Recordarme
+
+  .clearfix
+
+    .input
+      = form.submit :ingresar

@@ -1,19 +1,16 @@
-<%= form_for(@user) do |f| %>
-  <% if @user.errors.any? %>
+<%= form_for([:admin, @admin]) do |f| %>
+  <% if @admin.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+      <h2><%= pluralize(@admin.errors.count, "error") %> prohibited this user from being saved:</h2>
 
       <ul>
-      <% @user.errors.full_messages.each do |msg| %>
+      <% @admin.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>
     </div>
   <% end %>
-  <div class="field">
-    <%= f.label :nombre %><br />
-    <%= f.text_field :name %>
-  </div>
+
   <div class="field">
     <%= f.label :email %><br />
     <%= f.text_field :email %>
@@ -25,10 +22,6 @@
   <div class="field">
     <%= f.label :"comfirmar password" %><br />
     <%= f.password_field :password_confirmation %>
-  </div>
-  <div class="field">
-    <%= f.label :role %><br />
-    <%= f.select :role,{'Administrador'=>'admin','Manager'=>'manager','Admin de casillas'=>'box','Lector'=>'lector'},:include_blank=>true %>
   </div>
   <div class="actions">
     <%= f.submit %>

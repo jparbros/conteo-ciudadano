@@ -1,7 +1,4 @@
-class Admin::MunicipalitiesController < ApplicationController
-  before_filter :require_user
-  load_and_authorize_resource
-  layout "admin"
+class Admin::MunicipalitiesController < Admin::BaseController
 
   # GET /municipalities
   # GET /municipalities.json

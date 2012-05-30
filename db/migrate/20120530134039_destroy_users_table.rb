@@ -1,5 +1,9 @@
-class CreateUsers < ActiveRecord::Migration
-  def change
+class DestroyUsersTable < ActiveRecord::Migration
+  def up
+    drop_table :users
+  end
+
+  def down
     create_table :users do |t|
       t.string :email
       t.string :name
@@ -13,5 +17,6 @@ class CreateUsers < ActiveRecord::Migration
       t.timestamps
     end
 
+    user = User.create!(:email=>"josue87c2@live.com.mx",:name=>"Josue Camara",:password=>"conteo2012",:password_confirmation=>"conteo2012",:role=>"admin")
   end
 end

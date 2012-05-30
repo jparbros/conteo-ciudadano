@@ -1,7 +1,4 @@
-class Admin::StatesController < ApplicationController
-  before_filter :require_user
-  load_and_authorize_resource
-  layout "admin"
+class Admin::StatesController < Admin::BaseController
 
   # GET /states
   # GET /states.json
