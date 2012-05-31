@@ -1,0 +1,49 @@
+= form_for @casilla.result, url: casilla_path, method: :put do |form|
+  %ul#results.row
+    %li.span2
+      .row
+        .span1
+          = image_tag 'logo_pan.png'
+        = form.number_field :pan, class: [:span1]
+    %li.span2.offset1
+      .row
+        .span1
+          = image_tag 'logo_pri.png'
+        = form.number_field :pri, class: [:span1]
+    %li.span2
+      .row
+        .span1
+          = image_tag 'logo_prd.png'
+        = form.number_field :prd, class: [:span1]
+    %li.span2.offset1
+      .row
+        .span1
+          = image_tag 'logo_vem.png'
+        = form.number_field :pvem, class: [:span1]
+    %li.span2
+      .row
+        .span1
+          = image_tag 'logo_pt.jpg'
+        = form.number_field :pt, class: [:span1]
+    %li.span2.offset1
+      .row
+        .span1
+          = image_tag 'logo_movimiento_ciudadano.jpg'
+        = form.number_field :movimiento_ciudadano, class: [:span1]
+    %li.span2
+      .row
+        .span1
+          = image_tag 'logo_nueva_alianza.png'
+        = form.number_field :nueva_alianza, class: [:span1]
+    %li.span2.offset1
+      .row
+        .span1
+          = image_tag 'logo_otro_candidato.png'
+        = form.number_field :others, class: [:span1]
+    %li.span2
+      .row
+        .span1
+          = image_tag 'logo_votos_nulos.png'
+        = form.number_field :null, class: [:span1]
+    %li.span2.offset1
+      = submit_tag :Enviar, class: [:btn, :'btn-primary']

@@ -1,0 +1,43 @@
+%h1
+  Detalles de la Casilla
+
+.well
+  .row
+    %strong.span2
+      Casilla:
+    .span9
+      = "#{@casilla.kind} #{@casilla.number}"
+
+  .row
+    %strong.span2
+      Ubicación:
+    .span9
+      = "#{@casilla.location}; #{@casilla.address} #{@casilla.references}"
+
+  .row
+    %strong.span2
+      Delegación/Municipio:
+    .span9
+      = @casilla.district_head
+
+  .row
+    %strong.span2
+      Secci&oacute;n:
+    .span9
+      = @casilla.section
+
+  .row
+    %strong.span2
+      Lista nominal:
+    .span9
+      = @casilla.nominal_list
+
+.row
+  #results.well.span5
+    %h2
+      Resultados
+    = render partial: (@casilla.result.new? ? 'results_form' : 'result')
+
+  #images.well.span6
+    %h2
+      Mantas Electorales

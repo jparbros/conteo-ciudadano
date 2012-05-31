@@ -1,0 +1,23 @@
+%h1
+  Casillas de #{@estado.name} Secci&oacute;n  #{params[:section]}
+
+- @casillas.each do |casilla|
+  .well
+    .row
+      %strong.span2
+        Casilla:
+      .span9
+        = "#{casilla.kind} #{casilla.number}"
+    .row
+      %strong.span2
+        Ubicación:
+      .span9
+        = "#{casilla.location}; #{casilla.address} #{casilla.references}"
+    .row
+      %strong.span2
+        Delegación/Municipio:
+      .span9
+        = casilla.district_head
+    .row
+      .span6
+        = link_to 'Detalles de la casilla', casilla_path(casilla), class: [:btn, :'btn-primary']

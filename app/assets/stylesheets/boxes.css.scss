@@ -1,3 +1,17 @@
 // Place all the styles related to the Boxes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+ul {
+  &#results {
+    li {
+      list-style: none outside none;
+      margin-bottom: 20px;
+      min-height: 55px;
+
+      input {
+        margin: 11px 0 0 0;
+      }
+    }
+  }
+}

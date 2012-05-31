@@ -24,8 +24,9 @@ end
 gem 'jquery-rails'
 gem 'devise'
 gem 'haml-rails'
+gem 'state_machine'
 
-gem 'paperclip', '~> 2.7.0'
+gem 'carrierwave'
 gem 'galetahub-simple_captcha', :require => 'simple_captcha'
 gem 'kaminari' #for pagination
 

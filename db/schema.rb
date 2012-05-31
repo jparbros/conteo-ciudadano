@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120530162653) do
+ActiveRecord::Schema.define(:version => 20120531020223) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -33,39 +33,44 @@ ActiveRecord::Schema.define(:version => 20120530162653) do
 
   create_table "boxes", :force => true do |t|
     t.integer  "state_id"
-    t.integer  "municipality_id"
     t.integer  "number"
     t.integer  "district"
     t.integer  "section"
     t.string   "location"
     t.boolean  "active"
-    t.datetime "created_at",                 :null => false
-    t.datetime "updated_at",                 :null => false
-    t.string   "ticket_voting_file_name"
-    t.string   "ticket_voting_content_type"
-    t.integer  "ticket_voting_file_size"
-    t.datetime "ticket_voting_updated_at"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
     t.string   "address"
     t.string   "references"
+    t.string   "district_head"
+    t.integer  "nominal_list"
+    t.string   "kind"
   end
 
   add_index "boxes", ["state_id", "section"], :name => "index_boxes_on_state_id_and_section"
   add_index "boxes", ["state_id"], :name => "index_boxes_on_state_id"
 
-  create_table "results", :force => true do |t|
-    t.integer  "pan"
-    t.integer  "pri"
-    t.integer  "prd"
-    t.integer  "pvem"
-    t.integer  "pt"
-    t.integer  "movimiento_ciudadano"
-    t.integer  "nueva_alianza"
-    t.integer  "null"
-    t.integer  "others"
-    t.integer  "state"
+  create_table "result_images", :force => true do |t|
+    t.string   "image"
     t.integer  "box_id"
-    t.datetime "created_at",           :null => false
-    t.datetime "updated_at",           :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "results", :force => true do |t|
+    t.integer  "pan",                  :default => 0
+    t.integer  "pri",                  :default => 0
+    t.integer  "prd",                  :default => 0
+    t.integer  "pvem",                 :default => 0
+    t.integer  "pt",                   :default => 0
+    t.integer  "movimiento_ciudadano", :default => 0
+    t.integer  "nueva_alianza",        :default => 0
+    t.integer  "null",                 :default => 0
+    t.integer  "others",               :default => 0
+    t.string   "state"
+    t.integer  "box_id"
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
   end
 
   create_table "simple_captcha_data", :force => true do |t|

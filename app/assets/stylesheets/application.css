@@ -5,6 +5,6 @@
  *= require_tree .
 */
 
-body > .container {
-  background: url('/assets/pattern.png') repeat fixed #ffffff;
+body {
+  background: url('/assets/pattern.png') repeat fixed;
 }
