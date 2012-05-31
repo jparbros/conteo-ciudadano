@@ -1,10 +1,10 @@
 ## Conteo Ciudadano
 
-### ¿Que es?
+### ¿Que és?
 
-Es un proyecto para crear una base de datos de los resultados de las elecciones federales 2012 en México, basandose en las mantas electorales colocadas afuera de las casillas.
+Es un proyecto para crear una base de datos de los resultados de las elecciones federales 2012 en México, basándose en las mantas electorales colocadas afuera de las casillas.
 
-### ¿Cómo funcionara?
+### ¿Cómo funcionará?
 
 Tomas una foto clara de la manta de resultados de la casilla
 Entras a Conteo Ciudadano e ingresas los resultados junto con la fotografía.
@@ -16,7 +16,7 @@ Una vez que el acta de la casilla este disponible en el IFE de ligara a Conteo C
 
 ### Como Instalar
 
-Haz un fork del proyecto en el boton de arriba.
+Haz un fork del proyecto en el botón de arriba.
 
 Clona el repositorio en tu local.
 
@@ -54,8 +54,8 @@ Para aportar, toma una de las funcionalidades de la lista, trabaja en ella y cua
 
 ### Funcionalidades Pendientes
 + Subir imagen de la manta por ajax.
-+ Signup y login de usuario con devise por medio twitter y facebook.
-+ Administadores con diversos permisos con Can Can.
-+ Boton para denunciar un resultado erroneo.
++ Signup y login de usuario con [devise](https://github.com/plataformatec/devise) por medio twitter y facebook.
++ Administradores con diversos permisos con [can can](https://github.com/ryanb/cancan).
++ Botón para denunciar un resultado erróneo.
 
 Comentarios [jorge.parbros@parbros.net](mail_to:jorge.parbros@parbros.net)
