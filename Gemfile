@@ -10,9 +10,9 @@ group :development do
 end
 
 group :production do
-  gem 'mysql2'
   gem 'execjs'
   gem 'therubyracer'
+  gem 'pg'
 end
 
 group :assets do
@@ -27,6 +27,7 @@ gem 'haml-rails'
 gem 'state_machine'
 
 gem 'carrierwave'
+gem 'mini_magick'
 gem 'galetahub-simple_captcha', :require => 'simple_captcha'
 gem 'kaminari' #for pagination
 
