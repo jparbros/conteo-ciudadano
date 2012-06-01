@@ -13,6 +13,7 @@ group :production do
   gem 'execjs'
   gem 'therubyracer'
   gem 'pg'
+  gem 'fog'
 end
 
 group :assets do
