@@ -1,5 +1,5 @@
 class Authentication < ActiveRecord::Base
   belongs_to :user
 
-  attr_accessible :create, :destroy, :index, :provider, :uid, :user_id
+  attr_accessible  :provider, :uid, :user_id, :token, :secret
 end
