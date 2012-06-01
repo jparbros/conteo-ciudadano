@@ -1,10 +1,6 @@
 %p.help-block
   Suba las mantas electorales en este formulario
 
-- @casilla.result.new?
-  = form.fields_for @casilla.result_images.build
-    .row
-      .span4
-        = form.file_field :image
-        = form.hidden_field :image_cache
--else
+= form_tag nil, multipart: true, method: :put, remote: true, id: 'results-image-form' do
+  = file_field_tag :fileToUpload
+  = submit_tag 'Subir', class: [:btn], id: 'button-to-upload'

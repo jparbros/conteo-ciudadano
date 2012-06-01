@@ -13,8 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap.min
+//= require ajaxfileupload
 //= require_tree .
-//= require fileuploader
 
 $(document).ready(function() {
   $('#login-modal').modal({

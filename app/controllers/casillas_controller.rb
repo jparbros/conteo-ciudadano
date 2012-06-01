@@ -6,15 +6,13 @@ class CasillasController < ApplicationController
 
   def update
     @casilla = Box.find params[:id]
-    if params[:qqfile].present?
+    if params[:fileToUpload].present?
       result_image = @casilla.result_images.build
-      result_image.image = params[:qqfile]
+      result_image.image = params[:fileToUpload]
       result_image.save!
-      puts result_image.image.url
-      debugger
       render json: result_image.to_json
     else
-
+      render json: {some: :some}
     end
   end
 end

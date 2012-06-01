@@ -44,15 +44,25 @@
 
     = render partial: 'images'
 
-%script
-  $(document).ready(function(){
-  var uploader = new qq.FileUploader({
-  element: document.getElementById('file-uploader'),
-  action: '#{casilla_path}',
-  onComplete: function(id, fileName, responseJSON) {
-  image = $('<img></img>');
-  console.log(responseJSON)
-  $('#file-result').html()
-  },
-  });
-  });
+/ %script
+/   $('form#results-image-form').submit(function(event){
+/   event.preventDefault();
+/   $.ajaxFileUpload({
+/   url: '/casillas/#{@casilla.id}',
+/   secureuri: false,
+/   fileElementId: 'fileToUpload',
+/   dataType: 'json',
+/   success: function() {
+/   if(typeof(data.error) != 'undefined') {
+/   if( data.error != ''){
+/   alert(data.error);
+/   } else {
+/   alert(data.msg);
+/   }
+/   }
+/   },
+/   error: function (data, status, e) {
+/   alert(e)
+/   }
+/   })
+/   })
