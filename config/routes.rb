@@ -1,20 +1,20 @@
 Conteo::Application.routes.draw do
 
+  devise_for :users
+
   devise_for :admins
 
   root :to => 'home#index'
 
   match '/results' => 'home#results'
-  match '/send' => 'home#enviar'
-  match '/send-ok' => 'home#save_results', :via => :post
   match '/search' => 'home#search'
-  match '/estado/:id' => 'home#state'
-  match '/casilla/:id' => 'home#box'
   match '/nacional' => 'home#nacional'
-  match '/get-municipalities' => 'home#get_municipalities'
+
+  match '/auth/:provider/callback', to: 'sessions#create'
 
   resource :buscar_casillas, only: [:new, :show], path: '/casillas/buscar'
   resources :casillas, only: [:show, :update]
+  match '/casillas/:id' => 'casillas#update', via: :post
 
   namespace :admin do
     root to: 'panel#index'

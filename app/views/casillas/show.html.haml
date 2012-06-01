@@ -36,8 +36,23 @@
   #results.well.span5
     %h2
       Resultados
-    = render partial: (@casilla.result.new? ? 'results_form' : 'result')
+    = render partial: (@casilla.result.new? ? 'results_form' : 'results')
 
   #images.well.span6
     %h2
       Mantas Electorales
+
+    = render partial: 'images'
+
+%script
+  $(document).ready(function(){
+  var uploader = new qq.FileUploader({
+  element: document.getElementById('file-uploader'),
+  action: '#{casilla_path}',
+  onComplete: function(id, fileName, responseJSON) {
+  image = $('<img></img>');
+  console.log(responseJSON)
+  $('#file-result').html()
+  },
+  });
+  });

@@ -9,6 +9,7 @@ class Box < ActiveRecord::Base
   #
   belongs_to :state
   has_one :result
+  has_many :result_images
 
   #
   # Delegates

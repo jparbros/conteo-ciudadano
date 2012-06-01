@@ -1,0 +1,10 @@
+%p.help-block
+  Suba las mantas electorales en este formulario
+
+- @casilla.result.new?
+  = form.fields_for @casilla.result_images.build
+    .row
+      .span4
+        = form.file_field :image
+        = form.hidden_field :image_cache
+-else

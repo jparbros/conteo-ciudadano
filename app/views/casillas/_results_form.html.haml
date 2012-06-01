@@ -1,4 +1,4 @@
-= form_for @casilla.result, url: casilla_path, method: :put do |form|
+= form_for @casilla.result, url: casilla_path, method: :put, remote: true do |form|
   %ul#results.row
     %li.span2
       .row
