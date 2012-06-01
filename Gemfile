@@ -26,6 +26,10 @@ gem 'devise'
 gem 'haml-rails'
 gem 'state_machine'
 
+gem 'omniauth'
+gem 'omniauth-twitter'
+gem 'omniauth-facebook'
+
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'galetahub-simple_captcha', :require => 'simple_captcha'

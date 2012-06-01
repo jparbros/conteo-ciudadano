@@ -10,10 +10,11 @@ Conteo::Application.routes.draw do
   match '/search' => 'home#search'
   match '/nacional' => 'home#nacional'
 
-  match '/auth/:provider/callback', to: 'sessions#create'
+  match '/auth/:provider/callback', to: 'authentications#create'
 
   resource :buscar_casillas, only: [:new, :show], path: '/casillas/buscar'
   resources :casillas, only: [:show, :update]
+  resources :authentications
   match '/casillas/:id' => 'casillas#update', via: :post
 
   namespace :admin do
