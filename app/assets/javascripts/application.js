@@ -12,4 +12,17 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require bootstrap.min
 //= require_tree .
+//= require fileuploader
+
+$(document).ready(function() {
+  $('#login-modal').modal({
+    show: false
+  });
+
+  $('#login-button').click(function(event) {
+    event.preventDefault();
+    $('#login-modal').modal('show');
+  });
+})

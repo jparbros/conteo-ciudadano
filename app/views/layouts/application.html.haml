@@ -21,14 +21,28 @@
             =link_to "Consultar Resultados",'/search'
           %li
             =link_to "Nacional",'/nacional'
+
+        %ul.nav.pull-right
+          %li
+            = user_signed_in? ? link_to('Cerrar sesion', destroy_user_session_path, method: :delete) : link_to('Registrarse/Ingresar','', id: 'login-button')
   .container
     = yield
 
-%script
-  function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/es_LA/all.js#xfbml=1";
-  fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));
+#login-modal.modal.fade
+  .modal-header
+    %button{class: "close", 'data-dismiss' => "modal"}
+      ×
+    %h3
+      Registrarse/Ingresar
+
+  .modal-body
+    .row
+      .span7
+        %p
+          Escoge una de las siguientes opciones para ingresar:
+    .row
+      .span1.offset1
+        = link_to image_tag('/assets/twitter_64.png'), '/auth/twitter'
+      .span1.offset3
+        = link_to image_tag('/assets/facebook_64.png'), '/auth/facebook'
+

@@ -14,7 +14,7 @@ Conteo::Application.routes.draw do
 
   resource :buscar_casillas, only: [:new, :show], path: '/casillas/buscar'
   resources :casillas, only: [:show, :update]
-  resources :authentications
+
   match '/casillas/:id' => 'casillas#update', via: :post
 
   namespace :admin do
