@@ -5,7 +5,7 @@
         .span1
           = image_tag 'logo_pan.png'
         = form.number_field :pan, class: [:span1]
-    %li.span2.offset1
+    %li.span2
       .row
         .span1
           = image_tag 'logo_pri.png'
@@ -15,7 +15,7 @@
         .span1
           = image_tag 'logo_prd.png'
         = form.number_field :prd, class: [:span1]
-    %li.span2.offset1
+    %li.span2
       .row
         .span1
           = image_tag 'logo_vem.png'
@@ -25,7 +25,7 @@
         .span1
           = image_tag 'logo_pt.jpg'
         = form.number_field :pt, class: [:span1]
-    %li.span2.offset1
+    %li.span2
       .row
         .span1
           = image_tag 'logo_movimiento_ciudadano.jpg'
@@ -35,7 +35,7 @@
         .span1
           = image_tag 'logo_nueva_alianza.png'
         = form.number_field :nueva_alianza, class: [:span1]
-    %li.span2.offset1
+    %li.span2
       .row
         .span1
           = image_tag 'logo_otro_candidato.png'
@@ -45,5 +45,5 @@
         .span1
           = image_tag 'logo_votos_nulos.png'
         = form.number_field :null, class: [:span1]
-    %li.span2.offset1
+    %li.span2
       = submit_tag :Enviar, class: [:btn, :'btn-primary']

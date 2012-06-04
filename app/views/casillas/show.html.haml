@@ -33,36 +33,13 @@
       = @casilla.nominal_list
 
 .row
-  #results.well.span5
+  #results.well.span4
     %h2
       Resultados
     = render partial: (@casilla.result.new? ? 'results_form' : 'results')
 
-  #images.well.span6
+  #images.well.span7
     %h2
       Mantas Electorales
 
     = render partial: 'images'
-
-/ %script
-/   $('form#results-image-form').submit(function(event){
-/   event.preventDefault();
-/   $.ajaxFileUpload({
-/   url: '/casillas/#{@casilla.id}',
-/   secureuri: false,
-/   fileElementId: 'fileToUpload',
-/   dataType: 'json',
-/   success: function() {
-/   if(typeof(data.error) != 'undefined') {
-/   if( data.error != ''){
-/   alert(data.error);
-/   } else {
-/   alert(data.msg);
-/   }
-/   }
-/   },
-/   error: function (data, status, e) {
-/   alert(e)
-/   }
-/   })
-/   })

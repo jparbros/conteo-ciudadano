@@ -16,26 +16,35 @@ ul {
   }
 }
 
-.qq-uploader { position:relative; width: 100%;}
+#html5_uploader{
+  box-shadow: 0 1px 0 #FFFFFF inset, 0 1px 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  padding: 0 10px 0 0;
 
-.qq-upload-drop-area {
-    position:absolute; top:0; left:0; width:100%; height:100%; min-height: 70px; z-index:2;
-    background:#FF9797; text-align:center;
+  .plupload_header {
+    background: -moz-linear-gradient(center top , #333333, #222222) repeat scroll 0 0 #2C2C2C;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), 0 -1px 0 rgba(0, 0, 0, 0.1) inset;
+    color: #FFFFFF;
+    padding: 10px 0 10px 10px;
+  }
+
+  .plupload_content {
+    background-color: #FFFFFF;
+    padding: 0 0 0 10px;
+
+    ul {
+      list-style: none;
+    }
+  }
+
+
+
+  .plupload_filelist_footer, .plupload_filelist_header {
+    background-color: #EEEEEE;
+    background-image: -moz-linear-gradient(center top , #F5F5F5 0%, #EEEEEE 100%);
+    border-color: #D5D5D5;
+    border-width: 0 0 1px;
+    margin-left: 10px;
+    padding: 10px 0 10px 10px;
+  }
 }
-.qq-upload-drop-area span {
-    display:block; position:absolute; top: 50%; width:100%; margin-top:-8px; font-size:16px;
-}
-.qq-upload-drop-area-active {background:#FF7171;}
-
-.qq-upload-list {margin:15px 35px; padding:0; list-style:disc;}
-.qq-upload-list li { margin:0; padding:0; line-height:15px; font-size:12px;}
-.qq-upload-file, .qq-upload-spinner, .qq-upload-size, .qq-upload-cancel, .qq-upload-failed-text {
-    margin-right: 7px;
-}
-
-.qq-upload-file {}
-.qq-upload-spinner {display:inline-block; background: url("loading.gif"); width:15px; height:15px; vertical-align:text-bottom;}
-.qq-upload-size,.qq-upload-cancel {font-size:11px;}
-
-.qq-upload-failed-text {display:none;}
-.qq-upload-fail .qq-upload-failed-text {display:inline;}

@@ -1,6 +1,16 @@
 %p.help-block
   Suba las mantas electorales en este formulario
 
-= form_tag nil, multipart: true, method: :put, remote: true, id: 'results-image-form' do
-  = file_field_tag :fileToUpload
-  = submit_tag 'Subir', class: [:btn], id: 'button-to-upload'
+.row
+  #html5_uploader.span7{'data-box-id' => @casilla.id}
+
+.row
+  #image-uploaded.span7
+    .row
+
+.row
+  #all-images.span7
+    .row
+      - @casilla.result_images.each do |image|
+        .thumb.span1
+          = image_tag image.image.thumb
