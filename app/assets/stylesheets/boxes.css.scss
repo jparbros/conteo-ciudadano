@@ -15,3 +15,36 @@ ul {
     }
   }
 }
+
+#html5_uploader{
+  box-shadow: 0 1px 0 #FFFFFF inset, 0 1px 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  padding: 0 10px 0 0;
+
+  .plupload_header {
+    background: -moz-linear-gradient(center top , #333333, #222222) repeat scroll 0 0 #2C2C2C;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), 0 -1px 0 rgba(0, 0, 0, 0.1) inset;
+    color: #FFFFFF;
+    padding: 10px 0 10px 10px;
+  }
+
+  .plupload_content {
+    background-color: #FFFFFF;
+    padding: 0 0 0 10px;
+
+    ul {
+      list-style: none;
+    }
+  }
+
+
+
+  .plupload_filelist_footer, .plupload_filelist_header {
+    background-color: #EEEEEE;
+    background-image: -moz-linear-gradient(center top , #F5F5F5 0%, #EEEEEE 100%);
+    border-color: #D5D5D5;
+    border-width: 0 0 1px;
+    margin-left: 10px;
+    padding: 10px 0 10px 10px;
+  }
+}

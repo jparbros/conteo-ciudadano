@@ -3,7 +3,6 @@
   %title
     Conteo Ciudadano
   = stylesheet_link_tag    "application", :media => "all"
-  = javascript_include_tag "application"
   = csrf_meta_tags
 
 %body
@@ -46,3 +45,4 @@
       .span1.offset3
         = link_to image_tag('/assets/facebook_64.png'), '/auth/facebook'
 
+= javascript_include_tag "application"

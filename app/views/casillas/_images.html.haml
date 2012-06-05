@@ -1,10 +1,16 @@
 %p.help-block
   Suba las mantas electorales en este formulario
 
-- @casilla.result.new?
-  = form.fields_for @casilla.result_images.build
+.row
+  #html5_uploader.span7{'data-box-id' => @casilla.id}
+
+.row
+  #image-uploaded.span7
     .row
-      .span4
-        = form.file_field :image
-        = form.hidden_field :image_cache
--else
+
+.row
+  #all-images.span7
+    .row
+      - @casilla.result_images.each do |image|
+        .thumb.span1
+          = image_tag image.image.thumb

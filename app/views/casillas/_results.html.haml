@@ -5,7 +5,7 @@
         = image_tag 'logo_pan.png'
       .span1
         = @casilla.result.pan
-  %li.span2.offset1
+  %li.span2
     .row
       .span1
         = image_tag 'logo_pri.png'
@@ -17,7 +17,7 @@
         = image_tag 'logo_prd.png'
       .span1
         = @casilla.result.prd
-  %li.span2.offset1
+  %li.span2
     .row
       .span1
         = image_tag 'logo_vem.png'
@@ -29,7 +29,7 @@
         = image_tag 'logo_pt.jpg'
       .span1
         = @casilla.result.pt
-  %li.span2.offset1
+  %li.span2
     .row
       .span1
         = image_tag 'logo_movimiento_ciudadano.jpg'
@@ -41,7 +41,7 @@
         = image_tag 'logo_nueva_alianza.png'
       .span1
         = @casilla.result.nueva_alianza
-  %li.span2.offset1
+  %li.span2
     .row
       .span1
         = image_tag 'logo_otro_candidato.png'
@@ -53,5 +53,5 @@
         = image_tag 'logo_votos_nulos.png'
       .span1
         = @casilla.result.null
-  %li.span2.offset1
+  %li.span2
     = submit_tag :Enviar, class: [:btn, :'btn-primary']

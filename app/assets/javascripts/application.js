@@ -13,8 +13,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap.min
+//= require plupload.full
+//= require jquery.plupload.queue
 //= require_tree .
-//= require fileuploader
 
 $(document).ready(function() {
   $('#login-modal').modal({
@@ -26,3 +27,19 @@ $(document).ready(function() {
     $('#login-modal').modal('show');
   });
 })
+
+$(function() {
+  $('#html5_uploader').pluploadQueue({
+    // General settings
+    runtimes : 'html5',
+    url : '/casillas/' + $('#html5_uploader').data('box-id'),
+    max_file_size : '5mb',
+    chunk_size : '1mb',
+    unique_names : true,
+
+    // Specify what files to browse for
+    filters : [
+      {title : "Image files", extensions : "jpg,gif,png"},
+    ]
+  });
+});

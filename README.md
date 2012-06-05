@@ -50,12 +50,13 @@ Correr el servidor.
 
 ### Como aportar
 
-Para aportar, toma una de las funcionalidades de la lista, trabaja en ella y cuando este lista, haz tu commit y el pull request.
++ Si eres programador, para aportar, toma una de las funcionalidades de la lista, trabaja en ella y cuando este lista, haz tu commit y el pull request.
++ Si eres diseñador, tus recomendaciones siempre son bienvenidas.
++ Si te gustan las redes sociales, ayúdanos a mejorar nuestra estrategia.
++ Siempre puedes apoyarnos haciendo difusión del proyecto.
++ El primero de Julio, cuida tu casilla y sube tu foto.
 
 ### Funcionalidades Pendientes
-+ Subir imagen de la manta por ajax.
-+ Signup y login de usuario con [devise](https://github.com/plataformatec/devise) por medio twitter y facebook.
-+ Administradores con diversos permisos con [can can](https://github.com/ryanb/cancan).
-+ Botón para denunciar un resultado erróneo.
+La lista de tareas se puede encontrar en [Trello](https://trello.com/board/welcome-board/4fca2c4171aa3dfd5c725b5a).
 
 Comentarios [jorge.parbros@parbros.net](mail_to:jorge.parbros@parbros.net)
