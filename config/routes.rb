@@ -19,11 +19,10 @@ Conteo::Application.routes.draw do
 
   namespace :admin do
     root to: 'panel#index'
-
     resources :boxes
     resources :admins
     resources :panel
-    resources :user_sessions, only: [:new,:create,:destroy]
+    #resources :user_sessions, only: [:new,:create,:destroy]
   end
 
   # The priority is based upon order of creation:

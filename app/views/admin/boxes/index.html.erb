@@ -3,7 +3,6 @@
   <tr>
   	<th>Casilla</th>
     <th>Estado</th>
-    <th>Municipio</th>
     <th>Numero</th>
     <th>Activa</th>
     <th></th>
@@ -14,7 +13,6 @@
   <tr>
   	<td><%= box.number %></td>
     <td><%= box.state.name %></td>
-    <td><%= box.municipality.name %></td>
     <td><%= box.number %></td>
     <td><%= box.active %></td>
     <td><%= link_to 'Show', [:admin, box] %></td>
@@ -23,5 +21,6 @@
   </tr>
 <% end %>
 </table>
+<%= paginate @boxes %>
 <br />
 <%= link_to 'New Box', new_admin_box_path %>

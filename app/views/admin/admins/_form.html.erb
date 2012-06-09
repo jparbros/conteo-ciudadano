@@ -23,6 +23,10 @@
     <%= f.label :"comfirmar password" %><br />
     <%= f.password_field :password_confirmation %>
   </div>
+  <div class="field">
+  	<%= f.label "Role"%>
+  	<%= f.collection_select :role, Admin::ROLES, :to_s, :humanize,:include_blank=>true %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

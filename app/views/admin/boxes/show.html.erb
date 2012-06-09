@@ -5,10 +5,6 @@
   <%= @box.state.name %>
 </p>
 <p>
-  <b>Municipio:</b>
-  <%= @box.municipality.name %>
-</p>
-<p>
   <b>Number:</b>
   <%= @box.number %>
 </p>
@@ -17,43 +13,5 @@
   <%= @box.location %>
 </p>
 <p>
-  <b>PRI:</b>
-  <%= @box.pri %>
-</p>
-<p>
-  <b>PAN:</b>
-  <%= @box.pan %>
-</p>
-<p>
-  <b>PRD:</b>
-  <%= @box.prd %>
-</p>
-<p>
-  <b>Verde Ecologista:</b>
-  <%= @box.vem %>
-</p>
-<p>
-  <b>Nueva Alianza:</b>
-  <%= @box.nueva_alianza %>
-</p>
-<p>
-  <b>Movimiento Ciudadano:</b>
-  <%= @box.movimiento_ciudadano %>
-</p>
-<p>
-  <b>Otro:</b>
-  <%= @box.otro %>
-</p>
-<p>
-  <b>Nulo:</b>
-  <%= @box.nulo %>
-</p>
-<p>
-  <b>Active:</b>
-  <%= @box.active %>
-</p>
-<p>
-	<%=image_tag @box.ticket_voting.url(:thumb)%>
-</p>
-<%= link_to 'Edit', edit_box_path(@box) %> |
-<%= link_to 'Back', boxes_path %>
+<%= link_to 'Edit', edit_admin_box_path(@box) %> |
+<%= link_to 'Back', admin_boxes_path %>

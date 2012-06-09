@@ -1,9 +1,11 @@
 class Admin::BoxesController < Admin::BaseController
-
+  layout 'admin'
+  before_filter :authenticate_admin!
+  load_and_authorize_resource
   # GET /boxes
   # GET /boxes.json
   def index
-    @boxes = Box.all
+    @boxes = Box.page(params[:page])
 
     respond_to do |format|
       format.html # index.html.erb

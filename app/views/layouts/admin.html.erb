@@ -11,8 +11,8 @@
 		<nav>
 			<%=link_to "Panel", admin_root_path %> |
 			<%=link_to "Casillas", admin_boxes_path%> |
-			<%=link_to "Administradores", admin_users_path%> |
-			<%=link_to "Salir", destroy_admin_session_path %>
+			<%=link_to "Administradores", admin_admins_path%> |
+			<%=link_to "Salir", destroy_admin_session_path, method: :delete %>
 	</nav>
 	<div id="admin-content">
 		<%=yield%>
