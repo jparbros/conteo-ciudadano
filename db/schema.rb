@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120601172702) do
+ActiveRecord::Schema.define(:version => 20120604164526) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -55,6 +55,9 @@ ActiveRecord::Schema.define(:version => 20120601172702) do
     t.string   "district_head"
     t.integer  "nominal_list"
     t.string   "kind"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.boolean  "gmaps"
   end
 
   add_index "boxes", ["state_id", "section"], :name => "index_boxes_on_state_id_and_section"

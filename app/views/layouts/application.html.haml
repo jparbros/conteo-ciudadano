@@ -2,7 +2,11 @@
 %head
   %title
     Conteo Ciudadano
-  = stylesheet_link_tag    "application", :media => "all"
+  %meta{ property: 'og:title', content: 'Conteo Ciudadano' }
+  %meta{ property: 'og:image', content: 'http://conteo-ciudadano.org/assets/logo-phone.jpg' }
+  %meta{ property: 'og:description', content: 'Juntos creemos una base de datos de los resultados de las elecciones del 1 de Julio de 2012' }
+  %meta{ property: 'og:url', content: 'http://www.conteo-ciudadano.org' }
+  = stylesheet_link_tag "application", :media => "all"
   = csrf_meta_tags
 
 %body
@@ -46,3 +50,4 @@
         = link_to image_tag('/assets/facebook_64.png'), '/auth/facebook'
 
 = javascript_include_tag "application"
+= yield :scripts

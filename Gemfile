@@ -7,6 +7,7 @@ gem 'rails', '3.2.3'
 
 group :development do
   gem 'sqlite3'
+  gem 'typhoeus'
 end
 
 group :production do
@@ -14,6 +15,7 @@ group :production do
   gem 'therubyracer'
   gem 'pg'
   gem 'fog'
+  gem 'unicorn'
 end
 
 group :assets do
@@ -26,6 +28,7 @@ gem 'jquery-rails'
 gem 'devise'
 gem 'haml-rails'
 gem 'state_machine'
+gem 'gmaps4rails'
 
 gem 'omniauth'
 gem 'omniauth-twitter'

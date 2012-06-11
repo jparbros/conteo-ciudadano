@@ -32,6 +32,10 @@
     .span9
       = @casilla.nominal_list
 
+
+=# gmaps4rails @casilla.to_gmaps4rails
+= gmaps(:map_options => {:auto_zoom => true, :zoom => 12, :auto_adjust => true}, :markers => {:data => @casilla.to_gmaps4rails} )
+
 .row
   #results.well.span4
     %h2
