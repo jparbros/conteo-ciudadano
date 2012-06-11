@@ -5,7 +5,7 @@ class Ability
     if user.role == 'superadmin'
       can :manage, :all 
     elsif user.role == 'admin'
-      can :manage, [Box,State]
+      can :manage, [Box,State,Admin]
     elsif user.role == 'manager'
       can :manage, Box
     elsif user.role == 'observer'

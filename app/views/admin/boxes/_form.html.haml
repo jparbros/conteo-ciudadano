@@ -1,0 +1,66 @@
+= form_for [:admin, @box], :html => { :multipart => true } do |f|
+  -if @box.errors.any?
+    %div{:id=>"error_explanation"}
+      %h2= pluralize(@box.errors.count, "error") #prohibe que esta casilla sea guardada:
+
+      %ul
+        -@box.errors.full_messages.each do |msg|
+          %li=msg
+  %table
+    %tr
+      %td Secion
+      %td=f.number_field :section
+      %td Distrito
+      %td=f.number_field :district
+      
+    %tr
+      %td Numero de casilla
+      %td= f.number_field :number
+      %td Boleta
+      %td= f.file_field :ticket_voting
+      
+    %tr
+      %td Ubicacion de casilla
+      %td=f.text_field :location
+    =fields_for @result do |ff|
+      %tr
+        %td
+          %img{:src=>"/assets/logo_pri.png"}
+        %td= ff.number_field :pri
+        %td
+          %img{:src=>"/assets/logo_pan.png"}
+        %td= ff.number_field :pan
+      
+      %tr
+        %td
+          %img{:src=>"/assets/logo_prd.png"}
+        %td=ff.number_field :prd
+        %td
+          %img{:src=>"/assets/logo_vem.png"}
+        %td= ff.number_field :pvem
+        
+      %tr
+        %td
+          %img{:src=>"/assets/logo_pt.jpg"}
+        %td= ff.number_field :pt
+        %td
+          %img{:src=>"/assets/logo_movimiento_ciudadano.jpg"}
+        %td= ff.number_field :movimiento_ciudadano
+      
+      %tr
+        %td
+          %img{:src=>"/assets/logo_nueva_alianza.png"}
+        %td= ff.number_field :nueva_alianza
+        %td
+          %img{:src=>"/assets/logo_otro_candidato.png"}
+        %td= ff.number_field :others
+        
+      %tr
+        %td
+          %img{:src=>"/assets/logo_votos_nulos.png"}
+        %td=ff.number_field :null
+        %td
+        %td
+      %tr
+        %td{:colspan=>"4"}
+          = ff.submit 'Enviar'

@@ -2,6 +2,7 @@ class Admin::BoxesController < Admin::BaseController
   layout 'admin'
   before_filter :authenticate_admin!
   load_and_authorize_resource
+  
   # GET /boxes
   # GET /boxes.json
   def index
@@ -26,6 +27,7 @@ class Admin::BoxesController < Admin::BaseController
   # GET /boxes/new.json
   def new
     @box = Box.new
+    @result = @box.build_result
 
     respond_to do |format|
       format.html # new.html.erb
@@ -35,6 +37,8 @@ class Admin::BoxesController < Admin::BaseController
   # GET /boxes/1/edit
   def edit
     @box = Box.find(params[:id])
+    @result = @box.result
+    #@box.build_result
   end
 
   # POST /boxes
@@ -44,7 +48,9 @@ class Admin::BoxesController < Admin::BaseController
 
     respond_to do |format|
       if @box.save
-        format.html { redirect_to @box, :notice => 'Box was successfully created.' }
+        @result = @box.build_result(params[:result])
+        @result.save
+        format.html { redirect_to [:admin,@box], :notice => 'Box was successfully created.' }
       else
         format.html { render :action => "new" }
       end
@@ -55,10 +61,12 @@ class Admin::BoxesController < Admin::BaseController
   # PUT /boxes/1.json
   def update
     @box = Box.find(params[:id])
+    @result = @box.result
 
     respond_to do |format|
       if @box.update_attributes(params[:box])
-        format.html { redirect_to @box, :notice => 'Box was successfully updated.' }
+        @result.update_attributes(params[:result])
+        format.html { redirect_to [:admin,@box], :notice => 'Box was successfully updated.' }
       else
         format.html { render :action => "edit" }
       end

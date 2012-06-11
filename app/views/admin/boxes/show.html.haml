@@ -1,0 +1,54 @@
+%h1 Resultados de casilla # #{@box.number} en la sección #{@box.section}
+%p{:id=>"notice"}= notice
+%p
+  %b Stado:
+  = @box.state.name
+%p
+  %b Number:
+  = @box.number
+%p
+  %b Seccion:
+  =@box.section
+%p
+  %b Ubicacion:
+  = @box.location
+%div
+  %b Datos:
+  %table{:border=>1}
+    %tr
+      %td
+        %img{:src=>"/assets/logo_pri.png"}
+      %td=@box.result.pri
+      %td
+        %img{:src=>"/assets/logo_pan.png"}
+      %td=@box.result.pan
+    %tr
+      %td
+        %img{:src=>"/assets/logo_prd.png"}
+      %td=@box.result.prd
+      %td
+        %img{:src=>"/assets/logo_vem.png"}
+      %td=@box.result.pvem
+    %tr
+      %td
+        %img{:src=>"/assets/logo_pt.jpg"}
+      %td=@box.result.pt
+      %td
+        %img{:src=>"/assets/logo_nueva_alianza.png"}
+      %td=@box.result.nueva_alianza
+    %tr
+      %td
+        %img{:src=>"/assets/logo_movimiento_ciudadano.jpg"}
+      %td=@box.result.movimiento_ciudadano
+      %td
+        %img{:src=>"/assets/logo_votos_nulos.png"}
+      %td=@box.result.null
+    %tr
+      %td
+        %img{:src=>"/assets/logo_otro_candidato.png"}
+      %td=@box.result.others
+      %td
+      %td
+  
+= link_to 'Edit', edit_admin_box_path(@box)
+= link_to 'Back', admin_boxes_path
