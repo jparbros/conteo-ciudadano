@@ -1,5 +1,8 @@
 class Admin::AdminsController < Admin::BaseController
-
+  layout 'admin'
+  before_filter :authenticate_admin!
+  load_and_authorize_resource
+  
   # GET /admins
   # GET /admins.json
   def index
@@ -7,7 +10,7 @@ class Admin::AdminsController < Admin::BaseController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render :json => @admins }
+      #format.json { render :json => @admins }
     end
   end
 
@@ -18,7 +21,7 @@ class Admin::AdminsController < Admin::BaseController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render :json => @admin }
+      #format.json { render :json => @admin }
     end
   end
 
@@ -29,7 +32,7 @@ class Admin::AdminsController < Admin::BaseController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.json { render :json => @admin }
+      #format.json { render :json => @admin }
     end
   end
 
@@ -45,11 +48,11 @@ class Admin::AdminsController < Admin::BaseController
 
     respond_to do |format|
       if @admin.save
-        format.html { redirect_to @admin, :notice => 'admin was successfully created.' }
-        format.json { render :json => @admin, :status => :created, :location => @admin }
+        format.html { redirect_to [:admin,@admin], :notice => 'admin was successfully created.' }
+        #format.json { render :json => @admin, :status => :created, :location => @admin }
       else
         format.html { render :action => "new" }
-        format.json { render :json => @admin.errors, :status => :unprocessable_entity }
+        #format.json { render :json => @admin.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -61,11 +64,11 @@ class Admin::AdminsController < Admin::BaseController
 
     respond_to do |format|
       if @admin.update_attributes(params[:admin])
-        format.html { redirect_to @admin, :notice => 'admin was successfully updated.' }
-        format.json { head :no_content }
+        format.html { redirect_to [:admin,@admin], :notice => 'admin was successfully updated.' }
+        #format.json { head :no_content }
       else
         format.html { render :action => "edit" }
-        format.json { render :json => @admin.errors, :status => :unprocessable_entity }
+        #format.json { render :json => @admin.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -78,7 +81,7 @@ class Admin::AdminsController < Admin::BaseController
 
     respond_to do |format|
       format.html { redirect_to admins_url }
-      format.json { head :no_content }
+      #format.json { head :no_content }
     end
   end
 end

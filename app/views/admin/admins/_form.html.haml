@@ -1,0 +1,31 @@
+= form_for([:admin, @admin]) do |f|
+  -if @admin.errors.any?
+    %div{:id=>'error_explanation'}
+      %h2=pluralize(@admin.errors.count, "error")
+
+      %ul
+        -@admin.errors.full_messages.each do |msg|
+          %li= msg
+
+  %div
+    = f.label :email
+    %br
+    = f.text_field :email
+        
+  %div
+    = f.label :password
+    %br
+    = f.password_field :password
+   
+  %div
+    = f.label :"comfirmar password"
+    %br
+    = f.password_field :password_confirmation
+    
+  %div
+    = f.label :Role
+    %br
+    = f.collection_select :role, Admin::ROLES, :to_s, :humanize,:include_blank=>true
+
+  %div
+    = f.submit

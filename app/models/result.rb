@@ -9,7 +9,7 @@ class Result < ActiveRecord::Base
   # Relations
   #
   belongs_to :box
-
+  accepts_nested_attributes_for :box
   #
   # State Machine
   #

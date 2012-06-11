@@ -14,6 +14,7 @@ group :production do
   gem 'therubyracer'
   gem 'pg'
   gem 'fog'
+  gem 'mysql2'
 end
 
 group :assets do
@@ -38,4 +39,4 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'galetahub-simple_captcha', :require => 'simple_captcha'
 gem 'kaminari' #for pagination
-
+gem 'cancan'
