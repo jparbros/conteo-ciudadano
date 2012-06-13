@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class Box < ActiveRecord::Base
   #
   # Attributtes accesors
@@ -27,11 +28,11 @@ class Box < ActiveRecord::Base
   end
 
   def parsed_address
-    complete_address.gsub('#','').gsub(/\d{5}/,'').gsub(',','').lstrip
+    complete_address.gsub('#','').gsub(/\d{5}/,'').gsub(',','').gsub(/código postal/,'').lstrip.strip
   end
 
   def complete_address
-    unless address.downcase.match(state_name.downcase) || !address.downcase.match(/(avenida|calle|andador|carretera) #{state_name.downcase}/)
+    if missing_state
       "#{address} #{state_name.downcase}"
     else
       address
@@ -39,6 +40,10 @@ class Box < ActiveRecord::Base
   end
 
   def missing_state
-     ((address.downcase.scan(state_name.downcase).size <= 1) && !!address.downcase.match(/(avenida|calle|andador|carretera) #{state_name.downcase}/))
+    if !!address.downcase.match(/(avenida|calle|andador|carretera) #{state_name.downcase}/)
+      !(address.downcase.scan(state_name.downcase).size >= 2)
+    else
+      address.downcase.scan(state_name.downcase).size < 1
+    end
   end
 end
