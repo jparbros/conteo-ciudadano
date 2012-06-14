@@ -29,6 +29,7 @@ gem 'devise'
 gem 'haml-rails'
 gem 'state_machine'
 gem 'gmaps4rails'
+gem 'cancan'
 
 gem 'omniauth'
 gem 'omniauth-twitter'
