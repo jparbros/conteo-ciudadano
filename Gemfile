@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.6'
+gem 'rails', '3.2.3'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -41,4 +41,4 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'galetahub-simple_captcha', :require => 'simple_captcha'
 gem 'kaminari' #for pagination
-
+gem 'cancan'

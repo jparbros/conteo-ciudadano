@@ -1,0 +1,23 @@
+%h1 Listing boxes
+
+%table
+  %tr
+    %th Casilla
+    %th Estado
+    %th Numero
+    %th Activa
+    %th
+    %th
+    %th
+  -@boxes.each do |box|
+    %tr
+      %td= box.number
+      %td= box.state.name
+      %td= box.number
+      %td= box.active
+      %td= link_to 'Show', [:admin, box]
+      %td= link_to 'Edit', edit_admin_box_path(box)
+      %td= link_to 'Destroy', [:admin, box], :confirm => 'Are you sure?', :method => :delete
+       
+= paginate @boxes
+= link_to 'New Box', new_admin_box_path
