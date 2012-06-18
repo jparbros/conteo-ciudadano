@@ -49,7 +49,7 @@ $(document).ready(function() {
   });
 
   $('[data-link-type="home"]').click(function(event) {
-    if ($(this).data('link-enable') == 'true') {
+    if ($(this).data('link-enable') == true) {
       event.preventDefault();
       $('html, body').animate({scrollTop:0}, 'slow');
     }
