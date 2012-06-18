@@ -1,49 +1,72 @@
 %h1
   Detalles de la Casilla
 
-.well
-  .row
-    %strong.span2
-      Casilla:
-    .span9
-      = "#{@casilla.kind} #{@casilla.number}"
+.row-fluid
+  .well.span6#info-box
+    .row-fluid
+      %strong.span3
+        Casilla:
+      .span9
+        = @casilla.kind_and_number
 
-  .row
-    %strong.span2
-      Ubicación:
-    .span9
-      = "#{@casilla.location}; #{@casilla.address} #{@casilla.references}"
+    .row-fluid
+      %strong.span3
+        Ubicación:
+      .span9
+        = @casilla.complete_address
 
-  .row
-    %strong.span2
-      Delegación/Municipio:
-    .span9
-      = @casilla.district_head
+    .row-fluid
+      %strong.span3
+        Delegación/Municipio:
+      .span9
+        = @casilla.district_head
 
-  .row
-    %strong.span2
-      Secci&oacute;n:
-    .span9
-      = @casilla.section
+    .row-fluid
+      %strong.span3
+        Secci&oacute;n:
+      .span9
+        = @casilla.section
 
-  .row
-    %strong.span2
-      Lista nominal:
-    .span9
-      = @casilla.nominal_list
+    .row-fluid
+      %strong.span3
+        Lista nominal:
+      .span9
+        = @casilla.nominal_list
 
+    .row-fluid
+      .span12
+        #share
+          .title
+            Comparte tu casilla
 
-=# gmaps4rails @casilla.to_gmaps4rails
-= gmaps(:map_options => {:auto_zoom => true, :zoom => 12, :auto_adjust => true}, :markers => {:data => @casilla.to_gmaps4rails} )
+          #share-facebook
+            %a{href: "javascript:void(0)", onclick: 'window.open("http:\/\/www.facebook.com\/sharer.php?t=Yo votare en esta casilla&u=" + encodeURIComponent(window.location.href+"&fref=fb"), "my_window", "height=440,width=620,scrollbars=true");return false;', title: "Share on Facebook"}
+              &nbsp;
 
-.row
-  #results.well.span4
-    %h2
-      Resultados
-    = render partial: (@casilla.result.new? ? 'results_form' : 'results')
+          #share-twitter
+            %a{'href' => "https://twitter.com/intent/tweet?url=#{casilla_url(id: @casilla)}&via=conteo_mx&text=Yo votare en esta casilla", 'data-lang' => "es", 'data-show-screen-name' => "false", 'data-dnt' => "true"}
+              &nbsp;
 
-  #images.well.span7
-    %h2
-      Mantas Electorales
+  .span6
+    #box-map
 
-    = render partial: 'images'
+    %script
+      $(document).ready(function() {
+      google_maps = GoogleMaps.initialize(#{@casilla.options_for_maps.html_safe})
+      google_maps.render();
+      });
+
+.row-fluid
+
+  - if APP_CONFIG['upload_votes']
+    #results.well.span5
+      %h2
+        Resultados
+      = render partial: @casilla.results_partial
+
+  - if APP_CONFIG['upload_images']
+    #images.well.span7
+      %h2
+        Mantas Electorales
+
+      = render partial: 'images'

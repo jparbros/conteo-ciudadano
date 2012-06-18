@@ -1,0 +1,87 @@
+.row-fluid
+  .span12.explain
+    %img{src: '/assets/main-img.png', id: 'main-image'}
+    #share
+      .title
+        Comparte
+
+      #share-facebook
+        %a{href: "javascript:void(0)", onclick: 'window.open("http:\/\/www.facebook.com\/sharer.php?u=" + encodeURIComponent(window.location.href+"&fref=fb"), "my_window", "height=440,width=620,scrollbars=true");return false;', title: "Share on Facebook"}
+          &nbsp;
+
+      #share-twitter
+        %a{'href' => "https://twitter.com/intent/tweet?url=http://www.conteo-ciudadano.org&via=conteo_mx&text=Juntos haremos la democracia", 'data-lang' => "es", 'data-show-screen-name' => "false", 'data-dnt' => "true"}
+          &nbsp;
+
+    .down-button
+      %a{href: '#', 'data-link-type' => 'funcionara'}
+        %img{src: '/assets/down.png'}
+
+.row-fluid
+  .explain.span12
+    %h1
+      &iquest;C&oacute;mo funcionar&aacute;?
+
+    .row-fluid#pasos
+      .span3#paso-1
+        = image_tag '/assets/paso-1.png'
+        %p
+          Tomas una foto clara de la manta de resultados de la casilla
+
+      .span3#paso-2
+        = image_tag '/assets/paso-2.png'
+        %p
+          Sube los resultados por twitter, facebook o en el sitio.
+
+      .span3#paso-3
+        = image_tag '/assets/paso-3.png'
+        %p
+          Los datos ser&aacute;n verificados que concuerden con la foto.
+      .span3#paso-4
+        = image_tag '/assets/paso-4.png'
+        %p
+          Tus resultados serán sumados al total.
+
+      %p
+        Todos los registros de las casillas ser&aacute;n p&uacute;blicos.
+
+    .down-button
+      %a{href: '#', 'data-link-type' => 'porque'}
+        %img{src: '/assets/down.png'}
+
+
+.row-fluid
+  .span12.explain
+    %h1
+      &iquest;Por Qu&eacute;?
+    %p
+      La ciudadan&iacute;a tiene que llenar los vac&iacute;os que las Instituciones dejan, con la finalidad de tener una base de datos p&uacute;blica y ciudadana de los resultados de las elecciones de este 1 de Julio.
+
+    .down-button
+      %a{href: '#', 'data-link-type' => 'participa'}
+        %img{src: '/assets/down.png'}
+
+.row-fluid
+  .explain.span12
+    %h1
+      &iquest;Quieres participar?
+    %p
+      Este proyecto est&aacute; abierto a cualquier persona que quiera colaborar en &eacute;l, se ocupan diversos talentos, si est&aacute;s interesado, manda un email a
+      %a{href: 'mailto:info@conteo-ciudadano.org'}
+        info@conteo-ciudadano.org
+
+    .down-button
+      %a{href: '#', 'data-link-type' => 'engano'}
+        %img{src: '/assets/down.png'}
+
+
+.row-fluid
+  .explain.span12
+    %h1
+      &iquest;C&oacute;mo s&eacute; que no es un enga&ntilde;o?
+    %p
+      El c&oacute;digo es open source y se puede encontrar en:
+      %a{href: 'https://github.com/jparbros/conteo-ciudadano', target: '_blank'}
+        c&oacute;digo fuente aqu&iacute;.
+      Toda aportaci&oacute;n es bien recibida.
+      Este proyecto est&aacute; abierto a todas las personas interesadas y de cualquier corriente de pensamiento pol&iacute;tico.

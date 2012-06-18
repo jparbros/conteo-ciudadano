@@ -2,22 +2,35 @@
   Casillas de #{@estado.name} Secci&oacute;n  #{params[:section]}
 
 - @casillas.each do |casilla|
-  .well
-    .row
-      %strong.span2
-        Casilla:
-      .span9
-        = "#{casilla.kind} #{casilla.number}"
-    .row
-      %strong.span2
-        Ubicación:
-      .span9
-        = "#{casilla.location}; #{casilla.address} #{casilla.references}"
-    .row
-      %strong.span2
-        Delegación/Municipio:
-      .span9
-        = casilla.district_head
-    .row
-      .span6
-        = link_to 'Detalles de la casilla', casilla_path(casilla), class: [:btn, :'btn-primary']
+  .row-fluid
+    .well.span12.box-result
+      .row-fluid
+        %strong.span3
+          Casilla:
+        .span9
+          = casilla.kind_and_number
+      .row-fluid
+        %strong.span3
+          Ubicación:
+        .span9
+          = casilla.complete_address
+      .row-fluid
+        %strong.span3
+          Delegación/Municipio:
+        .span9
+          = casilla.district_head
+      .row-fluid
+        .span3
+          = link_to 'Detalles de la casilla', casilla_path(id: casilla.id), class: [:btn, :'btn-primary']
+        .span6
+          #share
+            .title
+              Comparte tu casilla
+
+            #share-facebook
+              %a{href: "javascript:void(0)", onclick: 'window.open("http:\/\/www.facebook.com\/sharer.php?t=Yo votare en esta casilla&u=" + encodeURIComponent(window.location.href+"&fref=fb"), "my_window", "height=440,width=620,scrollbars=true");return false;', title: "Share on Facebook"}
+                &nbsp;
+
+            #share-twitter
+              %a{'href' => "https://twitter.com/intent/tweet?url=#{casilla_url(id: casilla)}&via=conteo_mx&text=Yo votare en esta casilla", 'data-lang' => "es", 'data-show-screen-name' => "false", 'data-dnt' => "true"}
+                &nbsp;

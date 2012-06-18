@@ -1,9 +1,16 @@
 %h1
   Buscar Casillas
 
-.well
-  = form_tag buscar_casillas_path, class: 'form-inline', method: :get do
-    = select_tag :estado, options_from_collection_for_select(State.all, :id, :name), blank: :estado
-    = text_field_tag :section, '', class: '', placeholder: 'Seccion'
-    = submit_tag :'Buscar', class: :btn
+.row-fluid
+  .well.span12
+    .row-fluid
+      .span3
+        = image_tag '/assets/credencial-seccion.png'
+      .span9
+        %p.help-block
+          Ingresa tu estado y la secci&oacute;n que aparece en tu credencial de elector. En un costado puedes observar la guia para identificar la seccion donde te corresponde votar.
 
+        = form_tag buscar_casillas_path, class: 'form-inline' do
+          = select_tag :estado, options_from_collection_for_select(State.all, :name, :name), blank: :estado
+          = text_field_tag :section, '', class: '', placeholder: 'Sección'
+          = submit_tag :'Buscar', class: :btn

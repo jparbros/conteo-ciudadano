@@ -5,5 +5,55 @@
 */
 
 body {
-  background: url('/assets/pattern.png') repeat fixed;
+  background: url('/assets/linen.png') repeat fixed;
+  font-family: 'Dosis', sans-serif;
+  font-size: 14px;
 }
+
+#header {
+  background: url('/assets/linen.png') repeat fixed;
+  position: fixed;
+  top: 0;
+}
+
+.navbar-fixed-top {
+    top: 60px;
+}
+
+.navbar-inner {
+  background: #6D45C0;
+  color: #ffffff;
+}
+
+.navbar .nav > li > a {
+  color: #ffffff;
+}
+
+.navbar .nav > li > a:hover {
+  text-decoration: underline;
+}
+
+body > .container-fluid {
+  margin-top: 120px;
+}
+
+#logo img {
+  margin: 8px 0;
+}
+
+#follow-twitter, #follow-facebook {
+  margin: 11px 0;
+}
+
+#follow-facebook {
+  padding: 9px 0 0;
+}
+
+#follow-twitter {
+  padding: 7px 0 0;
+}
+
+.row-fluid .offset3 { margin-left: 25.641025641%; *margin-left: 25.5346426622766% }
+.row-fluid .offset6 { margin-left: 51.282051282%; *margin-left: 51.2288597926383% }
+.row-fluid .offset7 { margin-left: 59.829059829%; *margin-left: 59.7758683396383% }
+

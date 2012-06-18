@@ -15,6 +15,7 @@
 //= require bootstrap.min
 //= require plupload.full
 //= require jquery.plupload.queue
+//= require google_maps
 //= require_tree .
 
 $(document).ready(function() {
@@ -26,7 +27,33 @@ $(document).ready(function() {
     event.preventDefault();
     $('#login-modal').modal('show');
   });
+
+  $('[data-link-type="funcionara"]').click(function(event) {
+    event.preventDefault();
+    $('html, body').animate({scrollTop:997}, 'slow');
+  });
+
+  $('[data-link-type="porque"]').click(function(event) {
+    event.preventDefault();
+    $('html, body').animate({scrollTop:2072}, 'slow');
+  });
+
+  $('[data-link-type="participa"]').click(function(event) {
+    event.preventDefault();
+    $('html, body').animate({scrollTop:2929}, 'slow');
+  });
+
+  $('[data-link-type="engano"]').click(function(event) {
+    event.preventDefault();
+    $('html, body').animate({scrollTop:3791}, 'slow');
+  });
+
+  $('[data-link-type="home"]').click(function(event) {
+    event.preventDefault();
+    $('html, body').animate({scrollTop:0}, 'slow');
+  });
 })
+
 
 $(function() {
   $('#html5_uploader').pluploadQueue({

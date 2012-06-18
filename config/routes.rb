@@ -12,7 +12,10 @@ Conteo::Application.routes.draw do
 
   match '/auth/:provider/callback', to: 'authentications#create'
 
-  resource :buscar_casillas, only: [:new, :show], path: '/casillas/buscar'
+  resource :buscar_casillas, only: [:new,  :show, :create], path: '/casillas/buscar'
+
+  match '/casillas/:estado/:section', to: 'buscar_casillas#show', as: 'buscar_casillas_show'
+
   resources :casillas, only: [:show, :update]
 
   match '/casillas/:id' => 'casillas#update', via: :post

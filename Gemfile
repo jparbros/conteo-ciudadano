@@ -28,7 +28,6 @@ gem 'jquery-rails'
 gem 'devise'
 gem 'haml-rails'
 gem 'state_machine'
-gem 'gmaps4rails'
 gem 'cancan'
 
 gem 'omniauth'
@@ -40,6 +39,5 @@ gem 'fb_graph'
 
 gem 'carrierwave'
 gem 'mini_magick'
-gem 'galetahub-simple_captcha', :require => 'simple_captcha'
-gem 'kaminari' #for pagination
+gem 'kaminari'
 gem 'cancan'

@@ -1,7 +1,7 @@
 class CasillasController < ApplicationController
 
   def show
-    @casilla = Box.find params[:id]
+    @casilla = CasillaPresenter.new(Box.find(params[:id]), current_user)
   end
 
   def update

@@ -1,16 +1,8 @@
-%p.help-block
-  Suba las mantas electorales en este formulario
+= render partial: 'image_form' if @casilla.editable?
 
-.row
-  #html5_uploader.span7{'data-box-id' => @casilla.id}
-
-.row
-  #image-uploaded.span7
-    .row
-
-.row
+.row-fluid
   #all-images.span7
-    .row
+    .row-fluid
       - @casilla.result_images.each do |image|
         .thumb.span1
           = image_tag image.image.thumb

@@ -48,3 +48,20 @@ ul {
     padding: 10px 0 10px 10px;
   }
 }
+
+#box-map, #info-box {
+  font-size: 14px;
+  height: 300px;
+  margin-bottom: 100px;
+  text-transform: capitalize;
+
+  .row-fluid {
+    margin-bottom: 10px;
+  }
+}
+
+.box-result {
+  .row-fluid {
+    margin-bottom: 10px;
+  }
+}

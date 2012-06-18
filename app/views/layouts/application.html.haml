@@ -1,34 +1,48 @@
+# encoding: UTF-8
 !!! 5
 %head
   %title
     Conteo Ciudadano
   %meta{ property: 'og:title', content: 'Conteo Ciudadano' }
-  %meta{ property: 'og:image', content: 'http://conteo-ciudadano.org/assets/logo-phone.jpg' }
-  %meta{ property: 'og:description', content: 'Juntos creemos una base de datos de los resultados de las elecciones del 1 de Julio de 2012' }
+  %meta{ property: 'og:image', content: 'http://conteo-ciudadano.org/assets/logo.png' }
+  %meta{ property: 'og:description', content: 'Sistema de conteo ciudadano de la elecciones federales para presidente del 2012, para vigilar el trabajo de las instituciones a traves de la tecnologia.' }
   %meta{ property: 'og:url', content: 'http://www.conteo-ciudadano.org' }
+  %meta{name: "viewport", content: "width=device-width, initial-scale=1.0"}
+  %meta{name: "keywords", content: "prep ciudadano, conteo ciudadano, ife ciudadano, voto2012, elecciones 2012, elecciones presidenciales, presidente 2012, peña nieto, josefina, vazquez mota, andres manuel, lopez obrador, resultados 2012, resultados electorales 2012, presidenciables 2012, mexico"}
+
+  %link{href: 'http://fonts.googleapis.com/css?family=Dosis:400', rel: 'stylesheet', type: 'text/css'}
   = stylesheet_link_tag "application", :media => "all"
   = csrf_meta_tags
+  %script{ src: 'http://maps.google.com/maps/api/js?sensor=true&key=AIzaSyBJAXhLpxM-_qcJVWzVL03m-Y1b2b8Hpps&libraries=geometry', type: 'text/javascript'}
+  = javascript_include_tag "application"
+  = yield :scripts
 
-%body
-  #fb-root
+%body{class: "#{controller_name}"}
+  #header.row-fluid
+    .container-fluid
+      #logo.span3
+        %a{href: '#', 'data-link-type' => 'home'}
+          = image_tag '/assets/logo.png'
+      #siguenos.span3.offset6.hidden-phone
+        #follow-facebook.span6
+          .fb-like{'data-href' => "http://www.facebook.com/conteociudadanoorg", 'data-send' => "false", 'data-width' =>"77",  'data-show-faces' => "false",  'layout' => 'button_count'}
+        #follow-twitter.span6
+          Siguenos
+          %a{'href' => "https://twitter.com/intent/user?screen_name=conteo_mx", 'data-lang' => "es", 'data-show-screen-name' => "false", 'data-dnt' => "true"}
+            %img{src: '/assets/twitter-icon.png'}
 
-  .navbar
+  .navbar.navbar-fixed-top
     .navbar-inner
-      .container
+      .container-fluid
         %ul#main-nav.nav
           %li
-            =link_to "Inicio",root_path
-          %li
-            =link_to "Enviar resultados", new_buscar_casillas_path
-          %li
-            =link_to "Consultar Resultados",'/search'
-          %li
-            =link_to "Nacional",'/nacional'
+            =link_to "Buscar Casillas", new_buscar_casillas_path
 
-        %ul.nav.pull-right
-          %li
-            = user_signed_in? ? link_to('Cerrar sesion', destroy_user_session_path, method: :delete) : link_to('Registrarse/Ingresar','', id: 'login-button')
-  .container
+        = form_tag buscar_casillas_path, class: 'navbar-form pull-right form-inline' do
+          = select_tag :estado, options_from_collection_for_select(State.all, :name, :name), blank: :estado, class: 'span2'
+          = text_field_tag :section, '', class: 'span1', placeholder: 'Sección'
+
+  .container-fluid
     = yield
 
 #login-modal.modal.fade
@@ -49,5 +63,18 @@
       .span1.offset3
         = link_to image_tag('/assets/facebook_64.png'), '/auth/facebook'
 
-= javascript_include_tag "application"
-= yield :scripts
+#fb-root
+%script{src: ' https://connect.facebook.net/es_LA/all.js#xfbml=1&appId=194392060651235', type: 'text/javascript'}
+%script{type: 'text/javascript'}
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-32031217-1']);
+  _gaq.push(['_setDomainName', 'conteo-ciudadano.org']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+  !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
