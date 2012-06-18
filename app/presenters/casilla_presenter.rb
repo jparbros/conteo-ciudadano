@@ -20,4 +20,7 @@ class CasillaPresenter < SimpleDelegator
     editable? ? 'results_form' : 'results'
   end
 
+  def map_reported?
+    !get_map_tickets.blank?
+  end
 end

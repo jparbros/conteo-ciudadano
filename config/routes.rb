@@ -16,7 +16,9 @@ Conteo::Application.routes.draw do
 
   match '/casillas/:estado/:section', to: 'buscar_casillas#show', as: 'buscar_casillas_show'
 
-  resources :casillas, only: [:show, :update]
+  resources :casillas, only: [:show, :update] do
+    resources :map_tickets, only: [:create], path: '/tickets/mapa'
+  end
 
   match '/casillas/:id' => 'casillas#update', via: :post
 
@@ -24,8 +26,6 @@ Conteo::Application.routes.draw do
     root to: 'panel#index'
     resources :boxes
     resources :admins
-    resources :panel
-    #resources :user_sessions, only: [:new,:create,:destroy]
   end
 
   # The priority is based upon order of creation:

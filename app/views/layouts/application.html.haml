@@ -21,8 +21,7 @@
   #header.row-fluid
     .container-fluid
       #logo.span3
-        %a{href: '#', 'data-link-type' => 'home'}
-          = image_tag '/assets/logo.png'
+        = link_to image_tag('/assets/logo.png'), root_path, 'data-link-type' => 'home', 'data-link-enable' => current_page?(root_path)
       #siguenos.span3.offset6.hidden-phone
         #follow-facebook.span6
           .fb-like{'data-href' => "http://www.facebook.com/conteociudadanoorg", 'data-send' => "false", 'data-width' =>"77",  'data-show-faces' => "false",  'layout' => 'button_count'}
@@ -43,6 +42,7 @@
           = text_field_tag :section, '', class: 'span1', placeholder: 'Sección'
 
   .container-fluid
+    = render partial: 'layouts/alerts'
     = yield
 
 #login-modal.modal.fade
@@ -65,28 +65,29 @@
 
 #fb-root
 %script{src: ' https://connect.facebook.net/es_LA/all.js#xfbml=1&appId=194392060651235', type: 'text/javascript'}
-%script{type: 'text/javascript'}
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-32031217-1']);
-  _gaq.push(['_setDomainName', 'conteo-ciudadano.org']);
-  _gaq.push(['_trackPageview']);
+-if Rails.env.production?
+  %script{type: 'text/javascript'}
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-32031217-1']);
+    _gaq.push(['_setDomainName', 'conteo-ciudadano.org']);
+    _gaq.push(['_trackPageview']);
 
-  (function() {
-  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
+    (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
 
-  !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+    !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
 
-  var _gauges = _gauges || [];
-  (function() {
-  var t   = document.createElement('script');
-  t.type  = 'text/javascript';
-  t.async = true;
-  t.id    = 'gauges-tracker';
-  t.setAttribute('data-site-id', '4fdbbaf8f5a1f502b6000039');
-  t.src = '//secure.gaug.es/track.js';
-  var s = document.getElementsByTagName('script')[0];
-  s.parentNode.insertBefore(t, s);
-  })();
+    var _gauges = _gauges || [];
+    (function() {
+    var t   = document.createElement('script');
+    t.type  = 'text/javascript';
+    t.async = true;
+    t.id    = 'gauges-tracker';
+    t.setAttribute('data-site-id', '4fdbbaf8f5a1f502b6000039');
+    t.src = '//secure.gaug.es/track.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(t, s);
+    })();

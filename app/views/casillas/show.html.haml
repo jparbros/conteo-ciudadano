@@ -56,6 +56,12 @@
       google_maps.render();
       });
 
+    -if @casilla.map_reported?
+      %span.label.label-important
+        El mapa ya se encuentra reportado.
+    - else
+      = link_to 'Reportar mapa', casilla_map_tickets_path(@casilla.id), class: ['btn', 'btn-danger'], method: :post
+
 .row-fluid
 
   - if APP_CONFIG['upload_votes']

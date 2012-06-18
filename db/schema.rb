@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120605050617) do
+ActiveRecord::Schema.define(:version => 20120618132159) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -61,8 +61,16 @@ ActiveRecord::Schema.define(:version => 20120605050617) do
     t.boolean  "gmaps"
   end
 
-  add_index "boxes", ["section"], :name => "index_boxes_on_section"
+  add_index "boxes", ["state_id", "section"], :name => "index_boxes_on_state_id_and_section"
   add_index "boxes", ["state_id"], :name => "index_boxes_on_state_id"
+
+  create_table "comments", :force => true do |t|
+    t.integer  "commentable_id"
+    t.string   "commentable_type"
+    t.text     "comment"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
 
   create_table "result_images", :force => true do |t|
     t.string   "image"
@@ -100,6 +108,15 @@ ActiveRecord::Schema.define(:version => 20120605050617) do
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "tickets", :force => true do |t|
+    t.integer  "ticketable_id"
+    t.string   "ticketable_type"
+    t.string   "issue"
+    t.string   "state"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
   create_table "users", :force => true do |t|

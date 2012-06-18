@@ -1,0 +1,13 @@
+- if flash[:error]
+  .row-fluid
+    .alert.alert-error.span12
+      %a{class: "close", 'data-dismiss' => "alert", href: "#"}
+        ×
+      = flash[:error]
+
+- if flash[:notice]
+  .row-fluid
+    .alert.span12
+      %a{class: "close", 'data-dismiss' => "alert", href: "#"}
+        x
+      = flash[:notice]

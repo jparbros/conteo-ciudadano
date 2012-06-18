@@ -2,6 +2,9 @@
 class Box < ActiveRecord::Base
 
   include GoogleMaps
+  include Tickets
+
+  act_as_ticketable
 
   #
   # Attributtes accesors
@@ -26,10 +29,6 @@ class Box < ActiveRecord::Base
 
   def has_results?
     !self.result.new?
-  end
-
-  def geolocalizable?
-    latitude.present? && longitude.present?
   end
 
 end

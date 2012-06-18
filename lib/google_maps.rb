@@ -31,4 +31,8 @@ module GoogleMaps
   def geometry
     "#{latitude}, #{longitude}"
   end
+
+  def geolocalizable?
+    latitude.present? && longitude.present?
+  end
 end
