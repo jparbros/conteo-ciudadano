@@ -16,6 +16,7 @@ group :production do
   gem 'pg'
   gem 'fog'
   gem 'unicorn'
+  gem "airbrake"
 end
 
 group :assets do

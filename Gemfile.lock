@@ -28,6 +28,9 @@ GEM
     activesupport (3.2.3)
       i18n (~> 0.6)
       multi_json (~> 1.0)
+    airbrake (3.0.9)
+      activesupport
+      builder
     arel (3.0.2)
     attr_required (0.0.5)
     bcrypt-ruby (3.0.1)
@@ -203,6 +206,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  airbrake
   cancan
   carrierwave
   coffee-rails (~> 3.2.1)
