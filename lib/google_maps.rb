@@ -5,7 +5,7 @@ module GoogleMaps
   end
 
   def parsed_address
-    complete_address.gsub('#','').gsub(/\d{5}/,'').gsub(',',' ').gsub(/código postal/,'').gsub('sin número','').gsub('c.p.','').gsub('Domicilio conocido','').lstrip.strip
+    complete_address.gsub('#','').gsub(/\d{5}/,'').gsub(',',' ').gsub(/código postal/,'').gsub('sin número','').gsub('c.p.','').gsub('Domicilio conocido','').gsub('código póstal','').lstrip.strip
   end
 
   def complete_address
