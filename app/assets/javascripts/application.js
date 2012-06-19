@@ -72,3 +72,16 @@ $(function() {
     ]
   });
 });
+
+$(function() {
+  $('form.form-inline input#special').click(function() {
+    inputSection = $('form.form-inline input#section')
+    if($(this).is(':checked') == true) {
+      inputSection.attr('disabled','disabled');
+      inputSection.addClass('disabled');
+    } else {
+      inputSection.removeAttr('disabled','disabled');
+      inputSection.removeClass('disabled')
+    }
+  });
+});

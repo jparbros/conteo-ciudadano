@@ -1,5 +1,8 @@
 %h1
-  Casillas de #{@estado.name} Secci&oacute;n  #{params[:section]}
+  - if params[:section] == 'especiales'
+    Casillas especiales de #{@estado.name}
+  - else
+    Casillas de #{@estado.name} Secci&oacute;n  #{params[:section]}
 
 - @casillas.each do |casilla|
   .row-fluid

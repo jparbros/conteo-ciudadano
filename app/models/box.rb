@@ -27,6 +27,14 @@ class Box < ActiveRecord::Base
     where state_id: state_id, section: section
   end
 
+  def self.special_by_state state_id
+    where state_id: state_id, kind: 'Especial'
+  end
+
+  def self.find_boxes state_id, section
+    (section == 'especiales') ? special_by_state(state_id) : by_state_and_section(state_id, section)
+  end
+
   def has_results?
     !self.result.new?
   end

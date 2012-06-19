@@ -13,4 +13,6 @@
         = form_tag buscar_casillas_path, class: 'form-inline' do
           = select_tag :estado, options_from_collection_for_select(State.all, :name, :name), blank: :estado
           = text_field_tag :section, '', class: '', placeholder: 'Sección'
+          = check_box_tag :special
+          Especiales
           = submit_tag :'Buscar', class: :btn
