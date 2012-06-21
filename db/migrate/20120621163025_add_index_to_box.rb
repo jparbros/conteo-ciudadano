@@ -1,5 +1,5 @@
 class AddIndexToBox < ActiveRecord::Migration
   def change
-    add_index :state, [:name]
+    add_index :states, [:name]
   end
 end
