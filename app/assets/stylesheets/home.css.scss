@@ -170,7 +170,7 @@ h4 {
   }
 
   #paso-2 img {
-    margin: 83px 0;
+    margin: 71px 0;
   }
 
   #paso-3 img {
@@ -179,5 +179,39 @@ h4 {
 
   #paso-4 img {
     margin: 34px 0;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 979px) {
+  .home p {
+    font-size: 32px;
+  }
+
+  h1 {
+    font-size: 42px;
+  }
+
+  #pasos #paso-3 img {
+      margin: 27px 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .home p {
+    font-size: 28px;
+  }
+
+  h1 {
+    font-size: 38px;
+  }
+}
+
+@media (max-width: 480px) {
+  .home p {
+    font-size: 24px;
+  }
+
+  h1 {
+    font-size: 36px;
   }
 }

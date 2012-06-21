@@ -51,7 +51,7 @@ ul {
 
 #box-map, #info-box {
   font-size: 14px;
-  height: 300px;
+  min-height: 300px;
   margin-bottom: 20px;
   text-transform: capitalize;
 
@@ -64,4 +64,8 @@ ul {
   .row-fluid {
     margin-bottom: 10px;
   }
+}
+
+@media (max-width: 480px) {
+  #share .title { font-size: 16px; }
 }

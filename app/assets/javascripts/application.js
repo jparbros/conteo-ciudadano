@@ -30,22 +30,26 @@ $(document).ready(function() {
 
   $('[data-link-type="funcionara"]').click(function(event) {
     event.preventDefault();
-    $('html, body').animate({scrollTop:997}, 'slow');
+    top_position = $('#como-funcionara').position().top - 120
+    $('html, body').animate({scrollTop:top_position}, 'slow');
   });
 
   $('[data-link-type="porque"]').click(function(event) {
     event.preventDefault();
-    $('html, body').animate({scrollTop:2072}, 'slow');
+    top_position = $('#porque').position().top - 120
+    $('html, body').animate({scrollTop:top_position}, 'slow');
   });
 
   $('[data-link-type="participa"]').click(function(event) {
     event.preventDefault();
-    $('html, body').animate({scrollTop:2929}, 'slow');
+    top_position = $('#quieres-participar').position().top - 120
+    $('html, body').animate({scrollTop:top_position}, 'slow');
   });
 
   $('[data-link-type="engano"]').click(function(event) {
     event.preventDefault();
-    $('html, body').animate({scrollTop:3791}, 'slow');
+    top_position = $('#no-es-un-engano').position().top - 120
+    $('html, body').animate({scrollTop:top_position}, 'slow');
   });
 
   $('[data-link-type="home"]').click(function(event) {

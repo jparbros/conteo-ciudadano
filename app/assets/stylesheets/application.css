@@ -1,5 +1,6 @@
 /*
  *= require 'bootstrap'
+ *= require 'bootstrap-responsive.min'
  *= require_self
  *= require_tree .
 */
@@ -57,4 +58,32 @@ body > .container-fluid {
 .row-fluid .offset3 { margin-left: 25.641025641%; *margin-left: 25.5346426622766% }
 .row-fluid .offset6 { margin-left: 51.282051282%; *margin-left: 51.2288597926383% }
 .row-fluid .offset7 { margin-left: 59.829059829%; *margin-left: 59.7758683396383% }
+
+@media (min-width: 768px) and (max-width: 979px) {
+  .navbar-fixed-top {
+    position: fixed;
+  }
+}
+
+@media (max-width: 767px) {
+  .navbar-fixed-top {
+    position: fixed;
+  }
+
+  .navbar .container-fluid {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar-fixed-top {
+    position: fixed;
+  }
+
+  .navbar .container-fluid {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
 

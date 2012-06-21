@@ -37,31 +37,13 @@
           %li
             =link_to "Buscar Casillas", new_buscar_casillas_path
 
-        = form_tag buscar_casillas_path, class: 'navbar-form pull-right form-inline' do
+        = form_tag buscar_casillas_path, class: 'navbar-form pull-right form-inline hidden-phone' do
           = select_tag :estado, options_from_collection_for_select(State.all, :name, :name), blank: :estado, class: 'span2'
           = text_field_tag :section, '', class: 'span1', placeholder: 'Sección'
 
   .container-fluid
     = render partial: 'layouts/alerts'
     = yield
-
-#login-modal.modal.fade
-  .modal-header
-    %button{class: "close", 'data-dismiss' => "modal"}
-      ×
-    %h3
-      Registrarse/Ingresar
-
-  .modal-body
-    .row
-      .span7
-        %p
-          Escoge una de las siguientes opciones para ingresar:
-    .row
-      .span1.offset1
-        = link_to image_tag('/assets/twitter_64.png'), '/auth/twitter'
-      .span1.offset3
-        = link_to image_tag('/assets/facebook_64.png'), '/auth/facebook'
 
 #fb-root
 %script{src: ' https://connect.facebook.net/es_LA/all.js#xfbml=1&appId=194392060651235', type: 'text/javascript'}
