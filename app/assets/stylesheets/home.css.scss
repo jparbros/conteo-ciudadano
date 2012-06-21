@@ -6,8 +6,10 @@
   color: #cecebf;
 
   p {
+    color: #545454;
     font-family: 'Dosis', sans-serif;
-    font-size: 48px;
+    font-size: 38px;
+    font-weight: lighter;
     line-height: 1;
     text-align: center;
     padding: 0 10px;
@@ -121,10 +123,11 @@
 
 h1 {
   color: #6d45c0;
-  font-size: 48px;
+  font-family: 'Oswald', sans-serif;
+  font-size: 60px;
   margin: 0 0 40px;
   text-align: center;
-  text-shadow: 0 1px 0 #000000, 0 0 30px rgba(0, 0, 0, 0.4);
+  text-shadow: 0px 3px 2px #aaaaaa;
 }
 
 h2 {
@@ -166,7 +169,7 @@ h4 {
   }
 
   #paso-1 img {
-    margin: 30px 0;
+    margin: 18px 0;
   }
 
   #paso-2 img {
@@ -174,11 +177,11 @@ h4 {
   }
 
   #paso-3 img {
-    margin: 51px 0;
+    margin: 39px 0;
   }
 
   #paso-4 img {
-    margin: 34px 0;
+    margin: 22px 0;
   }
 }
 

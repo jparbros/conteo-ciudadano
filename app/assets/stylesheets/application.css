@@ -7,8 +7,16 @@
 
 body {
   background: url('/assets/linen.png') repeat fixed;
+  color: #545454;
   font-family: 'Dosis', sans-serif;
+  font-weight: lighter;
   font-size: 14px;
+}
+
+a {
+  color: #68008B;
+  font-family: 'Dosis', sans-serif;
+  font-weight: normal;
 }
 
 #header {
@@ -16,6 +24,14 @@ body {
   position: fixed;
   top: 0;
   z-index: 100;
+}
+
+.navbar {
+  font-family: 'Rokkitt', serif;
+}
+
+.navbar a {
+  font-family: 'Rokkitt', serif;
 }
 
 .navbar-fixed-top {
