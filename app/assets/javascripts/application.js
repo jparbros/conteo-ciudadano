@@ -23,6 +23,23 @@ $(document).ready(function() {
     show: false
   });
 
+  var screenHeight = screen.height;
+
+  juntosHeight = $('#juntos-haremos').height();
+  $('#juntos-haremos').css('margin-bottom', (screenHeight - juntosHeight - 120));
+
+  comoHeight = $('#como-funcionara').height();
+  $('#como-funcionara').css('margin-bottom', (screenHeight - comoHeight - 120));
+
+  porqueHeight = $('#porque').height();
+  $('#porque').css('margin-bottom', (screenHeight - porqueHeight - 120));
+
+  quieresHeight = $('#quieres-participar').height();
+  $('#quieres-participar').css('margin-bottom', (screenHeight - quieresHeight - 120));
+
+  noesHeight = $('#no-es-un-engano').height();
+  $('#no-es-un-engano').css('margin-bottom', (screenHeight - noesHeight - 120 - 160));
+
   $('#login-button').click(function(event) {
     event.preventDefault();
     $('#login-modal').modal('show');
