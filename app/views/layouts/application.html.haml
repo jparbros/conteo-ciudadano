@@ -45,6 +45,22 @@
     = render partial: 'layouts/alerts'
     = yield
 
+  #footer.row-fluid
+    .span12
+      .row-fluid
+        .span12
+          = image_tag 'logo-icon.png'
+      .row-fluid
+        .span12
+          Conteo Ciudadano
+          %span.credits
+            Creado por:
+            = link_to 'ParBros','http://www.parbros.net/', target: '_blank'
+          %span.credits
+            Diseñado por:
+            = link_to 'Mendo','mailto:fabian.mendo@crowdint.com '
+
+
 #fb-root
 %script{src: ' https://connect.facebook.net/es_LA/all.js#xfbml=1&appId=194392060651235', type: 'text/javascript'}
 -if Rails.env.production?

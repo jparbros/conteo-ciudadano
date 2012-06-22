@@ -103,3 +103,18 @@ body > .container-fluid {
   }
 }
 
+#footer {
+  background-color: #56267c;
+  font-size: 14px;
+  height: 85px;
+  text-align: center;
+}
+
+#footer img { margin-top: 25px;}
+
+#footer .credits { color: #dc72ff;}
+#footer .credits a {
+  color: #dc72ff;
+  font-family: 'Dosis', sans-serif;
+  font-weight: lighter;
+}
