@@ -18,3 +18,4 @@ pickle-email-*.html
 config/database.yml
 doc/casillas_2012.csv
 uploads/
+/certs
