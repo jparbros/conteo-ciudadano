@@ -1,18 +1,25 @@
-%h1 Listing users
+%h1
+  Administradores
 
-%table
-  %tr
-    %th Email
-    %th Nombre
-    %th Role
-    %th
-    %th
-    %th
-  -@admins.each do |admin|
+%p
+  = link_to 'Nuevo Administrador', new_admin_admin_path, class: [:btn, 'btn-primary']
+
+%table.table.table-striped.table-bordered.table-condensed
+  %thead
     %tr
-      %td= admin.email
-      %td= link_to 'Show', admin_admin_path(admin)
-      %td= link_to 'Edit', edit_admin_admin_path(admin)
-      %td= link_to 'Destroy', admin_admin_path(admin), :confirm => 'Are you sure?', :method => :delete
-%br
-= link_to 'New User', new_admin_admin_path
+      %th Email
+      %th Rol
+      %th Acciones
+  %tbody
+    -@admins.each do |admin|
+      %tr
+        %td= admin.email
+        %td= admin.role
+        %td
+          %ul
+            %li
+              = link_to 'Ver', admin_admin_path(admin)
+            %li
+              = link_to 'Editar', edit_admin_admin_path(admin)
+            %li
+              = link_to 'Eliminar', admin_admin_path(admin), :confirm => '¿Esta seguro qur desea eliminar al administrador?', :method => :delete

@@ -2,7 +2,8 @@
  *= require 'bootstrap'
  *= require 'bootstrap-responsive.min'
  *= require_self
- *= require_tree .
+ *= require 'boxes'
+ *= require 'home'
 */
 
 body {

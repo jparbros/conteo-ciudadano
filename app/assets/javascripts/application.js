@@ -16,7 +16,9 @@
 //= require plupload.full
 //= require jquery.plupload.queue
 //= require google_maps
-//= require_tree .
+//= require boxes
+//= require google_maps
+//= require home
 
 $(document).ready(function() {
   $('#login-modal').modal({

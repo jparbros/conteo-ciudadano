@@ -7,7 +7,7 @@
       %th Estado
       %th Sección
       %th Tipo
-      %th
+      %th Acciones
       %th
   %tbody
     -@boxes.each do |box|
@@ -16,7 +16,11 @@
         %td= box.state_name
         %td= box.section
         %td= box.kind
-        %td= link_to 'Show', [:admin, box]
-        %td= link_to 'Edit', edit_admin_box_path(box)
+        %td
+          %ul
+            %li
+              = link_to 'Ver', [:admin, box]
+            %li
+              = link_to 'Editar', edit_admin_box_path(box)
 
 = paginate @boxes

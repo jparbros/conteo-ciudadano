@@ -3,7 +3,7 @@
   %title
     Conteo Ciudadano | Administrador
   = stylesheet_link_tag "admin", :media => "all"
-  = javascript_include_tag "application"
+  = javascript_include_tag "admin"
   = csrf_meta_tags
 
 %body
@@ -14,7 +14,16 @@
           %li=link_to "Panel", admin_root_path
           %li=link_to "Casillas", admin_boxes_path
           %li=link_to "Administradores", admin_admins_path
-          %li=link_to "Salir", destroy_admin_session_path, method: :delete
+        .btn-group.pull-right
+          %a.btn.dropdown-toggle{'data-toggle' => "dropdown", href: '#'}
+            %i.icon-user
+            = current_admin.email
+            %span.caret
+          %ul.dropdown-menu
+            %li
+              = current_admin.role
+            %li
+              = link_to 'Logout', destroy_admin_session_path, method: :delete
 
   .container-fluid
     .row-fluid

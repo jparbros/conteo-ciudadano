@@ -1,14 +1,9 @@
 Conteo::Application.routes.draw do
 
   devise_for :users
-
-  devise_for :admins
+  devise_for :admins, :controllers => { :sessions => "admin/sessions" }
 
   root :to => 'home#index'
-
-  match '/results' => 'home#results'
-  match '/search' => 'home#search'
-  match '/nacional' => 'home#nacional'
 
   match '/auth/:provider/callback', to: 'authentications#create'
 
