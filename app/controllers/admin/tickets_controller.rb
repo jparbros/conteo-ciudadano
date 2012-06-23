@@ -45,8 +45,6 @@ class Admin::TicketsController < Admin::BaseController
 
     respond_to do |format|
       if @ticket.save
-        @result = @ticket.build_result(params[:result])
-        @result.save
         format.html { redirect_to [:admin,@ticket], :notice => 'Ticket was successfully created.' }
       else
         format.html { render :action => "new" }
