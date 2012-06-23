@@ -108,6 +108,7 @@ GEM
     net-scp (1.0.4)
       net-ssh (>= 1.99.1)
     net-ssh (2.5.2)
+    newrelic_rpm (3.4.0)
     nokogiri (1.5.4)
     oauth (0.4.6)
     oauth2 (0.6.1)
@@ -220,6 +221,7 @@ DEPENDENCIES
   kaminari
   mini_magick
   mysql2
+  newrelic_rpm
   omniauth
   omniauth-facebook
   omniauth-twitter

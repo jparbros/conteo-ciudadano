@@ -1,23 +1,26 @@
-%h1 Listing boxes
+%h1 Casillas
 
-%table
-  %tr
-    %th Casilla
-    %th Estado
-    %th Numero
-    %th Activa
-    %th
-    %th
-    %th
-  -@boxes.each do |box|
+%table.table.table-striped.table-bordered.table-condensed
+  %thead
     %tr
-      %td= box.number
-      %td= box.state.name
-      %td= box.number
-      %td= box.active
-      %td= link_to 'Show', [:admin, box]
-      %td= link_to 'Edit', edit_admin_box_path(box)
-      %td= link_to 'Destroy', [:admin, box], :confirm => 'Are you sure?', :method => :delete
-       
+      %th Id
+      %th Estado
+      %th Sección
+      %th Tipo
+      %th Acciones
+      %th
+  %tbody
+    -@boxes.each do |box|
+      %tr
+        %td= box.id
+        %td= box.state_name
+        %td= box.section
+        %td= box.kind
+        %td
+          %ul
+            %li
+              = link_to 'Ver', [:admin, box]
+            %li
+              = link_to 'Editar', edit_admin_box_path(box)
+
 = paginate @boxes
-= link_to 'New Box', new_admin_box_path

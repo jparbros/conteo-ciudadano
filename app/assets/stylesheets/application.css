@@ -1,13 +1,23 @@
 /*
  *= require 'bootstrap'
+ *= require 'bootstrap-responsive.min'
  *= require_self
- *= require_tree .
+ *= require 'boxes'
+ *= require 'home'
 */
 
 body {
   background: url('/assets/linen.png') repeat fixed;
+  color: #545454;
   font-family: 'Dosis', sans-serif;
+  font-weight: lighter;
   font-size: 14px;
+}
+
+a {
+  color: #68008B;
+  font-family: 'Dosis', sans-serif;
+  font-weight: normal;
 }
 
 #header {
@@ -15,6 +25,14 @@ body {
   position: fixed;
   top: 0;
   z-index: 100;
+}
+
+.navbar {
+  font-family: 'Rokkitt', serif;
+}
+
+.navbar a {
+  font-family: 'Rokkitt', serif;
 }
 
 .navbar-fixed-top {
@@ -58,3 +76,46 @@ body > .container-fluid {
 .row-fluid .offset6 { margin-left: 51.282051282%; *margin-left: 51.2288597926383% }
 .row-fluid .offset7 { margin-left: 59.829059829%; *margin-left: 59.7758683396383% }
 
+@media (min-width: 768px) and (max-width: 979px) {
+  .navbar-fixed-top {
+    position: fixed;
+  }
+}
+
+@media (max-width: 767px) {
+  .navbar-fixed-top {
+    position: fixed;
+  }
+
+  .navbar .container-fluid {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar-fixed-top {
+    position: fixed;
+  }
+
+  .navbar .container-fluid {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+#footer {
+  background-color: #56267c;
+  font-size: 14px;
+  height: 85px;
+  text-align: center;
+}
+
+#footer img { margin-top: 25px;}
+
+#footer .credits { color: #dc72ff;}
+#footer .credits a {
+  color: #dc72ff;
+  font-family: 'Dosis', sans-serif;
+  font-weight: lighter;
+}

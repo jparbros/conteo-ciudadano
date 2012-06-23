@@ -16,12 +16,31 @@
 //= require plupload.full
 //= require jquery.plupload.queue
 //= require google_maps
-//= require_tree .
+//= require boxes
+//= require google_maps
+//= require home
 
 $(document).ready(function() {
   $('#login-modal').modal({
     show: false
   });
+
+  var screenHeight = screen.height;
+
+  juntosHeight = $('#juntos-haremos').height();
+  $('#juntos-haremos').css('margin-bottom', (screenHeight - juntosHeight - 120));
+
+  comoHeight = $('#como-funcionara').height();
+  $('#como-funcionara').css('margin-bottom', (screenHeight - comoHeight - 120));
+
+  porqueHeight = $('#porque').height();
+  $('#porque').css('margin-bottom', (screenHeight - porqueHeight - 120));
+
+  quieresHeight = $('#quieres-participar').height();
+  $('#quieres-participar').css('margin-bottom', (screenHeight - quieresHeight - 120));
+
+  noesHeight = $('#no-es-un-engano').height();
+  $('#no-es-un-engano').css('margin-bottom', (screenHeight - noesHeight - 120 - 160));
 
   $('#login-button').click(function(event) {
     event.preventDefault();
@@ -30,22 +49,26 @@ $(document).ready(function() {
 
   $('[data-link-type="funcionara"]').click(function(event) {
     event.preventDefault();
-    $('html, body').animate({scrollTop:997}, 'slow');
+    top_position = $('#como-funcionara').position().top - 120
+    $('html, body').animate({scrollTop:top_position}, 'slow');
   });
 
   $('[data-link-type="porque"]').click(function(event) {
     event.preventDefault();
-    $('html, body').animate({scrollTop:2072}, 'slow');
+    top_position = $('#porque').position().top - 120
+    $('html, body').animate({scrollTop:top_position}, 'slow');
   });
 
   $('[data-link-type="participa"]').click(function(event) {
     event.preventDefault();
-    $('html, body').animate({scrollTop:2929}, 'slow');
+    top_position = $('#quieres-participar').position().top - 120
+    $('html, body').animate({scrollTop:top_position}, 'slow');
   });
 
   $('[data-link-type="engano"]').click(function(event) {
     event.preventDefault();
-    $('html, body').animate({scrollTop:3791}, 'slow');
+    top_position = $('#no-es-un-engano').position().top - 120
+    $('html, body').animate({scrollTop:top_position}, 'slow');
   });
 
   $('[data-link-type="home"]').click(function(event) {

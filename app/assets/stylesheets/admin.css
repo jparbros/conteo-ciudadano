@@ -1,0 +1,21 @@
+/*
+ *= require 'bootstrap'
+ *= require 'bootstrap-responsive.min'
+ *= require_self
+ *= require_tree ./admin
+*/
+
+body > .container-fluid {margin-top: 60px;}
+
+.table ul {
+  list-style: none;
+  margin-left: 0;
+}
+
+.table ul li {
+  float: left;
+  border-right: 1px solid #333333;
+  padding: 0 5px;
+}
+
+.table ul li:last-child { border:0; }
