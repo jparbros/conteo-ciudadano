@@ -1,0 +1,27 @@
+%h1 Tickets
+
+%table.table.table-striped.table-bordered.table-condensed
+  %thead
+    %tr
+      %th Id
+      %th Incidencia
+      %th Estado
+      %th Ticketable
+      %th Tipo
+      %th
+  %tbody
+    -@tickets.each do |ticket|
+      %tr
+        %td= ticket.id
+        %td= ticket.issue
+        %td= ticket.state
+        %td= ticket.ticketable_id
+        %td= ticket.ticketable_type
+        %td
+          %ul
+            %li
+              = link_to 'Ver', [:admin, ticket]
+            %li
+              = link_to 'Editar', edit_admin_ticket_path(ticket)
+
+= paginate @tickets

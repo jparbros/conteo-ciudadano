@@ -1,0 +1,25 @@
+= form_for [:admin, @ticket], :html => { :multipart => true } do |f|
+  -if @ticket.errors.any?
+    %div{:id=>"error_explanation"}
+      %h2= pluralize(@ticket.errors.count, "error") #prohibe que esta casilla sea guardada:
+
+      %ul
+        -@ticket.errors.full_messages.each do |msg|
+          %li=msg
+  %table
+    %tr
+      %td Insidente
+      %td=f.text_field :issue
+    %tr
+      %td Estado
+      %td=f.text_field :state
+      
+    %tr
+      %td Ticketable
+      %td= f.number_field :ticketable_id
+    %tr
+      %td Tipo
+      %td= f.text_field :ticketable_type
+    %tr
+      %td{:colspan=>"2"}
+        = f.submit 'Enviar'
