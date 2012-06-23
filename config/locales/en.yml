@@ -4,6 +4,14 @@
 en:
   hello: "Hello world"
   
+  views:
+    pagination:
+      first: "&laquo; First"
+      last: "Last &raquo;"
+      previous: "&lsaquo; Prev"
+      next: "Next &rsaquo;"
+      truncate: "..."
+
   simple_captcha:
     message:
       default: "Secret Code did not match with the Image"

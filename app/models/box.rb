@@ -38,5 +38,9 @@ class Box < ActiveRecord::Base
   def has_results?
     !self.result.new?
   end
-
+  
+  def self.search_by_state_and_section(state, section)
+    where('state_id = ? AND section = ?',state, section).all
+  end
+  
 end

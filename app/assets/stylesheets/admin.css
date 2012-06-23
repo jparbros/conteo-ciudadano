@@ -2,7 +2,7 @@
  *= require 'bootstrap'
  *= require 'bootstrap-responsive.min'
  *= require_self
- *= require_tree ./admin
+ 
 */
 
 body > .container-fluid {margin-top: 60px;}

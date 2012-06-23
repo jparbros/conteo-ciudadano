@@ -21,6 +21,7 @@ Conteo::Application.routes.draw do
     root to: 'panel#index'
     resources :boxes
     resources :admins
+    resources :tickets
   end
 
   # The priority is based upon order of creation:

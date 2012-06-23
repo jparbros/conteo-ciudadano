@@ -1,4 +1,13 @@
 es:
+
+  views:
+    pagination:
+      first: "&laquo; Primer"
+      last: "Ultimo &raquo;"
+      previous: "&lsaquo; Anterior"
+      next: "Siguiente &rsaquo;"
+      truncate: "..."
+
   simple_captcha:
     label: "Ingresa el código que ves"
     message:

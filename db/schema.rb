@@ -61,7 +61,7 @@ ActiveRecord::Schema.define(:version => 20120621163025) do
     t.boolean  "gmaps"
   end
 
-  add_index "boxes", ["state_id", "section"], :name => "index_boxes_on_state_id_and_section"
+  add_index "boxes", ["section"], :name => "index_boxes_on_section"
   add_index "boxes", ["state_id"], :name => "index_boxes_on_state_id"
 
   create_table "comments", :force => true do |t|

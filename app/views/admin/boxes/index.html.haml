@@ -1,5 +1,12 @@
 %h1 Casillas
 
+%div
+  = form_tag admin_boxes_path, :method => 'get' do
+    Busqueda de casilla
+    =select_tag(:state, options_for_select(State.all.map {|st| [st.name, st.id]} ), :include_blank=>true)
+    = text_field_tag :section, params[:section], :placeholder=>"Número de Sección"
+    = submit_tag "Buscar", :name => nil
+
 %table.table.table-striped.table-bordered.table-condensed
   %thead
     %tr
