@@ -5,6 +5,7 @@ Conteo::Application.routes.draw do
 
   root :to => 'home#index'
 
+  match '/&fref=fb', to: 'home#index'
   match '/auth/:provider/callback', to: 'authentications#create'
 
   resource :buscar_casillas, only: [:new,  :show, :create], path: '/casillas/buscar'
