@@ -4,6 +4,11 @@ class ResultImage < ActiveRecord::Base
   #
   attr_accessible :box_id, :image
 
+  #
+  # Associations
+  #
+  belongs_to :box
+
 
   #
   # Uploaders
@@ -26,6 +31,6 @@ class ResultImage < ActiveRecord::Base
   serialize :exif
 
   def save_exif
-    exif = hash_exif
+    self.exif = hash_exif
   end
 end

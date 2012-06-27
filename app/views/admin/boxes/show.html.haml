@@ -1,54 +1,106 @@
-%h1 Resultados de casilla # #{@box.number} en la sección #{@box.section}
-%p{:id=>"notice"}= notice
-%p
-  %b Stado:
-  = @box.state.name
-%p
-  %b Number:
-  = @box.number
-%p
-  %b Seccion:
-  =@box.section
-%p
-  %b Ubicacion:
-  = @box.location
-%div
-  %b Datos:
-  %table{:border=>1}
-    %tr
-      %td
-        %img{:src=>"/assets/logo_pri.png"}
-      %td=@box.result.pri
-      %td
-        %img{:src=>"/assets/logo_pan.png"}
-      %td=@box.result.pan
-    %tr
-      %td
-        %img{:src=>"/assets/logo_prd.png"}
-      %td=@box.result.prd
-      %td
-        %img{:src=>"/assets/logo_vem.png"}
-      %td=@box.result.pvem
-    %tr
-      %td
-        %img{:src=>"/assets/logo_pt.jpg"}
-      %td=@box.result.pt
-      %td
-        %img{:src=>"/assets/logo_nueva_alianza.png"}
-      %td=@box.result.nueva_alianza
-    %tr
-      %td
-        %img{:src=>"/assets/logo_movimiento_ciudadano.jpg"}
-      %td=@box.result.movimiento_ciudadano
-      %td
-        %img{:src=>"/assets/logo_votos_nulos.png"}
-      %td=@box.result.null
-    %tr
-      %td
-        %img{:src=>"/assets/logo_otro_candidato.png"}
-      %td=@box.result.others
-      %td
-      %td
-  
+%h1 Detalles casilla
+.row-fluid
+  .span12.well
+    .row-fluid
+      %strong.span3
+        Casilla:
+      .span3
+        = @box.kind_and_number
+      %strong.span3
+        Sección:
+      .span3
+        = @box.section
+
+    .row-fluid
+      %strong.span3
+        Delegación/Municipio:
+      .span3
+        = @box.district_head
+      %strong.span3
+        Estado:
+      .span3
+        = @box.state_name
+    .row-fluid
+      %strong.span3
+        Ubicación:
+      .span9
+        = @box.complete_address
+
+.row-fluid
+  .span12.well
+    .row-fluid
+      .span2
+        = image_tag "/assets/logo_pan.png"
+      .span2
+        = @box.result.try(:pan)
+      .span2
+        = image_tag "/assets/logo_pri.png"
+      .span2
+        = @box.result.try(:pri)
+      .span2
+        = image_tag "/assets/logo_prd.png"
+      .span2
+        = @box.result.try(:prd)
+
+    .row-fluid
+      .span2
+        = image_tag "/assets/logo_vem.png"
+      .span2
+        = @box.result.try(:pvem)
+      .span2
+        = image_tag "/assets/logo_pt.jpg"
+      .span2
+        = @box.result.try(:pt)
+      .span2
+        = image_tag "/assets/logo_movimiento_ciudadano.jpg"
+      .span2
+        = @box.result.try(:movimiento_ciudadano)
+
+    .row-fluid
+      .span2
+        = image_tag "/assets/logo_nueva_alianza.png"
+      .span2
+        = @box.result.try(:nueva_alianza)
+      .span2
+        = image_tag "/assets/logo_pri.png"
+        = image_tag "/assets/logo_vem.png"
+      .span2
+        = @box.result.try(:pri_pvem)
+      .span2
+        = image_tag "/assets/logo_prd.png", class: :span4
+        = image_tag "/assets/logo_pt.jpg", class: :span4
+        = image_tag "/assets/logo_movimiento_ciudadano.jpg", class: :span4
+      .span2
+        = @box.result.try(:prd_pt_mc)
+
+    .row-fluid
+      .span2
+        = image_tag "/assets/logo_prd.png"
+        = image_tag "/assets/logo_pt.jpg"
+      .span2
+        = @box.result.try(:prd_pt)
+      .span2
+        = image_tag "/assets/logo_prd.png"
+        = image_tag "/assets/logo_movimiento_ciudadano.jpg"
+      .span2
+        = @box.result.try(:prd_mc)
+      .span2
+        = image_tag "/assets/logo_pt.jpg"
+        = image_tag "/assets/logo_movimiento_ciudadano.jpg"
+      .span2
+        = @box.result.try(:pt_mc)
+
+    .row-fluid
+      .span2
+        = image_tag "/assets/logo_otro_candidato.png"
+      .span2
+        = @box.result.try(:others)
+      .span2
+        = image_tag "/assets/logo_votos_nulos.png"
+      .span2
+        = @box.result.try(:null)
+
+
 = link_to 'Edit', edit_admin_box_path(@box)
-= link_to 'Back', admin_boxes_path
+= link_to 'Regresar', admin_boxes_path
+= link_to 'Editar Resultados', admin_box_results_path(@box)

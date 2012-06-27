@@ -9,7 +9,7 @@ class Box < ActiveRecord::Base
   #
   # Attributtes accesors
   #
-  attr_accessible :state_id, :number, :location, :address, :references, :section, :district, :active, :district_head, :nominal_list, :kind
+  attr_accessible :state_id, :number, :location, :address, :references, :section, :district, :active, :district_head, :nominal_list, :kind, :result_images_attributes
 
   #
   # Relations
@@ -22,6 +22,7 @@ class Box < ActiveRecord::Base
   # Nested attributes
   #
   accepts_nested_attributes_for :result
+  accepts_nested_attributes_for :result_images
 
   #
   # Delegates

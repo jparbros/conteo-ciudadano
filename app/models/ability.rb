@@ -5,9 +5,9 @@ class Ability
     if user.role == 'superadmin'
       can :manage, :all
     elsif user.role == 'admin'
-      can :manage, [Box,State,Admin,Ticket]
+      can :manage, [Box,Admin,Ticket,Result]
     elsif user.role == 'manager'
-      can :manage, Box
+      can :manage, [Box,Ticket,Result]
     elsif user.role == 'observer'
        can :read, [Box]
     end
