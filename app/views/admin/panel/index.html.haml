@@ -1,0 +1,55 @@
+%h1
+  Bienvenido al panel
+
+.row-fluid
+  .span6.well
+    %h2
+      Tickets
+
+    %table.table.table-striped.table-bordered.table-condensed
+      %thead
+        %tr
+          %th Id
+          %th Incidencia
+          %th Estado
+          %th Acciones
+      %tbody
+        -@tickets.each do |ticket|
+          %tr
+            %td= ticket.id
+            %td= ticket.issue
+            %td= ticket.state.try(:humanize)
+            %td
+              %ul
+                %li
+                  = link_to 'Editar Casilla', edit_admin_box_path(ticket.ticketable.id)
+                %li
+                  = link_to 'Resultados casilla', admin_box_results_path(ticket.ticketable)
+                %li
+                  = link_to ticket.next_state.humanize, admin_ticket_path(ticket, next_state: ticket.next_state), method: :put if ticket.next_state
+
+  .span6.well
+    %h2
+      Casillas a verificar
+    
+    %table.table.table-striped.table-bordered.table-condensed
+      %thead
+        %tr
+          %th Id
+          %th Estado
+          %th Sección
+          %th Tipo
+          %th Acciones
+      %tbody
+        -@boxes.each do |box|
+          %tr
+            %td= box.id
+            %td= box.state_name
+            %td= box.section
+            %td= box.kind
+            %td
+              %ul
+                %li
+                  = link_to 'Ver', [:admin, box]
+                %li
+                  = link_to 'Editar', edit_admin_box_path(box)

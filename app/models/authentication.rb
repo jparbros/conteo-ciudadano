@@ -1,5 +1,11 @@
 class Authentication < ActiveRecord::Base
-  belongs_to :user
-
+  #
+  # Attributes Accessors
+  #
   attr_accessible  :provider, :uid, :user_id, :token, :secret
+
+  #
+  # Associations
+  #
+  belongs_to :user
 end

@@ -1,7 +1,8 @@
 class Admin::PanelController < Admin::BaseController
-  before_filter :authenticate_admin!
-  
+
   def index
+    @boxes = CasillasPresenter.new Box.to_verified.limit(10)
+    @tickets = Ticket.to_attend.limit(10)
   end
 
 end

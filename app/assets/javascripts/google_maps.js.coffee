@@ -16,7 +16,8 @@ window.GoogleMaps = {
     new google.maps.LatLng(@defaults.latitude,@defaults.longitude)
 
   map: ->
-    new google.maps.Map(document.getElementById("box-map"), @mapsOptions());
+    map_id =  if @defaults.map_id then  @defaults.map_id else "box-map"
+    new google.maps.Map(document.getElementById(map_id), @mapsOptions());
 
   mapsOptions: ->
     opts = {}
@@ -24,6 +25,7 @@ window.GoogleMaps = {
     delete opts.latitude
     delete opts.longitude
     delete opts.address
+    delete opts.map_id
     opts
 
   image: '/assets/marker-casilla.png'
@@ -44,7 +46,15 @@ window.GoogleMaps = {
         marker = new google.maps.Marker({map: map, icon: image, position: location})
     )
 
+  marker: (map) ->
+    new google.maps.Marker({ position: @myLatlng(), map: map });
+
   render: ->
     @map()
     @getLocation()
+
+  rendeWithCoordinates: ->
+    @defaults =  $.extend(@defaults, {center: @myLatlng()})
+    map = @map()
+    marker = @marker(map)
 }

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120625143249) do
+ActiveRecord::Schema.define(:version => 20120627124719) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -77,6 +77,7 @@ ActiveRecord::Schema.define(:version => 20120625143249) do
     t.integer  "box_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.text     "exif"
   end
 
   create_table "results", :force => true do |t|
@@ -93,12 +94,14 @@ ActiveRecord::Schema.define(:version => 20120625143249) do
     t.integer  "box_id"
     t.datetime "created_at",                          :null => false
     t.datetime "updated_at",                          :null => false
-    t.integer  "pri_pvem"
-    t.integer  "prd_pt_mc"
-    t.integer  "prd_pt"
-    t.integer  "prd_mc"
-    t.integer  "pt_mc"
+    t.integer  "pri_pvem",             :default => 0
+    t.integer  "prd_pt_mc",            :default => 0
+    t.integer  "prd_pt",               :default => 0
+    t.integer  "prd_mc",               :default => 0
+    t.integer  "pt_mc",                :default => 0
   end
+
+  add_index "results", ["state", "box_id"], :name => "index_results_on_state_and_box_id"
 
   create_table "simple_captcha_data", :force => true do |t|
     t.string   "key",        :limit => 40

@@ -16,8 +16,13 @@ class Box < ActiveRecord::Base
   #
   belongs_to :state
   has_one :result
-  accepts_nested_attributes_for :result
   has_many :result_images
+
+  #
+  # Nested attributes
+  #
+  accepts_nested_attributes_for :result
+
   #
   # Delegates
   #
@@ -35,12 +40,12 @@ class Box < ActiveRecord::Base
     (section == 'especiales') ? special_by_state(state_id) : by_state_and_section(state_id, section)
   end
 
+  def self.to_verified
+    includes(:result).where('results.state = ?','ready_to_revision')
+  end
+
   def has_results?
-    !self.result.new?
+    self.result.present? || !self.result.new?
   end
-  
-  def self.search_by_state_and_section(state, section)
-    where('state_id = ? AND section = ?',state, section).all
-  end
-  
+
 end

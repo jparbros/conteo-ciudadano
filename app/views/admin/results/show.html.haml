@@ -1,0 +1,218 @@
+.row-fluid
+  .span12.well
+    .row-fluid
+      %strong.span3
+        Casilla:
+      .span3
+        = @casilla.kind_and_number
+      %strong.span3
+        Sección:
+      .span3
+        = @casilla.section
+
+    .row-fluid
+      %strong.span3
+        Delegación/Municipio:
+      .span3
+        = @casilla.district_head
+      %strong.span3
+        Estado:
+      .span3
+        = @casilla.state_name
+
+    .row-fluid
+      %strong.span3
+        Ubicación:
+      .span9
+        = @casilla.complete_address
+
+.row-fluid
+  .span6.well
+    = form_for [:admin, @casilla, @result], url: admin_box_results_path(box_id: @casilla.id) do |form|
+      .row-fluid
+        .span6
+          .span6
+            = image_tag "/assets/logo_pan.png"
+          .span6
+            = form.number_field :pan, class: :span12, tabindex: 1
+
+        .span6
+          .span6
+            = image_tag '/assets/logo_pri.png'
+          .span6
+            = form.number_field :pri, class: :span12, tabindex: 2
+
+      .row-fluid
+        .span6
+          .span6
+            = image_tag "/assets/logo_prd.png"
+          .span6
+            =form.number_field :prd, class: :span12, tabindex: 3
+
+        .span6
+          .span6
+            = image_tag "/assets/logo_vem.png"
+          .span6
+            = form.number_field :pvem, class: :span12, tabindex: 4
+
+      .row-fluid
+        .span6
+          .span6
+            = image_tag "/assets/logo_pt.jpg"
+          .span6
+            = form.number_field :pt, class: :span12, tabindex: 5
+
+        .span6
+          .span6
+            = image_tag "/assets/logo_movimiento_ciudadano.jpg"
+          .span6
+            = form.number_field :movimiento_ciudadano, class: :span12, tabindex: 6
+
+      .row-fluid
+        .span6
+          .span6
+            = image_tag "/assets/logo_nueva_alianza.png"
+          .span6
+            = form.number_field :nueva_alianza, class: :span12, tabindex: 7
+
+        .span6
+          .span6
+            = image_tag "/assets/logo_pri.png"
+            = image_tag "/assets/logo_vem.png"
+          .span6
+            = form.number_field :pri_pvem, class: :span12, tabindex: 8
+
+      .row-fluid
+        .span6
+          .span6
+            = image_tag "/assets/logo_prd.png", class: :span4
+            = image_tag "/assets/logo_pt.jpg", class: :span4
+            = image_tag "/assets/logo_movimiento_ciudadano.jpg", class: :span4
+          .span6
+            = form.number_field :prd_pt_mc, class: :span12, tabindex: 9
+
+        .span6
+          .span6
+            = image_tag "/assets/logo_prd.png"
+            = image_tag "/assets/logo_pt.jpg"
+          .span6
+            = form.number_field :prd_pt, class: :span12, tabindex: 10
+
+      .row-fluid
+        .span6
+          .span6
+            = image_tag "/assets/logo_prd.png"
+            = image_tag "/assets/logo_movimiento_ciudadano.jpg"
+          .span6
+            = form.number_field :prd_mc, class: :span12, tabindex: 11
+
+        .span6
+          .span6
+            = image_tag "/assets/logo_pt.jpg"
+            = image_tag "/assets/logo_movimiento_ciudadano.jpg"
+          .span6
+            = form.number_field :pt_mc, class: :span12, tabindex: 12
+
+      .row-fluid
+        .span6
+          .span6
+            = image_tag "/assets/logo_otro_candidato.png"
+          .span6
+            = form.number_field :others, class: :span12, tabindex: 13
+
+        .span6
+          .span6
+            = image_tag "/assets/logo_votos_nulos.png"
+          .span6
+            =form.number_field :null, class: :span12, tabindex: 14
+
+      .row-fluid
+        .span6
+          .row-fluid
+            %strong.span6
+              Lista Nominal:
+            .span6
+              = @casilla.nominal_list
+        .span6
+          .row-fluid
+            %strong.span6
+              Total casilla:
+            .span6#total-casilla
+
+      .row-fluid
+        .span6
+          = form.submit 'Enviar/Verificar', class: 'btn btn-primary', tabindex: 15
+          %i{class: 'icon-question-sign', id: 'popover-verified'}
+        .span6
+          .btn-group
+            %a{class: "btn btn-danger dropdown-toggle", "data-toggle" => "dropdown", href: "#"}
+              Rechazar
+              %span{class: "caret"}
+            %ul{class: "dropdown-menu"}
+              %li
+                = link_to 'Falta Fotografia', admin_tickets_path(box_id: @casilla.id, reason: 'missing_photo'), method: :post, data: {confirm: '¿Seguro desea reportar la casilla como "Falta Fotografia"?'}
+              %li
+                = link_to 'Fotografia alterada', admin_tickets_path(box_id: @casilla.id, reason: 'photo_altered'), method: :post, data: {confirm: '¿Seguro desea reportar la casilla como "Fotografia alterada"?'}
+              %li
+                = link_to 'Información dudosa', admin_tickets_path(box_id: @casilla.id, reason: 'dubious_information'), method: :post, data: {confirm: '¿Seguro desea reportar la casilla como "Información dudosa"?'}
+              %li
+                = link_to 'Casilla sospechosa', admin_tickets_path(box_id: @casilla.id, reason: 'suspicious_box'), method: :post, data: {confirm: '¿Seguro desea reportar la casilla como "Casilla sospechosa"?'}
+              %li
+                = link_to 'Sobrevotación', admin_tickets_path(box_id: @casilla.id, reason: 'overvoting'), method: :post, data: {confirm: '¿Seguro desea reportar la casilla como "Sobrevotación"?'}
+              %li
+                = link_to 'Casilla no instalada', admin_tickets_path(box_id: @casilla.id, reason: 'box_not_installed'), method: :post, data: {confirm: '¿Seguro desea reportar la casilla como "Casilla no instalada"?'}
+
+          %i{class: 'icon-question-sign', id: 'popover-tickets'}
+  .span6.well
+    %h2
+      Fotos de casillas
+
+    - @casilla.result_images.each_with_index do |image, index|
+      .row-fluid
+        .span12
+          Foto #{index + 1}
+          = link_to '#', class: 'hide-map', 'data-map-id' => index do
+            %i{class: "icon-chevron-up"}
+          = link_to '#', class: 'show-map', 'data-map-id' => index do
+            %i{class: "icon-chevron-down"}
+      .row-fluid
+        .span12.foto-details{id: "map-#{index}"}
+          .row-fluid
+            .span12
+              = image_tag image.image.url
+          .row-fluid
+            .span6
+              %label
+                Modelo:
+              = image.exif[:model]
+            .span6
+              %label
+                Tomada el:
+              = image.exif[:date_time]
+          .row-fluid
+            .span6
+              %label
+                Fabricante
+              = image.exif[:manufacturer]
+            .span6
+              %label
+                Compresión:
+              = image.exif[:compression]
+          .row-fluid
+            .span6
+              %label
+                Resolución:
+              = image.exif[:resolution]
+            .span6
+              %label
+                Software:
+              = image.exif[:software]
+
+          - if image.exif[:location]
+            .row-fluid
+              .span12.box-map{id: "box-map-#{index}"}
+            %script
+              $(document).ready(function() {
+              google_maps = GoogleMaps.initialize(#{image.exif[:location].merge({map_id: "box-map-#{index}"}).to_json.html_safe})
+              google_maps.rendeWithCoordinates();
+              });

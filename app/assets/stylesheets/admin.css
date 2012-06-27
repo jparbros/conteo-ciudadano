@@ -2,7 +2,7 @@
  *= require 'bootstrap'
  *= require 'bootstrap-responsive.min'
  *= require_self
- 
+
 */
 
 body > .container-fluid {margin-top: 60px;}
@@ -19,3 +19,27 @@ body > .container-fluid {margin-top: 60px;}
 }
 
 .table ul li:last-child { border:0; }
+
+.edit_result .span6, .new_result .span6 {
+  margin-bottom: 10px;
+  min-height: 55px;
+}
+
+.foto-details label{
+  display: inline;
+  font-weight: bold;
+}
+
+.foto-details {
+  border-bottom: 1px solid #333333;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+}
+
+.box-map {
+  height: 300px;
+}
+
+.btn-group {
+  display: inline-block;
+}

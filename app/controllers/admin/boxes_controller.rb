@@ -1,15 +1,12 @@
 class Admin::BoxesController < Admin::BaseController
-  before_filter :authenticate_admin!
-  layout 'admin'
   load_and_authorize_resource
-  
+
   # GET /boxes
   # GET /boxes.json
   def index
     if params[:state].present? && params[:section].present?
-      @boxes = Box.search_by_state_and_section(params[:state], params[:section])
-      @boxes = Kaminari.paginate_array(@boxes).page(params[:page])
-      
+      @boxes = Box.by_state_and_section(params[:state], params[:section]).page(params[:page])
+
     else
       @boxes = Box.page(params[:page])
     end
@@ -89,5 +86,5 @@ class Admin::BoxesController < Admin::BaseController
       format.html { redirect_to boxes_url }
     end
   end
-  
+
 end

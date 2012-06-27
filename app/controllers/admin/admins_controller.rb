@@ -1,8 +1,6 @@
 class Admin::AdminsController < Admin::BaseController
-  layout 'admin'
-  before_filter :authenticate_admin!
   load_and_authorize_resource
-  
+
   # GET /admins
   # GET /admins.json
   def index

@@ -32,6 +32,7 @@ gem 'devise'
 gem 'haml-rails'
 gem 'state_machine'
 gem 'cancan'
+gem 'exifr'
 
 gem 'omniauth'
 gem 'omniauth-twitter'

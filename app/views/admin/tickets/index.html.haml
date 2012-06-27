@@ -6,22 +6,20 @@
       %th Id
       %th Incidencia
       %th Estado
-      %th Ticketable
-      %th Tipo
-      %th
+      %th Acciones
   %tbody
     -@tickets.each do |ticket|
       %tr
         %td= ticket.id
         %td= ticket.issue
-        %td= ticket.state
-        %td= ticket.ticketable_id
-        %td= ticket.ticketable_type
+        %td= ticket.state.try(:humanize)
         %td
           %ul
             %li
-              = link_to 'Ver', [:admin, ticket]
+              = link_to 'Editar Casilla', edit_admin_box_path(ticket.ticketable.id)
             %li
-              = link_to 'Editar', edit_admin_ticket_path(ticket)
+              = link_to 'Resultados casilla', admin_box_results_path(ticket.ticketable)
+            %li
+              = link_to ticket.next_state.humanize, admin_ticket_path(ticket, next_state: ticket.next_state), method: :put if ticket.next_state
 
 = paginate @tickets

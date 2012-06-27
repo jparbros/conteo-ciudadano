@@ -1,0 +1,21 @@
+%h1 Casillas
+
+%table.table.table-striped.table-bordered.table-condensed
+  %thead
+    %tr
+      %th Id
+      %th Estado
+      %th Sección
+      %th Tipo
+      %th Acciones
+  %tbody
+    -@boxes.each do |box|
+      %tr
+        %td= box.id
+        %td= box.state_name
+        %td= box.section
+        %td= box.kind
+        %td
+          %ul
+            %li
+              = link_to 'Resultados', admin_box_result_path(box_id: box.id)

@@ -20,9 +20,13 @@ Conteo::Application.routes.draw do
 
   namespace :admin do
     root to: 'panel#index'
-    resources :boxes
+    resources :verifications, only: :index
+    resources :boxes do
+      resource :results, only: [:show, :update, :create]
+    end
+
     resources :admins
-    resources :tickets
+    resources :tickets, only: [:index, :create, :update, :destroy]
   end
 
   # The priority is based upon order of creation:

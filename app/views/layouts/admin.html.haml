@@ -3,6 +3,7 @@
   %title
     Conteo Ciudadano | Administrador
   = stylesheet_link_tag "admin", :media => "all"
+  %script{ src: 'http://maps.google.com/maps/api/js?sensor=true&key=AIzaSyBJAXhLpxM-_qcJVWzVL03m-Y1b2b8Hpps&libraries=geometry', type: 'text/javascript'}
   = javascript_include_tag "admin"
   = csrf_meta_tags
 
@@ -15,6 +16,7 @@
           %li=link_to "Casillas", admin_boxes_path
           %li=link_to "Administradores", admin_admins_path
           %li=link_to "Tickets", admin_tickets_path
+          %li=link_to "Verificación", admin_verifications_path
         .btn-group.pull-right
           %a.btn.dropdown-toggle{'data-toggle' => "dropdown", href: '#'}
             %i.icon-user
@@ -27,6 +29,7 @@
               = link_to 'Logout', destroy_admin_session_path, method: :delete
 
   .container-fluid
+    = render partial: 'layouts/alerts'
     .row-fluid
       .span12
         =yield
