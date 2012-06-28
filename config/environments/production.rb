@@ -47,11 +47,7 @@ Conteo::Application.configure do
     if request.ssl?
       "#{request.protocol}#{request.host_with_port}"
     else
-      ["http://assets0.conteo-ciudadano.org",
-        "http://assets1.conteo-ciudadano.org",
-        "http://assets2.conteo-ciudadano.org",
-        "http://assets3.conteo-ciudadano.org"
-      ]
+      "http://assets%d.conteo-ciudadano.org" % (source.hash % 4)
     end
   }
 
