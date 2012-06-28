@@ -1,4 +1,4 @@
-%h1 Casillas
+%h1 Verificación de Casillas
 
 %table.table.table-striped.table-bordered.table-condensed
   %thead
@@ -14,8 +14,8 @@
         %td= box.id
         %td= box.state_name
         %td= box.section
-        %td= box.kind
+        %td= box.kind_and_number
         %td
           %ul
             %li
-              = link_to 'Resultados', admin_box_result_path(box_id: box.id)
+              = link_to 'Resultados', admin_box_results_path(box_id: box.id)
