@@ -58,4 +58,4 @@
         .row-fluid
           .span12
             - @box.result_images.each do |result_image|
-              = image_tag result_image.image.url(:thumb)
+              = image_tag result_image.image.url(:thumb) if result_image.id

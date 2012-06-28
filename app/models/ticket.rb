@@ -8,6 +8,7 @@ class Ticket < ActiveRecord::Base
   # Asociations
   #
   belongs_to :ticketable, :polymorphic => true
+  belongs_to :admin
 
   #
   # State Machine
@@ -23,6 +24,8 @@ class Ticket < ActiveRecord::Base
     event :close do
       transition assigned: :closed
     end
+
+    after_transition new: :assigned, :do => :assign_admin
   end
 
   def self.open_tickets
@@ -42,6 +45,13 @@ class Ticket < ActiveRecord::Base
     else
       nil
     end
+  end
+
+  private
+
+  def assign_admin
+    self.admin = Admin.current
+    save
   end
 
 end
