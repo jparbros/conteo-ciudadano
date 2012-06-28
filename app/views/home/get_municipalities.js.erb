@@ -1,5 +1,0 @@
-var options = "<option value=''></option>";
-<%@municipalities.each do |mp|%>
-	options +="<option value='<%=mp.id%>'><%=mp.name%></option>\n"
-<%end%>
-$('#box_municipality_id').html(options)

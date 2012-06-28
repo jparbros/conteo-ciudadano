@@ -30,6 +30,16 @@ class Box < ActiveRecord::Base
   delegate :name, to: :state, prefix: true
 
   #
+  # Scopes
+  #
+  default_scope order('id asc')
+
+  #
+  # Constants
+  #
+  DEFAULT_OPTIONS = {include: [:result, :result_images]}
+
+  #
   # Simple audit
   #
   simple_audit username_method: :email do |box|
@@ -46,6 +56,24 @@ class Box < ActiveRecord::Base
       kind: box.kind,
       result_images: box.result_images.map(&:image)
     }
+  end
+
+  def self.search(params)
+    search_terms = {}
+    params.each do |param|
+      search_terms[param.first.to_s] = param.last if column_names.include? param.first.to_s
+    end
+    where(search_terms)
+  end
+
+  def as_json(options = {})
+    options.merge!(DEFAULT_OPTIONS)
+    super(options)
+  end
+
+  def to_xml(options = {}, &block)
+    options.merge!(DEFAULT_OPTIONS)
+    super(options, &block)
   end
 
   def self.by_state_and_section state_id, section

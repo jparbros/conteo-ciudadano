@@ -5,6 +5,8 @@ Conteo::Application.routes.draw do
 
   root :to => 'home#index'
 
+  match '/api', to: 'home#api'
+
   match '/&fref=fb', to: 'home#index'
   match '/auth/:provider/callback', to: 'authentications#create'
 
@@ -27,6 +29,10 @@ Conteo::Application.routes.draw do
 
     resources :admins
     resources :tickets, only: [:index, :create, :update, :destroy]
+  end
+
+  namespace :api do
+    resources :casillas, only: [:index, :show]
   end
 
   # The priority is based upon order of creation:
