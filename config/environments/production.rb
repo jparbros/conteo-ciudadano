@@ -49,6 +49,7 @@ Conteo::Application.configure do
     else
       "http://assets%d.conteo-ciudadano.org"
     end
+  }
 
   # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
   # config.assets.precompile += %w( search.js )
