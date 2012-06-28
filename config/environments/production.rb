@@ -43,7 +43,7 @@ Conteo::Application.configure do
   # config.cache_store = :mem_cache_store
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server
-  config.action_controller.asset_host = AssetHostingWithMinimumSsl.new() Proc.new { |source, request|
+  config.action_controller.asset_host = Proc.new { |source, request|
     if request.ssl?
       "#{request.protocol}#{request.host_with_port}"
     else
