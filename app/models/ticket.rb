@@ -2,7 +2,7 @@ class Ticket < ActiveRecord::Base
   #
   # Attributes Accesors
   #
-  attr_accessible :issue, :state, :ticketable_id, :ticketable_type
+  attr_accessible :issue, :ticketable_id, :ticketable_type
 
   #
   # Asociations

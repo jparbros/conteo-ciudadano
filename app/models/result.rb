@@ -3,7 +3,7 @@ class Result < ActiveRecord::Base
   #
   # Attributes Accesors
   #
-  attr_accessible :box_id, :movimiento_ciudadano, :nueva_alianza, :null, :others, :pan, :prd, :pri, :pt, :pvem, :state, :pri_pvem, :prd_pt_mc, :prd_pt, :prd_mc, :pt_mc
+  attr_accessible :box_id, :movimiento_ciudadano, :nueva_alianza, :null, :others, :pan, :prd, :pri, :pt, :pvem, :pri_pvem, :prd_pt_mc, :prd_pt, :prd_mc, :pt_mc
 
   #
   # Relations
