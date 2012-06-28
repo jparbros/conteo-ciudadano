@@ -8,7 +8,7 @@ class RedirectMiddleware
 
     request = Rack::Request.new(env)
 
-    if request.host.match(/#{ENV['ADMIN_URL']}/ ) && !request.host.match(/#{ENV['ADMIN_URL']}\/admin\/.*/)
+    if request.host.match(/#{ENV['ADMIN_URL']}/ ) && !request.host.match(/#{ENV['ADMIN_URL']}\/admin.*/)
       [301, {"Location" => "https://#{ENV['ADMIN_URL']}/admin"}, self]
     elsif !request.host.match /#{ENV['ADMIN_URL']}/ && request.host.end_with?('/admin')
       [404, {}, self]
