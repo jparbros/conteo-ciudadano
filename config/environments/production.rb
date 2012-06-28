@@ -43,7 +43,12 @@ Conteo::Application.configure do
   # config.cache_store = :mem_cache_store
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server
-  config.action_controller.asset_host = "http://assets%d.conteo-ciudadano.org"
+  config.action_controller.asset_host = Proc.new { |source, request|
+    if request.ssl?
+      "#{request.protocol}#{request.host_with_port}"
+    else
+      "http://assets%d.conteo-ciudadano.org"
+    end
 
   # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
   # config.assets.precompile += %w( search.js )
