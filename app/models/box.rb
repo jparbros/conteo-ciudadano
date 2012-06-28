@@ -29,6 +29,25 @@ class Box < ActiveRecord::Base
   #
   delegate :name, to: :state, prefix: true
 
+  #
+  # Simple audit
+  #
+  simple_audit username_method: :email do |box|
+    {
+      state_id: box.state_id,
+      number: box.number,
+      location: box.location,
+      address: box.address,
+      references: box.references,
+      section: box.section,
+      district: box.district,
+      district_head: box.district_head,
+      nominal_list: box.nominal_list,
+      kind: box.kind,
+      result_images: box.result_images.map(&:image)
+    }
+  end
+
   def self.by_state_and_section state_id, section
     where state_id: state_id, section: section
   end

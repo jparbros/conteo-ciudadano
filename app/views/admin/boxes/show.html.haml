@@ -104,3 +104,14 @@
 = link_to 'Edit', edit_admin_box_path(@box)
 = link_to 'Regresar', admin_boxes_path
 = link_to 'Editar Resultados', admin_box_results_path(@box)
+
+.row-fluid#tickets-div
+  .span12
+    .accordion-group
+      .accordion-heading
+        %a{class: "accordion-toggle", 'data-toggle' => "collapse", 'data-parent' => 'tickets-div', href: "#collapseOne"}
+          Historial de cambios
+
+      #collapseOne.accordion-body.collapse.out
+        .accordion-inner
+          = render_audits @box

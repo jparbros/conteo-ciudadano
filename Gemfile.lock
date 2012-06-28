@@ -1,3 +1,9 @@
+GIT
+  remote: https://github.com/jparbros/simple_audit.git
+  revision: 7ec06f08e67a8af78e7d0e34f17aee7c1b5e97d0
+  specs:
+    simple_audit (0.2.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -230,6 +236,7 @@ DEPENDENCIES
   pg
   rails (= 3.2.6)
   sass-rails (~> 3.2.3)
+  simple_audit!
   sqlite3
   state_machine
   therubyracer

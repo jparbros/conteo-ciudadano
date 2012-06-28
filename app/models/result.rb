@@ -35,4 +35,26 @@ class Result < ActiveRecord::Base
       transition verified: :reported
     end
   end
+
+  #
+  # Simple audit
+  #
+  simple_audit username_method: :email do |result|
+    {
+      movimiento_ciudadano: result.movimiento_ciudadano,
+      nueva_alianza: result.nueva_alianza,
+      null: result.null,
+      others: result.others,
+      pan: result.pan,
+      prd: result.prd,
+      pri: result.pri,
+      pt: result.pt,
+      pvem: result.pvem,
+      pri_pvem: result.pri_pvem,
+      prd_pt_mc: result.prd_pt_mc,
+      prd_pt: result.prd_pt,
+      prd_mc: result.prd_mc,
+      pt_mc: result.pt_mc
+    }
+  end
 end

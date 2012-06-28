@@ -43,3 +43,38 @@ body > .container-fluid {margin-top: 60px;}
 .btn-group {
   display: inline-block;
 }
+
+#tickets-div {
+  margin-top: 40px;
+}
+
+.audits {
+  clear: both;
+}
+
+.audit {
+  -moz-border-radius:8px;
+  -webkit-border-radius: 8px;
+  padding: 6px;
+  margin-bottom: 8px;
+  font-size: 12px;
+}
+
+.audit .action, .audit .user, .audit .timestamp{
+  float: left;
+  margin-right: 6px;
+}
+
+.audit .changes {
+  clear: both;
+  white-space: pre;
+}
+
+.audit .current {
+  margin-left: 6px;
+}
+
+.audit .previous {
+  margin-left: 6px;
+  text-decoration: line-through;
+}

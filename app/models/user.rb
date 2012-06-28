@@ -1,15 +1,20 @@
 class User < ActiveRecord::Base
 
+  #
+  # Associations
+  #
   has_many :authentications
 
-  # Include default devise modules. Others available are:
-  # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
-  :recoverable, :rememberable, :trackable
+  #
+  # Devise modules
+  #
+  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable
 
-  # Setup accessible (or protected) attributes for your model
+  #
+  # Attributes accessor
+  #
   attr_accessible :email, :password, :password_confirmation, :remember_me
-  # attr_accessible :title, :body
+  cattr_accessor :current
 
   def apply_omniauth(omniauth)
     case omniauth['provider']

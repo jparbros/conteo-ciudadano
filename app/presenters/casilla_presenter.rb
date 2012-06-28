@@ -1,4 +1,9 @@
 class CasillaPresenter < SimpleDelegator
+
+  def self.human_attribute_name(attribute_key_name, options = {})
+    Box.human_attribute_name attribute_key_name, options
+  end
+
   def initialize(casilla = Box.new, current_user = nil)
     @current_user = current_user
     super(casilla)

@@ -28,6 +28,17 @@ class Ticket < ActiveRecord::Base
     after_transition new: :assigned, :do => :assign_admin
   end
 
+  #
+  # Simple audit
+  #
+  simple_audit username_method: :email do |ticket|
+    {
+      issue: ticket.issue,
+      admin: ticket.admin.try(:email),
+      state: ticket.state
+    }
+  end
+
   def self.open_tickets
     where('state != ?','closed')
   end
