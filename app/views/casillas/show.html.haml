@@ -50,7 +50,7 @@
   .span6
     #box-map
 
-    %script
+    - content_for :javascripts do
       $(document).ready(function() {
       google_maps = GoogleMaps.initialize(#{@casilla.options_for_maps.html_safe})
       google_maps.render();

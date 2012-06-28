@@ -13,9 +13,6 @@
   %link{href: 'https://fonts.googleapis.com/css?family=Dosis:200,400|Rokkitt|Oswald', rel: 'stylesheet', type: 'text/css'}
   = stylesheet_link_tag "application", :media => "all"
   = csrf_meta_tags
-  %script{ src: 'https://maps.google.com/maps/api/js?sensor=true&key=AIzaSyBJAXhLpxM-_qcJVWzVL03m-Y1b2b8Hpps&libraries=geometry', type: 'text/javascript'}
-  = javascript_include_tag "application"
-  = yield :scripts
 
 %body{class: "#{controller_name}"}
   #header.row-fluid
@@ -60,9 +57,15 @@
             Diseñado por:
             = link_to 'Mendo','mailto:fabian.mendo@crowdint.com '
 
+%script{ src: 'https://maps.google.com/maps/api/js?sensor=true&key=AIzaSyBJAXhLpxM-_qcJVWzVL03m-Y1b2b8Hpps&libraries=geometry', type: 'text/javascript'}
+= javascript_include_tag "application"
+%script{type: 'text/javascript'}
+  = yield :javascripts
+  = yield :scripts
 
 #fb-root
 %script{src: ' https://connect.facebook.net/es_LA/all.js#xfbml=1&appId=194392060651235', type: 'text/javascript'}
+
 -if Rails.env.production?
   %script{type: 'text/javascript'}
     var _gaq = _gaq || [];
@@ -77,15 +80,3 @@
     })();
 
     !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
-
-    var _gauges = _gauges || [];
-    (function() {
-    var t   = document.createElement('script');
-    t.type  = 'text/javascript';
-    t.async = true;
-    t.id    = 'gauges-tracker';
-    t.setAttribute('data-site-id', '4fdbbaf8f5a1f502b6000039');
-    t.src = '//secure.gaug.es/track.js';
-    var s = document.getElementsByTagName('script')[0];
-    s.parentNode.insertBefore(t, s);
-    })();
