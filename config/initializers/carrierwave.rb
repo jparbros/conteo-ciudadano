@@ -5,5 +5,6 @@ CarrierWave.configure do |config|
     :aws_secret_access_key  => ENV['AWS_SECRET_KEY'],
     :region                 => 'eu-west-1'
   }
-  config.fog_directory  = 'conteociudadanostage'
+  config.fog_directory  = 'stage'
+  config.s3_bucket = "conteociudadano"
 end
