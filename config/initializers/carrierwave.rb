@@ -5,5 +5,5 @@ CarrierWave.configure do |config|
     :aws_secret_access_key  => ENV['AWS_SECRET_KEY'],
     :region                 => 'eu-west-1'
   }
-  config.fog_directory  = 'conteociudadano'
+  config.fog_directory  = 'conteociudadanostage'
 end
