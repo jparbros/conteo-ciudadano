@@ -1,8 +1,8 @@
 CarrierWave.configure do |config|
   config.fog_credentials = {
-    :provider               => 'AWS',
-    :aws_access_key_id      => ENV['AWS_ACCESS_KEY'],
-    :aws_secret_access_key  => ENV['AWS_SECRET_KEY'],
+    :provider => 'Google',
+    :google_storage_access_key_id => 'GOOGVZIMJX5HY5U52MDH',
+    :google_storage_secret_access_key => 'vntfgFHrds1XeXXXmFPCJYsqw2er7HEtfHtDRi3C'
   }
-  config.fog_directory  = 'conteociudadanostage'
+  config.fog_directory = 'conteo_ciudadano'
 end
