@@ -33,6 +33,9 @@
         %ul#main-nav.nav
           %li
             =link_to "Buscar Casillas", new_buscar_casillas_path
+          %li
+            =link_to "Desarrolladores", api_path
+
 
         = form_tag buscar_casillas_path, class: 'navbar-form pull-right form-inline hidden-phone' do
           = select_tag :estado, options_from_collection_for_select(State.all, :name, :name), blank: :estado, class: 'span2'

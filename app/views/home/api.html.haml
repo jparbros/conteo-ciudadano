@@ -1,0 +1,112 @@
+%h1
+  API para compartir los resultados
+
+#api
+  .row-fluid
+    %p.span12
+      Con la finalidad de hacer mas públicos la información obtenida y como parte de un acuerdo para compartir la información generada entre los diversos proyectos similares. Hemos hecho una pequeña API para que pueda ser consultada libremente.
+  .row-fluid
+    %p.span12
+      A continuación los detalles técnicos de los servicios:
+
+  .row-fluid
+    .span6
+      %h3 Listar casillas
+      .row-fluid
+        %p.span12
+          Este servicio entrega un listado paginado de las casilla.
+
+      .row-fluid
+        %code
+          GET /api/casillas.formato
+
+      %h5
+        Formatos de respuesta
+
+      .row-fluid
+        .span12
+          %dl
+            %dt
+              json
+            %dt
+              xml
+
+      %h5
+        Parametros para la busqueda
+
+      .row-fluid
+        .span12
+          %dl
+            %dt
+              state
+            %dd
+              Entidad federal de la casilla, todo en minúsculas sin acentos.
+            %dt
+              section
+            %dd
+              Sección electoral de la casilla.
+            %dt
+              district
+            %dd
+              Distrito electoral de la casilla.
+            %dt
+              district_head
+            %dd
+              Cabecera distrital de la casilla.
+            %dt
+              kind
+            %dd
+              %ul
+                %li
+                  %code
+                    Básica
+                %li
+                  %code
+                    Contigua
+                %li
+                  %code
+                    Extraordinaria
+                %li
+                  %code
+                    Especial
+            %dt
+              page
+            %dd
+              Número de la pagina a buscar
+            %dt
+              per
+            %dd
+              Cantidad de resultados a mostrar. Por default son 10 con un maximo de 100 casillas.
+
+    .span6
+      %h3
+        Detalles de la casilla
+      .row-fluid
+        %p.span12
+          Este servicio regresa solo la información de la casilla señalada.
+
+      .row-fluid
+        %code
+          GET /api/casillas/:id.formato
+
+      %h5
+        Formatos de respuesta
+
+      .row-fluid
+        .span12
+          %dl
+            %dt
+              json
+            %dt
+              xml
+
+      %h5
+        Parametros
+
+      .row-fluid
+        .span12
+          %dl
+            %dt
+              id
+            %dd
+              Número identificador de la casilla a mostrar.

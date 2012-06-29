@@ -37,7 +37,8 @@ class Box < ActiveRecord::Base
   #
   # Constants
   #
-  DEFAULT_OPTIONS = {include: [:result, :result_images]}
+  FORMAT_DEFAULT_OPTIONS = {include: [:result, :result_images]}
+  NO_EDITABLE_FIELDS = {}
 
   #
   # Simple audit
@@ -59,20 +60,24 @@ class Box < ActiveRecord::Base
   end
 
   def self.search(params)
-    search_terms = {}
+    klass = self
     params.each do |param|
-      search_terms[param.first.to_s] = param.last if column_names.include? param.first.to_s
+      klass = klass.where(param.first.to_s => param.last) if column_names.include? param.first.to_s
+      if param.first.to_s == 'state'
+        klass = klass.includes(:state)
+        klass = klass.where('state.name' => param.last )
+      end
     end
-    where(search_terms)
+    klass
   end
 
   def as_json(options = {})
-    options.merge!(DEFAULT_OPTIONS)
+    options.merge!(FORMAT_DEFAULT_OPTIONS)
     super(options)
   end
 
   def to_xml(options = {}, &block)
-    options.merge!(DEFAULT_OPTIONS)
+    options.merge!(FORMAT_DEFAULT_OPTIONS)
     super(options, &block)
   end
 
@@ -93,7 +98,7 @@ class Box < ActiveRecord::Base
   end
 
   def has_results?
-    self.result.present? || !self.result.new?
+    self.result.present? ? !self.result.new? : false
   end
 
 end
