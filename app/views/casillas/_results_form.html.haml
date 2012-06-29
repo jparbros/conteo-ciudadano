@@ -1,57 +1,99 @@
-= form_for @casilla.result, url: casilla_path, method: :put, remote: true do |form|
-  .row-fluid
-    .span6
-      .row-fluid
-        .span6
-          = image_tag 'logo_pan.png'
-        = form.number_field :pan, class: [:span6]
-    .span6
-      .row-fluid
-        .span6
-          = image_tag 'logo_pri.png'
-        = form.number_field :pri, class: [:span6]
+= form_for @casilla, url: casilla_path, method: :put do |form|
+  = form.fields_for :result do |form_result|
+    .row-fluid
+      .span6
+        .row-fluid
+          .span6
+            = image_tag 'logo_pan.png'
+          = form_result.number_field :pan, class: [:span6]
+      .span6
+        .row-fluid
+          .span6
+            = image_tag 'logo_pri.png'
+          = form_result.number_field :pri, class: [:span6]
 
-  .row-fluid
-    .span6
-      .row-fluid
-        .span6
-          = image_tag 'logo_prd.png'
-        = form.number_field :prd, class: [:span6]
-    .span6
-      .row-fluid
-        .span6
-          = image_tag 'logo_vem.png'
-        = form.number_field :pvem, class: [:span6]
+    .row-fluid
+      .span6
+        .row-fluid
+          .span6
+            = image_tag 'logo_prd.png'
+          = form_result.number_field :prd, class: [:span6]
+      .span6
+        .row-fluid
+          .span6
+            = image_tag 'logo_vem.png'
+          = form_result.number_field :pvem, class: [:span6]
 
-  .row-fluid
-    .span6
-      .row-fluid
-        .span6
-          = image_tag 'logo_pt.jpg'
-        = form.number_field :pt, class: [:span6]
-    .span6
-      .row-fluid
-        .span6
-          = image_tag 'logo_movimiento_ciudadano.jpg'
-        = form.number_field :movimiento_ciudadano, class: [:span6]
+    .row-fluid
+      .span6
+        .row-fluid
+          .span6
+            = image_tag 'logo_pt.jpg'
+          = form_result.number_field :pt, class: [:span6]
+      .span6
+        .row-fluid
+          .span6
+            = image_tag 'logo_movimiento_ciudadano.jpg'
+          = form_result.number_field :movimiento_ciudadano, class: [:span6]
 
-  .row-fluid
-    .span6
-      .row-fluid
-        .span6
-          = image_tag 'logo_nueva_alianza.png'
-        = form.number_field :nueva_alianza, class: [:span6]
-    .span6
-      .row-fluid
-        .span6
-          = image_tag 'logo_otro_candidato.png'
-        = form.number_field :others, class: [:span6]
+    .row-fluid
+      .span6
+        .row-fluid
+          .span6
+            = image_tag 'logo_nueva_alianza.png'
+          = form_result.number_field :nueva_alianza, class: [:span6]
 
-  .row-fluid
-    .span6
-      .row-fluid
-        .span6
-          = image_tag 'logo_votos_nulos.png'
-        = form.number_field :null, class: [:span6]
-    .span6
-      = submit_tag :Enviar, class: [:btn, :'btn-primary']
+      .span6
+        .row-fluid
+          .span6
+            = image_tag 'logo_pri.png'
+            = image_tag 'logo_vem.png'
+          = form_result.number_field :pri_pvem, class: [:span6]
+
+    .row-fluid
+      .span6
+        .row-fluid
+          = image_tag 'logo_prd.png', class: :span2
+          = image_tag 'logo_pt.jpg', class: :span2
+          = image_tag 'logo_movimiento_ciudadano.jpg', class: :span2
+          = form_result.number_field :prd_pt_mc, class: [:span6]
+
+      .span6
+        .row-fluid
+          .span6
+            = image_tag 'logo_prd.png'
+            = image_tag 'logo_pt.jpg'
+          = form_result.number_field :prd_pt, class: [:span6]
+
+
+    .row-fluid
+      .span6
+        .row-fluid
+          .span6
+            = image_tag 'logo_prd.png'
+            = image_tag 'logo_movimiento_ciudadano.jpg'
+          = form_result.number_field :prd_mc, class: [:span6]
+
+      .span6
+        .row-fluid
+          .span6
+            = image_tag 'logo_prd.png'
+            = image_tag 'logo_movimiento_ciudadano.jpg'
+          = form_result.number_field :pt_mc, class: [:span6]
+
+    .row-fluid
+      .span6
+        .row-fluid
+          .span6
+            = image_tag 'logo_otro_candidato.png'
+          = form_result.number_field :others, class: [:span6]
+
+      .span6
+        .row-fluid
+          .span6
+            = image_tag 'logo_votos_nulos.png'
+          = form_result.number_field :null, class: [:span6]
+
+    .row-fluid
+      .span6
+        = form.submit :Enviar, class: [:btn, :'btn-primary']

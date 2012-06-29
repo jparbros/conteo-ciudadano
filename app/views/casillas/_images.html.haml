@@ -1,8 +1,12 @@
-= render partial: 'image_form' if @casilla.editable?
+= render partial: 'image_form' if current_user
+
+%hr
 
 .row-fluid
   #all-images.span7
     .row-fluid
-      - @casilla.result_images.each do |image|
+      - @casilla.result_images.each do |result_image|
         .thumb.span1
-          = image_tag image.image.thumb
+          - if result_image.id
+            = link_to '#', 'data-image-url' => result_image.image, 'data-toggle' => "modal", 'data-target' => "#imageModal" do
+              = image_tag result_image.image.thumb

@@ -31,7 +31,7 @@
   .span6.well
     %h2
       Casillas a verificar
-    
+
     %table.table.table-striped.table-bordered.table-condensed
       %thead
         %tr
@@ -53,3 +53,5 @@
                   = link_to 'Ver', [:admin, box]
                 %li
                   = link_to 'Editar', edit_admin_box_path(box)
+                %li
+                  = link_to 'Resultados', admin_box_results_path(box)

@@ -9,7 +9,7 @@ class Box < ActiveRecord::Base
   #
   # Attributtes accesors
   #
-  attr_accessible :state_id, :number, :location, :address, :references, :section, :district, :active, :district_head, :nominal_list, :kind, :result_images_attributes
+  attr_accessible :state_id, :number, :location, :address, :references, :section, :district, :active, :district_head, :nominal_list, :kind, :result_images_attributes, :result_attributes
 
   #
   # Relations
@@ -38,7 +38,7 @@ class Box < ActiveRecord::Base
   # Constants
   #
   FORMAT_DEFAULT_OPTIONS = {include: [:result, :result_images]}
-  NO_EDITABLE_FIELDS = {}
+  NO_EDITABLE_FIELDS = [:state_id, :number, :location, :address, :references, :section, :district, :active, :district_head, :nominal_list, :kind]
 
   #
   # Simple audit
@@ -98,7 +98,7 @@ class Box < ActiveRecord::Base
   end
 
   def has_results?
-    self.result.present? ? !self.result.new? : false
+    self.result.present? && (self.result.new? || self.result.ready_to_revision?)
   end
 
 end

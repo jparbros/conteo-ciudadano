@@ -24,7 +24,7 @@ class Result < ActiveRecord::Base
     end
 
     event :approved do
-      transition ready_to_revision: :verified
+      transition [:ready_to_revision, :rejected, :reported] => :verified
     end
 
     event :rejecting do

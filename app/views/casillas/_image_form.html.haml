@@ -2,8 +2,7 @@
   Suba las mantas electorales en este formulario
 
 .row-fluid
-  #html5_uploader.span12{'data-box-id' => @casilla.id}
-
-.row-fluid
-  #image-uploaded.span12
-    .row-fluid
+  = form_for @casilla, url: casilla_path(@casilla.id), method: :put do |form|
+    = form.fields_for :result_images do |image_form|
+      = image_form.file_field :image
+    = form.submit 'Subir Imagen', class: [:btn, 'btn-primary']

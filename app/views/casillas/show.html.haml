@@ -3,6 +3,9 @@
 
 .row-fluid
   .well.span6#info-box
+    - if @casilla.result.verified?
+      .verified
+
     .row-fluid
       %strong.span3
         Casilla:
@@ -47,6 +50,39 @@
             %a{'href' => "https://twitter.com/intent/tweet?url=#{casilla_url(id: @casilla.id)}&via=conteo_mx&text=Yo votare en esta casilla", 'data-lang' => "es", 'data-show-screen-name' => "false", 'data-dnt' => "true"}
               &nbsp;
 
+    .row-fluid
+      .span12
+        - @casilla.get_tickets.each do |ticket|
+          %span.label.label-important
+            = ticket.issue
+
+    .row-fluid
+      .span3
+        -if @casilla.map_reported?
+          %span.label.label-important
+            El mapa ya se encuentra reportado.
+        - else
+          = link_to 'Reportar mapa', casilla_tickets_path(casilla_id: @casilla.id, reason: 'map_ticket'), class: ['btn', 'btn-danger'], method: :post
+      .span3
+        .btn-group
+          - if current_user
+            %a{class: "btn btn-danger dropdown-toggle", "data-toggle" => "dropdown", href: "#"}
+              Reportar Casilla
+              %span{class: "caret"}
+            %ul{class: "dropdown-menu"}
+              %li
+                = link_to 'Falta Fotografia', casilla_tickets_path(casilla_id: @casilla.id, reason: 'missing_photo'), method: :post, data: {confirm: '¿Seguro desea reportar la casilla como "Falta Fotografia"?'}
+              %li
+                = link_to 'Fotografia alterada', casilla_tickets_path(casilla_id: @casilla.id, reason: 'photo_altered'), method: :post, data: {confirm: '¿Seguro desea reportar la casilla como "Fotografia alterada"?'}
+              %li
+                = link_to 'Información dudosa', casilla_tickets_path(casilla_id: @casilla.id, reason: 'dubious_information'), method: :post, data: {confirm: '¿Seguro desea reportar la casilla como "Información dudosa"?'}
+              %li
+                = link_to 'Casilla sospechosa', casilla_tickets_path(casilla_id: @casilla.id, reason: 'suspicious_box'), method: :post, data: {confirm: '¿Seguro desea reportar la casilla como "Casilla sospechosa"?'}
+              %li
+                = link_to 'Sobrevotación', casilla_tickets_path(casilla_id: @casilla.id, reason: 'overvoting'), method: :post, data: {confirm: '¿Seguro desea reportar la casilla como "Sobrevotación"?'}
+              %li
+                = link_to 'Casilla no instalada', casilla_tickets_path(casilla_id: @casilla.id, reason: 'box_not_installed'), method: :post, data: {confirm: '¿Seguro desea reportar la casilla como "Casilla no instalada"?'}
+
   .span6
     #box-map
 
@@ -55,12 +91,6 @@
       google_maps = GoogleMaps.initialize(#{@casilla.options_for_maps.html_safe})
       google_maps.render();
       });
-
-    -if @casilla.map_reported?
-      %span.label.label-important
-        El mapa ya se encuentra reportado.
-    - else
-      = link_to 'Reportar mapa', casilla_map_tickets_path(@casilla.id), class: ['btn', 'btn-danger'], method: :post
 
 .row-fluid
 
@@ -76,3 +106,5 @@
         Mantas Electorales
 
       = render partial: 'images'
+
+.modal.fade#imageModal

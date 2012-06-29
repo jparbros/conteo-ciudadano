@@ -18,7 +18,7 @@ class CasillaPresenter < SimpleDelegator
   end
 
   def editable?
-    !self.has_results? and @current_user
+    @current_user && self.has_results?
   end
 
   def results_partial

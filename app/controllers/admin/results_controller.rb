@@ -8,6 +8,7 @@ class Admin::ResultsController < Admin::BaseController
   def create
     @result = casilla.build_result(params[:result])
     if @result.save
+      @result.approved! if @result.can_approved?
       redirect_to admin_root_url, flash: {notice: 'La casilla fue verificada.'}
     else
       render :show, flash: {error: 'Ocurrio un error al verificar las casilla.'}
@@ -16,6 +17,7 @@ class Admin::ResultsController < Admin::BaseController
 
   def update
     if casilla.result.update_attributes(params[:result])
+      casilla.result.approved! if casilla.result.can_approved?
       redirect_to admin_root_url, flash: {notice: 'La casilla fue verificada.'}
     else
       render :show, flash: {error: 'Ocurrio un error al verificar las casilla.'}

@@ -44,4 +44,7 @@ module Tickets
     tickets.where(issue: 'Google Maps no funciona.')
   end
 
+  def get_tickets
+    tickets.where('tickets.issue != ?', 'Google Maps no funciona.')
+  end
 end

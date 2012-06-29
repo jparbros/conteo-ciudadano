@@ -69,3 +69,16 @@ ul {
 @media (max-width: 480px) {
   #share .title { font-size: 16px; }
 }
+
+.casillas {
+  #results {
+    .row-fluid {
+      margin: 10px 0;
+    }
+
+    .result {
+      font-size: 30px;
+      margin-top: 10px;
+    }
+  }
+}

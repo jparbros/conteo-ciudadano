@@ -254,3 +254,15 @@ h5 {
     text-align: left;
   }
 }
+
+#imageModal {
+  max-width: 800px;
+}
+
+.verified {
+  background: url('/assets/verified.png') no-repeat 0 0;
+  height: 120px;
+  margin: -20px;
+  position: absolute;
+  width: 126px;
+}
