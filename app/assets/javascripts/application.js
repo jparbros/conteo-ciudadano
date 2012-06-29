@@ -17,7 +17,6 @@
 //= require jquery.plupload.queue
 //= require google_maps
 //= require boxes
-//= require google_maps
 //= require home
 
 $(document).ready(function() {
