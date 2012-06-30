@@ -4,5 +4,5 @@
 .row-fluid
   = form_for @casilla, url: casilla_path(@casilla.id), method: :put do |form|
     = form.fields_for :result_images do |image_form|
-      = image_form.file_field :image
+      = image_form.file_field :blanket
     = form.submit 'Subir Imagen', class: [:btn, 'btn-primary']

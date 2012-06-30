@@ -6,7 +6,7 @@
   #all-images.span7
     .row-fluid
       - @casilla.result_images.each do |result_image|
-        .thumb.span1
+        .thumb.span3
           - if result_image.id
-            = link_to '#', 'data-image-url' => result_image.image, 'data-toggle' => "modal", 'data-target' => "#imageModal" do
-              = image_tag result_image.image.thumb
+            = link_to '#', 'data-image-url' => result_image.blanket, 'data-toggle' => "modal", 'data-target' => "#imageModal" do
+              = image_tag result_image.blanket.thumb

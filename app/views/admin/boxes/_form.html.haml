@@ -49,7 +49,7 @@
             Foto de casilla:
           .controls
             = f.fields_for :result_images do |image_form|
-              = image_form.file_field :image, class: :span12
+              = image_form.file_field :blanket, class: :span12
 
         .row-fluid
           .span12
@@ -58,4 +58,4 @@
         .row-fluid
           .span12
             - @box.result_images.each do |result_image|
-              = image_tag result_image.image.url(:thumb) if result_image.id
+              = image_tag result_image.blanket.thumb if result_image.id

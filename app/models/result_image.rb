@@ -2,7 +2,7 @@ class ResultImage < ActiveRecord::Base
   #
   # Attributes Accesors
   #
-  attr_accessible :box_id, :image
+  attr_accessible :box_id, :blanket
 
   #
   # Associations
@@ -13,7 +13,7 @@ class ResultImage < ActiveRecord::Base
   #
   # Uploaders
   #
-  mount_uploader :image, ResultImagesUploader
+  mount_uploader :blanket, ResultImagesUploader
 
   #
   # Includes
@@ -34,7 +34,7 @@ class ResultImage < ActiveRecord::Base
   # Simple audit
   #
   simple_audit username_method: :email do |result_image|
-    {image: result_image.image}
+    {blanket: result_image.blanket}
   end
 
   def save_exif

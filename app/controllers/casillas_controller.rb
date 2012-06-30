@@ -9,7 +9,6 @@ class CasillasController < ApplicationController
   def update
     @casilla = Box.find params[:id]
     if @casilla.update_attributes(box_params)
-      puts box_params
       redirect_to casilla_url(@casilla)
     else
       @casilla.build_result unless @casilla.result
