@@ -47,7 +47,11 @@ Conteo::Application.configure do
     if request.ssl?
       "#{request.protocol}#{request.host_with_port}"
     else
-      "http://assets%d.conteo-ciudadano.org" % (source.hash % 4)
+      if ENV['STAGE']
+        "#{request.protocol}#{request.host_with_port}"
+      else
+        "http://assets%d.conteo-ciudadano.org" % (source.hash % 4)
+      end
     end
   }
 
