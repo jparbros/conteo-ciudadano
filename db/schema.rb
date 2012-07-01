@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120630001615) do
+ActiveRecord::Schema.define(:version => 20120630100842) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -128,6 +128,7 @@ ActiveRecord::Schema.define(:version => 20120630001615) do
     t.integer  "prd_pt",               :default => 0
     t.integer  "prd_mc",               :default => 0
     t.integer  "pt_mc",                :default => 0
+    t.datetime "tabulated_at"
   end
 
   add_index "results", ["state", "box_id"], :name => "index_results_on_state_and_box_id"

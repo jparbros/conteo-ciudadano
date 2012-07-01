@@ -35,4 +35,5 @@ Conteo::Application.routes.draw do
     resources :casillas, only: [:index, :show]
   end
 
+  mount Resque::Server.new, :at => "/resque"
 end

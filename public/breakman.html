@@ -145,7 +145,7 @@ p {
   <tr>
     <td>/Users/jparbros/Work/conteo-ciudadano-1</td>
     <td>3.2.6</td>
-    <td>2012-06-21 01:10:57 -0500</td>
+    <td>2012-06-29 23:20:36 -0500</td>
     <td>BasicAuth, CrossSiteScripting, DefaultRoutes, EscapeFunction, Evaluation, Execute, FileAccess, FilterSkipping, ForgerySetting, LinkTo, LinkToHref, MailTo, MassAssignment, ModelAttributes, NestedAttributes, QuoteTableName, Redirect, Render, ResponseSplitting, SQL, SafeBufferManipulation, SelectVulnerability, Send, SendFile, SessionSettings, SkipBeforeFilter, StripTags, TranslateBug, ValidationRegex, WithoutProtection</td>
   </tr>
 </table>
@@ -158,15 +158,15 @@ p {
   </tr>
   <tr>
     <td>Controllers</td>
-    <td>14</td>
+    <td>17</td>
   </tr>
   <tr>
     <td>Models</td>
-    <td>10</td>
+    <td>12</td>
   </tr>
   <tr>
     <td>Templates</td>
-    <td>30</td>
+    <td>26</td>
   </tr>
   <tr>
     <td>Errors</td>
@@ -174,7 +174,7 @@ p {
   </tr>
   <tr>
     <td>Security Warnings</td>
-    <td>8 <span class='high-confidence'>(0)</span></td>
+    <td>10 <span class='high-confidence'>(6)</span></td>
   </tr>
 </table>
 <br>
@@ -190,8 +190,13 @@ p {
   </tr>
   
   <tr>
+    <td>Dangerous Send</td>
+    <td>6</td>
+  </tr>
+  
+  <tr>
     <td>Redirect</td>
-    <td>7</td>
+    <td>3</td>
   </tr>
   
 </table>
@@ -222,392 +227,40 @@ p {
   </tr>
   
   <tr>
-    <td><span class='weak-confidence'>Weak</span></td>
-    <td>Admin::AdminsController</td>
+    <td><span class='high-confidence'>High</span></td>
+    <td>Admin::TicketsController</td>
     <td>create</td>
-    <td>Redirect</td>
-    <td><div class='warning_message' onClick="toggle('context1');toggle('message1');toggle('full_message1')" ><span id='message1' style='display:block' >Possible unprotected redirect near line 51: redirect_to([:admin, <span class="user_input">Admin.new(params[:admin])</span>], :notice ...</span><span id='full_message1' style='display:none'>Possible unprotected redirect near line 51: redirect_to([:admin, <span class="user_input">Admin.new(params[:admin])</span>], :notice =&gt; &quot;admin was successfully created.&quot;)</span><table id='context1' class='context' style='display:none'><caption>/app/controllers/admin/admins_controller.rb</caption>        <tr class='context first'>
+    <td>Dangerous Send</td>
+    <td><div class='warning_message' onClick="toggle('context4');toggle('message4');toggle('full_message4')" >User controlled method execution near line 11: Box.find(params[:box_id]).send(<span class="user_input">params[:reason]</span>)<table id='context4' class='context' style='display:none'><caption>/app/controllers/admin/tickets_controller.rb</caption>        <tr class='context first'>
           <td class='context_line'>
-            <pre class='context'>46</pre>
+            <pre class='context'>6</pre>
           </td>
           <td class='context'>
-            <pre class='context'>  def create</pre>
+            <pre class='context'>  end</pre>
           </td>
         </tr>
           <tr class='context alt'>
             <td class='context_line'>
-              <pre class='context'>47</pre>
+              <pre class='context'>8</pre>
             </td>
             <td class='context'>
-              <pre class='context'>    @admin = Admin.new(params[:admin])</pre>
+              <pre class='context'>  def create</pre>
             </td>
           </tr>
           <tr class='context'>
-            <td class='context_line'>
-              <pre class='context'>49</pre>
-            </td>
-            <td class='context'>
-              <pre class='context'>    respond_to do |format|</pre>
-            </td>
-          </tr>
-          <tr class='context alt near_error'>
-            <td class='context_line'>
-              <pre class='context'>50</pre>
-            </td>
-            <td class='context'>
-              <pre class='context'>      if @admin.save</pre>
-            </td>
-          </tr>
-          <tr class='context error'>
-            <td class='context_line'>
-              <pre class='context'>51</pre>
-            </td>
-            <td class='context'>
-              <pre class='context'>        format.html { redirect_to [:admin,@admin], :notice =&gt; 'admin was successfully created.' }</pre>
-            </td>
-          </tr>
-          <tr class='context alt near_error'>
-            <td class='context_line'>
-              <pre class='context'>52</pre>
-            </td>
-            <td class='context'>
-              <pre class='context'>        #format.json { render :json =&gt; @admin, :status =&gt; :created, :location =&gt; @admin }</pre>
-            </td>
-          </tr>
-          <tr class='context'>
-            <td class='context_line'>
-              <pre class='context'>53</pre>
-            </td>
-            <td class='context'>
-              <pre class='context'>      else</pre>
-            </td>
-          </tr>
-          <tr class='context alt'>
-            <td class='context_line'>
-              <pre class='context'>54</pre>
-            </td>
-            <td class='context'>
-              <pre class='context'>        format.html { render :action =&gt; &quot;new&quot; }</pre>
-            </td>
-          </tr>
-          <tr class='context'>
-            <td class='context_line'>
-              <pre class='context'>55</pre>
-            </td>
-            <td class='context'>
-              <pre class='context'>        #format.json { render :json =&gt; @admin.errors, :status =&gt; :unprocessable_entity }</pre>
-            </td>
-          </tr>
-          <tr class='context alt'>
-            <td class='context_line'>
-              <pre class='context'>56</pre>
-            </td>
-            <td class='context'>
-              <pre class='context'>      end</pre>
-            </td>
-          </tr>
-</table></div></td>
-  </tr>
-  
-  <tr>
-    <td><span class='weak-confidence'>Weak</span></td>
-    <td>Admin::AdminsController</td>
-    <td>update</td>
-    <td>Redirect</td>
-    <td><div class='warning_message' onClick="toggle('context2');toggle('message2');toggle('full_message2')" ><span id='message2' style='display:block' >Possible unprotected redirect near line 67: redirect_to([:admin, <span class="user_input">Admin.find(params[:id])</span>], :notice =&gt;...</span><span id='full_message2' style='display:none'>Possible unprotected redirect near line 67: redirect_to([:admin, <span class="user_input">Admin.find(params[:id])</span>], :notice =&gt; &quot;admin was successfully updated.&quot;)</span><table id='context2' class='context' style='display:none'><caption>/app/controllers/admin/admins_controller.rb</caption>        <tr class='context first'>
-          <td class='context_line'>
-            <pre class='context'>62</pre>
-          </td>
-          <td class='context'>
-            <pre class='context'>  def update</pre>
-          </td>
-        </tr>
-          <tr class='context alt'>
-            <td class='context_line'>
-              <pre class='context'>63</pre>
-            </td>
-            <td class='context'>
-              <pre class='context'>    @admin = Admin.find(params[:id])</pre>
-            </td>
-          </tr>
-          <tr class='context'>
-            <td class='context_line'>
-              <pre class='context'>65</pre>
-            </td>
-            <td class='context'>
-              <pre class='context'>    respond_to do |format|</pre>
-            </td>
-          </tr>
-          <tr class='context alt near_error'>
-            <td class='context_line'>
-              <pre class='context'>66</pre>
-            </td>
-            <td class='context'>
-              <pre class='context'>      if @admin.update_attributes(params[:admin])</pre>
-            </td>
-          </tr>
-          <tr class='context error'>
-            <td class='context_line'>
-              <pre class='context'>67</pre>
-            </td>
-            <td class='context'>
-              <pre class='context'>        format.html { redirect_to [:admin,@admin], :notice =&gt; 'admin was successfully updated.' }</pre>
-            </td>
-          </tr>
-          <tr class='context alt near_error'>
-            <td class='context_line'>
-              <pre class='context'>68</pre>
-            </td>
-            <td class='context'>
-              <pre class='context'>        #format.json { head :no_content }</pre>
-            </td>
-          </tr>
-          <tr class='context'>
-            <td class='context_line'>
-              <pre class='context'>69</pre>
-            </td>
-            <td class='context'>
-              <pre class='context'>      else</pre>
-            </td>
-          </tr>
-          <tr class='context alt'>
-            <td class='context_line'>
-              <pre class='context'>70</pre>
-            </td>
-            <td class='context'>
-              <pre class='context'>        format.html { render :action =&gt; &quot;edit&quot; }</pre>
-            </td>
-          </tr>
-          <tr class='context'>
-            <td class='context_line'>
-              <pre class='context'>71</pre>
-            </td>
-            <td class='context'>
-              <pre class='context'>        #format.json { render :json =&gt; @admin.errors, :status =&gt; :unprocessable_entity }</pre>
-            </td>
-          </tr>
-          <tr class='context alt'>
-            <td class='context_line'>
-              <pre class='context'>72</pre>
-            </td>
-            <td class='context'>
-              <pre class='context'>      end</pre>
-            </td>
-          </tr>
-</table></div></td>
-  </tr>
-  
-  <tr>
-    <td><span class='weak-confidence'>Weak</span></td>
-    <td>Admin::BoxesController</td>
-    <td>create</td>
-    <td>Redirect</td>
-    <td><div class='warning_message' onClick="toggle('context3');toggle('message3');toggle('full_message3')" ><span id='message3' style='display:block' >Possible unprotected redirect near line 53: redirect_to([:admin, <span class="user_input">Box.new(params[:box])</span>], :notice =&gt; &quot;...</span><span id='full_message3' style='display:none'>Possible unprotected redirect near line 53: redirect_to([:admin, <span class="user_input">Box.new(params[:box])</span>], :notice =&gt; &quot;Box was successfully created.&quot;)</span><table id='context3' class='context' style='display:none'><caption>/app/controllers/admin/boxes_controller.rb</caption>        <tr class='context first'>
-          <td class='context_line'>
-            <pre class='context'>49</pre>
-          </td>
-          <td class='context'>
-            <pre class='context'>    respond_to do |format|</pre>
-          </td>
-        </tr>
-          <tr class='context alt'>
-            <td class='context_line'>
-              <pre class='context'>50</pre>
-            </td>
-            <td class='context'>
-              <pre class='context'>      if @box.save</pre>
-            </td>
-          </tr>
-          <tr class='context'>
-            <td class='context_line'>
-              <pre class='context'>51</pre>
-            </td>
-            <td class='context'>
-              <pre class='context'>        @result = @box.build_result(params[:result])</pre>
-            </td>
-          </tr>
-          <tr class='context alt near_error'>
-            <td class='context_line'>
-              <pre class='context'>52</pre>
-            </td>
-            <td class='context'>
-              <pre class='context'>        @result.save</pre>
-            </td>
-          </tr>
-          <tr class='context error'>
-            <td class='context_line'>
-              <pre class='context'>53</pre>
-            </td>
-            <td class='context'>
-              <pre class='context'>        format.html { redirect_to [:admin,@box], :notice =&gt; 'Box was successfully created.' }</pre>
-            </td>
-          </tr>
-          <tr class='context alt near_error'>
-            <td class='context_line'>
-              <pre class='context'>54</pre>
-            </td>
-            <td class='context'>
-              <pre class='context'>      else</pre>
-            </td>
-          </tr>
-          <tr class='context'>
-            <td class='context_line'>
-              <pre class='context'>55</pre>
-            </td>
-            <td class='context'>
-              <pre class='context'>        format.html { render :action =&gt; &quot;new&quot; }</pre>
-            </td>
-          </tr>
-          <tr class='context alt'>
-            <td class='context_line'>
-              <pre class='context'>56</pre>
-            </td>
-            <td class='context'>
-              <pre class='context'>      end</pre>
-            </td>
-          </tr>
-          <tr class='context'>
-            <td class='context_line'>
-              <pre class='context'>57</pre>
-            </td>
-            <td class='context'>
-              <pre class='context'>    end</pre>
-            </td>
-          </tr>
-          <tr class='context alt'>
-            <td class='context_line'>
-              <pre class='context'>58</pre>
-            </td>
-            <td class='context'>
-              <pre class='context'>  end</pre>
-            </td>
-          </tr>
-</table></div></td>
-  </tr>
-  
-  <tr>
-    <td><span class='weak-confidence'>Weak</span></td>
-    <td>Admin::BoxesController</td>
-    <td>update</td>
-    <td>Redirect</td>
-    <td><div class='warning_message' onClick="toggle('context4');toggle('message4');toggle('full_message4')" ><span id='message4' style='display:block' >Possible unprotected redirect near line 69: redirect_to([:admin, <span class="user_input">Box.find(params[:id])</span>], :notice =&gt; &quot;...</span><span id='full_message4' style='display:none'>Possible unprotected redirect near line 69: redirect_to([:admin, <span class="user_input">Box.find(params[:id])</span>], :notice =&gt; &quot;Box was successfully updated.&quot;)</span><table id='context4' class='context' style='display:none'><caption>/app/controllers/admin/boxes_controller.rb</caption>        <tr class='context first'>
-          <td class='context_line'>
-            <pre class='context'>64</pre>
-          </td>
-          <td class='context'>
-            <pre class='context'>    @result = @box.result</pre>
-          </td>
-        </tr>
-          <tr class='context alt'>
-            <td class='context_line'>
-              <pre class='context'>66</pre>
-            </td>
-            <td class='context'>
-              <pre class='context'>    respond_to do |format|</pre>
-            </td>
-          </tr>
-          <tr class='context'>
-            <td class='context_line'>
-              <pre class='context'>67</pre>
-            </td>
-            <td class='context'>
-              <pre class='context'>      if @box.update_attributes(params[:box])</pre>
-            </td>
-          </tr>
-          <tr class='context alt near_error'>
-            <td class='context_line'>
-              <pre class='context'>68</pre>
-            </td>
-            <td class='context'>
-              <pre class='context'>        @result.update_attributes(params[:result])</pre>
-            </td>
-          </tr>
-          <tr class='context error'>
-            <td class='context_line'>
-              <pre class='context'>69</pre>
-            </td>
-            <td class='context'>
-              <pre class='context'>        format.html { redirect_to [:admin,@box], :notice =&gt; 'Box was successfully updated.' }</pre>
-            </td>
-          </tr>
-          <tr class='context alt near_error'>
-            <td class='context_line'>
-              <pre class='context'>70</pre>
-            </td>
-            <td class='context'>
-              <pre class='context'>      else</pre>
-            </td>
-          </tr>
-          <tr class='context'>
-            <td class='context_line'>
-              <pre class='context'>71</pre>
-            </td>
-            <td class='context'>
-              <pre class='context'>        format.html { render :action =&gt; &quot;edit&quot; }</pre>
-            </td>
-          </tr>
-          <tr class='context alt'>
-            <td class='context_line'>
-              <pre class='context'>72</pre>
-            </td>
-            <td class='context'>
-              <pre class='context'>      end</pre>
-            </td>
-          </tr>
-          <tr class='context'>
-            <td class='context_line'>
-              <pre class='context'>73</pre>
-            </td>
-            <td class='context'>
-              <pre class='context'>    end</pre>
-            </td>
-          </tr>
-          <tr class='context alt'>
-            <td class='context_line'>
-              <pre class='context'>74</pre>
-            </td>
-            <td class='context'>
-              <pre class='context'>  end</pre>
-            </td>
-          </tr>
-</table></div></td>
-  </tr>
-  
-  <tr>
-    <td><span class='weak-confidence'>Weak</span></td>
-    <td>HomeController</td>
-    <td>results</td>
-    <td>Redirect</td>
-    <td><div class='warning_message' onClick="toggle('context5');toggle('message5');toggle('full_message5')" ><span id='message5' style='display:block' >Possible unprotected redirect near line 13: redirect_to((&quot;/casilla/&quot; + <span class="user_input">Box.select(&quot;id&quot;)</span>.where(&quot;state_...</span><span id='full_message5' style='display:none'>Possible unprotected redirect near line 13: redirect_to((&quot;/casilla/&quot; + <span class="user_input">Box.select(&quot;id&quot;)</span>.where(&quot;state_id = ? AND municipality_id =? AND number = ? AND active = ?&quot;, params[:state_id], params[:municipality_id], params[:numero_casilla], true).first.id.to_s))</span><table id='context5' class='context' style='display:none'><caption>/app/controllers/home_controller.rb</caption>        <tr class='context first'>
-          <td class='context_line'>
-            <pre class='context'>8</pre>
-          </td>
-          <td class='context'>
-            <pre class='context'>      @results = Box.select('id').where('state_id = ? AND municipality_id =? AND number = ? AND active = ?',params[:state_id],params[:municipality_id],params[:numero_casilla],true).first</pre>
-          </td>
-        </tr>
-          <tr class='context alt'>
             <td class='context_line'>
               <pre class='context'>9</pre>
             </td>
             <td class='context'>
-              <pre class='context'>      if @results == nil</pre>
+              <pre class='context'>    box = Box.find(params[:box_id])</pre>
             </td>
           </tr>
-          <tr class='context'>
-            <td class='context_line'>
-              <pre class='context'>10</pre>
-            </td>
-            <td class='context'>
-              <pre class='context'>        redirect_to '/search',:message =&gt; &quot;No se encontro la casilla&quot; #En caso de que no halla la casilla</pre>
-            </td>
-          </tr>
-          <tr class='context alt'>
+          <tr class='context alt error'>
             <td class='context_line'>
               <pre class='context'>11</pre>
             </td>
             <td class='context'>
-              <pre class='context'>        return false</pre>
+              <pre class='context'>    message = if box.send(params[:reason])</pre>
             </td>
           </tr>
           <tr class='context near_error'>
@@ -615,124 +268,12 @@ p {
               <pre class='context'>12</pre>
             </td>
             <td class='context'>
-              <pre class='context'>      else</pre>
+              <pre class='context'>      {notice: 'Reporte creado exitosamente.'}</pre>
             </td>
           </tr>
-          <tr class='context alt error'>
-            <td class='context_line'>
-              <pre class='context'>13</pre>
-            </td>
-            <td class='context'>
-              <pre class='context'>        redirect_to '/casilla/'+@results.id.to_s</pre>
-            </td>
-          </tr>
-          <tr class='context near_error'>
-            <td class='context_line'>
-              <pre class='context'>14</pre>
-            </td>
-            <td class='context'>
-              <pre class='context'>        return false</pre>
-            </td>
-          </tr>
-          <tr class='context alt'>
-            <td class='context_line'>
-              <pre class='context'>15</pre>
-            </td>
-            <td class='context'>
-              <pre class='context'>      end</pre>
-            </td>
-          </tr>
-          <tr class='context'>
-            <td class='context_line'>
-              <pre class='context'>16</pre>
-            </td>
-            <td class='context'>
-              <pre class='context'>    elsif params[:tipo_consulta]== 'estado'</pre>
-            </td>
-          </tr>
-          <tr class='context alt'>
-            <td class='context_line'>
-              <pre class='context'>17</pre>
-            </td>
-            <td class='context'>
-              <pre class='context'>      redirect_to '/estado/'+params[:state_id].to_s</pre>
-            </td>
-          </tr>
-          <tr class='context'>
-            <td class='context_line'>
-              <pre class='context'>18</pre>
-            </td>
-            <td class='context'>
-              <pre class='context'>      return false</pre>
-            </td>
-          </tr>
-</table></div></td>
-  </tr>
-  
-  <tr>
-    <td><span class='weak-confidence'>Weak</span></td>
-    <td>HomeController</td>
-    <td>results</td>
-    <td>Redirect</td>
-    <td><div class='warning_message' onClick="toggle('context6');toggle('message6');toggle('full_message6')" >Possible unprotected redirect near line 17: redirect_to((&quot;/estado/&quot; + <span class="user_input">params[:state_id].to_s</span>))<table id='context6' class='context' style='display:none'><caption>/app/controllers/home_controller.rb</caption>        <tr class='context first'>
-          <td class='context_line'>
-            <pre class='context'>12</pre>
-          </td>
-          <td class='context'>
-            <pre class='context'>      else</pre>
-          </td>
-        </tr>
           <tr class='context alt'>
             <td class='context_line'>
               <pre class='context'>13</pre>
-            </td>
-            <td class='context'>
-              <pre class='context'>        redirect_to '/casilla/'+@results.id.to_s</pre>
-            </td>
-          </tr>
-          <tr class='context'>
-            <td class='context_line'>
-              <pre class='context'>14</pre>
-            </td>
-            <td class='context'>
-              <pre class='context'>        return false</pre>
-            </td>
-          </tr>
-          <tr class='context alt'>
-            <td class='context_line'>
-              <pre class='context'>15</pre>
-            </td>
-            <td class='context'>
-              <pre class='context'>      end</pre>
-            </td>
-          </tr>
-          <tr class='context near_error'>
-            <td class='context_line'>
-              <pre class='context'>16</pre>
-            </td>
-            <td class='context'>
-              <pre class='context'>    elsif params[:tipo_consulta]== 'estado'</pre>
-            </td>
-          </tr>
-          <tr class='context alt error'>
-            <td class='context_line'>
-              <pre class='context'>17</pre>
-            </td>
-            <td class='context'>
-              <pre class='context'>      redirect_to '/estado/'+params[:state_id].to_s</pre>
-            </td>
-          </tr>
-          <tr class='context near_error'>
-            <td class='context_line'>
-              <pre class='context'>18</pre>
-            </td>
-            <td class='context'>
-              <pre class='context'>      return false</pre>
-            </td>
-          </tr>
-          <tr class='context alt'>
-            <td class='context_line'>
-              <pre class='context'>19</pre>
             </td>
             <td class='context'>
               <pre class='context'>    else</pre>
@@ -740,18 +281,98 @@ p {
           </tr>
           <tr class='context'>
             <td class='context_line'>
-              <pre class='context'>20</pre>
+              <pre class='context'>14</pre>
             </td>
             <td class='context'>
-              <pre class='context'>      redirect_to '/search', :notice=&gt;'No especificaste datos de busqueda'</pre>
+              <pre class='context'>      {error: 'Error al crear el reporte.'}</pre>
             </td>
           </tr>
           <tr class='context alt'>
             <td class='context_line'>
-              <pre class='context'>21</pre>
+              <pre class='context'>15</pre>
             </td>
             <td class='context'>
-              <pre class='context'>      return false</pre>
+              <pre class='context'>    end</pre>
+            </td>
+          </tr>
+          <tr class='context'>
+            <td class='context_line'>
+              <pre class='context'>16</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>    redirect_to :back, flash: message</pre>
+            </td>
+          </tr>
+</table></div></td>
+  </tr>
+  
+  <tr>
+    <td><span class='high-confidence'>High</span></td>
+    <td>Admin::TicketsController</td>
+    <td>create</td>
+    <td>Dangerous Send</td>
+    <td><div class='warning_message' onClick="toggle('context5');toggle('message5');toggle('full_message5')" >User controlled method execution near line 17: Box.find(params[:box_id]).send(<span class="user_input">params[:reason]</span>)<table id='context5' class='context' style='display:none'><caption>/app/controllers/admin/tickets_controller.rb</caption>        <tr class='context first'>
+          <td class='context_line'>
+            <pre class='context'>12</pre>
+          </td>
+          <td class='context'>
+            <pre class='context'>      {notice: 'Reporte creado exitosamente.'}</pre>
+          </td>
+        </tr>
+          <tr class='context alt'>
+            <td class='context_line'>
+              <pre class='context'>13</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>    else</pre>
+            </td>
+          </tr>
+          <tr class='context'>
+            <td class='context_line'>
+              <pre class='context'>14</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>      {error: 'Error al crear el reporte.'}</pre>
+            </td>
+          </tr>
+          <tr class='context alt'>
+            <td class='context_line'>
+              <pre class='context'>15</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>    end</pre>
+            </td>
+          </tr>
+          <tr class='context near_error'>
+            <td class='context_line'>
+              <pre class='context'>16</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>    redirect_to :back, flash: message</pre>
+            </td>
+          </tr>
+          <tr class='context alt error'>
+            <td class='context_line'>
+              <pre class='context'>17</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>  end</pre>
+            </td>
+          </tr>
+          <tr class='context'>
+            <td class='context_line'>
+              <pre class='context'>19</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>  def update</pre>
+            </td>
+          </tr>
+          <tr class='context alt'>
+            <td class='context_line'>
+              <pre class='context'>20</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>    @ticket = Ticket.find(params[:id])</pre>
             </td>
           </tr>
           <tr class='context'>
@@ -759,7 +380,295 @@ p {
               <pre class='context'>22</pre>
             </td>
             <td class='context'>
-              <pre class='context'>    end#end if params[:tipo_consulta].present?</pre>
+              <pre class='context'>    message = if @ticket.send(params[:next_state])</pre>
+            </td>
+          </tr>
+</table></div></td>
+  </tr>
+  
+  <tr>
+    <td><span class='high-confidence'>High</span></td>
+    <td>Admin::TicketsController</td>
+    <td>update</td>
+    <td>Dangerous Send</td>
+    <td><div class='warning_message' onClick="toggle('context6');toggle('message6');toggle('full_message6')" >User controlled method execution near line 22: Ticket.find(params[:id]).send(<span class="user_input">params[:next_state]</span>)<table id='context6' class='context' style='display:none'><caption>/app/controllers/admin/tickets_controller.rb</caption>        <tr class='context first'>
+          <td class='context_line'>
+            <pre class='context'>17</pre>
+          </td>
+          <td class='context'>
+            <pre class='context'>  end</pre>
+          </td>
+        </tr>
+          <tr class='context alt'>
+            <td class='context_line'>
+              <pre class='context'>19</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>  def update</pre>
+            </td>
+          </tr>
+          <tr class='context'>
+            <td class='context_line'>
+              <pre class='context'>20</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>    @ticket = Ticket.find(params[:id])</pre>
+            </td>
+          </tr>
+          <tr class='context alt error'>
+            <td class='context_line'>
+              <pre class='context'>22</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>    message = if @ticket.send(params[:next_state])</pre>
+            </td>
+          </tr>
+          <tr class='context near_error'>
+            <td class='context_line'>
+              <pre class='context'>23</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>                { :notice =&gt; 'El ticket fue actualizado correctamente.' }</pre>
+            </td>
+          </tr>
+          <tr class='context alt'>
+            <td class='context_line'>
+              <pre class='context'>24</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>              else</pre>
+            </td>
+          </tr>
+          <tr class='context'>
+            <td class='context_line'>
+              <pre class='context'>25</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>                { :error =&gt; 'Ocurrio un error al actualizar el ticket.' }</pre>
+            </td>
+          </tr>
+          <tr class='context alt'>
+            <td class='context_line'>
+              <pre class='context'>26</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>              end</pre>
+            </td>
+          </tr>
+</table></div></td>
+  </tr>
+  
+  <tr>
+    <td><span class='high-confidence'>High</span></td>
+    <td>Admin::TicketsController</td>
+    <td>update</td>
+    <td>Dangerous Send</td>
+    <td><div class='warning_message' onClick="toggle('context7');toggle('message7');toggle('full_message7')" >User controlled method execution near line 29: Ticket.find(params[:id]).send(<span class="user_input">params[:next_state]</span>)<table id='context7' class='context' style='display:none'><caption>/app/controllers/admin/tickets_controller.rb</caption>        <tr class='context first'>
+          <td class='context_line'>
+            <pre class='context'>24</pre>
+          </td>
+          <td class='context'>
+            <pre class='context'>              else</pre>
+          </td>
+        </tr>
+          <tr class='context alt'>
+            <td class='context_line'>
+              <pre class='context'>25</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>                { :error =&gt; 'Ocurrio un error al actualizar el ticket.' }</pre>
+            </td>
+          </tr>
+          <tr class='context'>
+            <td class='context_line'>
+              <pre class='context'>26</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>              end</pre>
+            </td>
+          </tr>
+          <tr class='context alt near_error'>
+            <td class='context_line'>
+              <pre class='context'>28</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>    redirect_to admin_tickets_url, flash: message</pre>
+            </td>
+          </tr>
+          <tr class='context error'>
+            <td class='context_line'>
+              <pre class='context'>29</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>  end</pre>
+            </td>
+          </tr>
+          <tr class='context alt'>
+            <td class='context_line'>
+              <pre class='context'>31</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>  def destroy</pre>
+            </td>
+          </tr>
+          <tr class='context'>
+            <td class='context_line'>
+              <pre class='context'>32</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>    @ticket = Ticket.find(params[:id])</pre>
+            </td>
+          </tr>
+          <tr class='context alt'>
+            <td class='context_line'>
+              <pre class='context'>33</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>    @ticket.destroy</pre>
+            </td>
+          </tr>
+</table></div></td>
+  </tr>
+  
+  <tr>
+    <td><span class='high-confidence'>High</span></td>
+    <td>TicketsController</td>
+    <td>create</td>
+    <td>Dangerous Send</td>
+    <td><div class='warning_message' onClick="toggle('context8');toggle('message8');toggle('full_message8')" >User controlled method execution near line 5: Box.find(params[:casilla_id]).send(<span class="user_input">params[:reason]</span>)<table id='context8' class='context' style='display:none'><caption>/app/controllers/tickets_controller.rb</caption>        <tr class='context first'>
+          <td class='context_line'>
+            <pre class='context'>1</pre>
+          </td>
+          <td class='context'>
+            <pre class='context'>class TicketsController &lt; ApplicationController</pre>
+          </td>
+        </tr>
+          <tr class='context alt'>
+            <td class='context_line'>
+              <pre class='context'>3</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>  def create</pre>
+            </td>
+          </tr>
+          <tr class='context near_error'>
+            <td class='context_line'>
+              <pre class='context'>4</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>    box = Box.find(params[:casilla_id])</pre>
+            </td>
+          </tr>
+          <tr class='context alt error'>
+            <td class='context_line'>
+              <pre class='context'>5</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>    message = if box.send(params[:reason])</pre>
+            </td>
+          </tr>
+          <tr class='context near_error'>
+            <td class='context_line'>
+              <pre class='context'>6</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>      box.result.reporting! if box.result.can_reporting?</pre>
+            </td>
+          </tr>
+          <tr class='context alt'>
+            <td class='context_line'>
+              <pre class='context'>7</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>      {notice: 'Reporte creado exitosamente.'}</pre>
+            </td>
+          </tr>
+          <tr class='context'>
+            <td class='context_line'>
+              <pre class='context'>8</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>    else</pre>
+            </td>
+          </tr>
+          <tr class='context alt'>
+            <td class='context_line'>
+              <pre class='context'>9</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>      {error: 'Error al crear el reporte.'}</pre>
+            </td>
+          </tr>
+          <tr class='context'>
+            <td class='context_line'>
+              <pre class='context'>10</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>    end</pre>
+            </td>
+          </tr>
+</table></div></td>
+  </tr>
+  
+  <tr>
+    <td><span class='high-confidence'>High</span></td>
+    <td>TicketsController</td>
+    <td>create</td>
+    <td>Dangerous Send</td>
+    <td><div class='warning_message' onClick="toggle('context9');toggle('message9');toggle('full_message9')" >User controlled method execution near line 12: Box.find(params[:casilla_id]).send(<span class="user_input">params[:reason]</span>)<table id='context9' class='context' style='display:none'><caption>/app/controllers/tickets_controller.rb</caption>        <tr class='context first'>
+          <td class='context_line'>
+            <pre class='context'>7</pre>
+          </td>
+          <td class='context'>
+            <pre class='context'>      {notice: 'Reporte creado exitosamente.'}</pre>
+          </td>
+        </tr>
+          <tr class='context alt'>
+            <td class='context_line'>
+              <pre class='context'>8</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>    else</pre>
+            </td>
+          </tr>
+          <tr class='context'>
+            <td class='context_line'>
+              <pre class='context'>9</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>      {error: 'Error al crear el reporte.'}</pre>
+            </td>
+          </tr>
+          <tr class='context alt'>
+            <td class='context_line'>
+              <pre class='context'>10</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>    end</pre>
+            </td>
+          </tr>
+          <tr class='context near_error'>
+            <td class='context_line'>
+              <pre class='context'>11</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>    redirect_to casilla_url(box), flash: message</pre>
+            </td>
+          </tr>
+          <tr class='context alt error'>
+            <td class='context_line'>
+              <pre class='context'>12</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>  end</pre>
+            </td>
+          </tr>
+          <tr class='context near_error'>
+            <td class='context_line'>
+              <pre class='context'>13</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>end</pre>
             </td>
           </tr>
 </table></div></td>
@@ -767,95 +676,247 @@ p {
   
   <tr>
     <td><span class='weak-confidence'>Weak</span></td>
-    <td>HomeController</td>
-    <td>save_results</td>
+    <td>Admin::AdminsController</td>
+    <td>create</td>
     <td>Redirect</td>
-    <td><div class='warning_message' onClick="toggle('context7');toggle('message7');toggle('full_message7')" ><span id='message7' style='display:block' >Possible unprotected redirect near line 47: redirect_to((&quot;/casilla/&quot; + <span class="user_input">Box.new(params[:box])</span>.id.to_s)...</span><span id='full_message7' style='display:none'>Possible unprotected redirect near line 47: redirect_to((&quot;/casilla/&quot; + <span class="user_input">Box.new(params[:box])</span>.id.to_s), :notice =&gt; &quot;La casilla fue correctamente capturada.&quot;)</span><table id='context7' class='context' style='display:none'><caption>/app/controllers/home_controller.rb</caption>        <tr class='context first'>
+    <td><div class='warning_message' onClick="toggle('context1');toggle('message1');toggle('full_message1')" ><span id='message1' style='display:block' >Possible unprotected redirect near line 49: redirect_to([:admin, <span class="user_input">Admin.new(params[:admin])</span>], :notice ...</span><span id='full_message1' style='display:none'>Possible unprotected redirect near line 49: redirect_to([:admin, <span class="user_input">Admin.new(params[:admin])</span>], :notice =&gt; &quot;admin was successfully created.&quot;)</span><table id='context1' class='context' style='display:none'><caption>/app/controllers/admin/admins_controller.rb</caption>        <tr class='context first'>
           <td class='context_line'>
-            <pre class='context'>42</pre>
+            <pre class='context'>44</pre>
           </td>
           <td class='context'>
-            <pre class='context'>    if simple_captcha_valid?</pre>
+            <pre class='context'>  def create</pre>
           </td>
         </tr>
-          <tr class='context alt'>
-            <td class='context_line'>
-              <pre class='context'>43</pre>
-            </td>
-            <td class='context'>
-              <pre class='context'>      params[:box][:active] = true</pre>
-            </td>
-          </tr>
-          <tr class='context'>
-            <td class='context_line'>
-              <pre class='context'>44</pre>
-            </td>
-            <td class='context'>
-              <pre class='context'>      @box = Box.new(params[:box])</pre>
-            </td>
-          </tr>
           <tr class='context alt'>
             <td class='context_line'>
               <pre class='context'>45</pre>
             </td>
             <td class='context'>
-              <pre class='context'>      respond_to do |format|</pre>
+              <pre class='context'>    @admin = Admin.new(params[:admin])</pre>
             </td>
           </tr>
-          <tr class='context near_error'>
-            <td class='context_line'>
-              <pre class='context'>46</pre>
-            </td>
-            <td class='context'>
-              <pre class='context'>        if @box.save</pre>
-            </td>
-          </tr>
-          <tr class='context alt error'>
+          <tr class='context'>
             <td class='context_line'>
               <pre class='context'>47</pre>
             </td>
             <td class='context'>
-              <pre class='context'>          format.html { redirect_to '/casilla/'+@box.id.to_s, :notice =&gt; 'La casilla fue correctamente capturada.' }</pre>
+              <pre class='context'>    respond_to do |format|</pre>
             </td>
           </tr>
-          <tr class='context near_error'>
+          <tr class='context alt near_error'>
             <td class='context_line'>
               <pre class='context'>48</pre>
             </td>
             <td class='context'>
-              <pre class='context'>        else</pre>
+              <pre class='context'>      if @admin.save</pre>
             </td>
           </tr>
-          <tr class='context alt'>
+          <tr class='context error'>
             <td class='context_line'>
               <pre class='context'>49</pre>
             </td>
             <td class='context'>
-              <pre class='context'>            format.html { render :action =&gt; &quot;enviar&quot; }</pre>
+              <pre class='context'>        format.html { redirect_to [:admin,@admin], :notice =&gt; 'admin was successfully created.' }</pre>
             </td>
           </tr>
-          <tr class='context'>
+          <tr class='context alt near_error'>
             <td class='context_line'>
               <pre class='context'>50</pre>
             </td>
             <td class='context'>
-              <pre class='context'>        end#end if @box.save</pre>
-            </td>
-          </tr>
-          <tr class='context alt'>
-            <td class='context_line'>
-              <pre class='context'>51</pre>
-            </td>
-            <td class='context'>
-              <pre class='context'>      end#end respond_to do |format|</pre>
+              <pre class='context'>        #format.json { render :json =&gt; @admin, :status =&gt; :created, :location =&gt; @admin }</pre>
             </td>
           </tr>
           <tr class='context'>
             <td class='context_line'>
+              <pre class='context'>51</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>      else</pre>
+            </td>
+          </tr>
+          <tr class='context alt'>
+            <td class='context_line'>
               <pre class='context'>52</pre>
             </td>
             <td class='context'>
+              <pre class='context'>        format.html { render :action =&gt; &quot;new&quot; }</pre>
+            </td>
+          </tr>
+          <tr class='context'>
+            <td class='context_line'>
+              <pre class='context'>53</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>        #format.json { render :json =&gt; @admin.errors, :status =&gt; :unprocessable_entity }</pre>
+            </td>
+          </tr>
+          <tr class='context alt'>
+            <td class='context_line'>
+              <pre class='context'>54</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>      end</pre>
+            </td>
+          </tr>
+</table></div></td>
+  </tr>
+  
+  <tr>
+    <td><span class='weak-confidence'>Weak</span></td>
+    <td>Admin::AdminsController</td>
+    <td>update</td>
+    <td>Redirect</td>
+    <td><div class='warning_message' onClick="toggle('context2');toggle('message2');toggle('full_message2')" ><span id='message2' style='display:block' >Possible unprotected redirect near line 65: redirect_to([:admin, <span class="user_input">Admin.find(params[:id])</span>], :notice =&gt;...</span><span id='full_message2' style='display:none'>Possible unprotected redirect near line 65: redirect_to([:admin, <span class="user_input">Admin.find(params[:id])</span>], :notice =&gt; &quot;admin was successfully updated.&quot;)</span><table id='context2' class='context' style='display:none'><caption>/app/controllers/admin/admins_controller.rb</caption>        <tr class='context first'>
+          <td class='context_line'>
+            <pre class='context'>60</pre>
+          </td>
+          <td class='context'>
+            <pre class='context'>  def update</pre>
+          </td>
+        </tr>
+          <tr class='context alt'>
+            <td class='context_line'>
+              <pre class='context'>61</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>    @admin = Admin.find(params[:id])</pre>
+            </td>
+          </tr>
+          <tr class='context'>
+            <td class='context_line'>
+              <pre class='context'>63</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>    respond_to do |format|</pre>
+            </td>
+          </tr>
+          <tr class='context alt near_error'>
+            <td class='context_line'>
+              <pre class='context'>64</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>      if @admin.update_attributes(params[:admin])</pre>
+            </td>
+          </tr>
+          <tr class='context error'>
+            <td class='context_line'>
+              <pre class='context'>65</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>        format.html { redirect_to [:admin,@admin], :notice =&gt; 'admin was successfully updated.' }</pre>
+            </td>
+          </tr>
+          <tr class='context alt near_error'>
+            <td class='context_line'>
+              <pre class='context'>66</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>        #format.json { head :no_content }</pre>
+            </td>
+          </tr>
+          <tr class='context'>
+            <td class='context_line'>
+              <pre class='context'>67</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>      else</pre>
+            </td>
+          </tr>
+          <tr class='context alt'>
+            <td class='context_line'>
+              <pre class='context'>68</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>        format.html { render :action =&gt; &quot;edit&quot; }</pre>
+            </td>
+          </tr>
+          <tr class='context'>
+            <td class='context_line'>
+              <pre class='context'>69</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>        #format.json { render :json =&gt; @admin.errors, :status =&gt; :unprocessable_entity }</pre>
+            </td>
+          </tr>
+          <tr class='context alt'>
+            <td class='context_line'>
+              <pre class='context'>70</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>      end</pre>
+            </td>
+          </tr>
+</table></div></td>
+  </tr>
+  
+  <tr>
+    <td><span class='weak-confidence'>Weak</span></td>
+    <td>Admin::BoxesController</td>
+    <td>update</td>
+    <td>Redirect</td>
+    <td><div class='warning_message' onClick="toggle('context3');toggle('message3');toggle('full_message3')" ><span id='message3' style='display:block' >Possible unprotected redirect near line 44: redirect_to([:admin, <span class="user_input">Box.find(params[:id])</span>], :notice =&gt; &quot;...</span><span id='full_message3' style='display:none'>Possible unprotected redirect near line 44: redirect_to([:admin, <span class="user_input">Box.find(params[:id])</span>], :notice =&gt; &quot;Box was successfully updated.&quot;)</span><table id='context3' class='context' style='display:none'><caption>/app/controllers/admin/boxes_controller.rb</caption>        <tr class='context first'>
+          <td class='context_line'>
+            <pre class='context'>40</pre>
+          </td>
+          <td class='context'>
+            <pre class='context'>  def update</pre>
+          </td>
+        </tr>
+          <tr class='context alt'>
+            <td class='context_line'>
+              <pre class='context'>41</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>    @box = Box.find(params[:id])</pre>
+            </td>
+          </tr>
+          <tr class='context near_error'>
+            <td class='context_line'>
+              <pre class='context'>43</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>    if @box.update_attributes(params[:box])</pre>
+            </td>
+          </tr>
+          <tr class='context alt error'>
+            <td class='context_line'>
+              <pre class='context'>44</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>      redirect_to [:admin,@box], :notice =&gt; 'Box was successfully updated.'</pre>
+            </td>
+          </tr>
+          <tr class='context near_error'>
+            <td class='context_line'>
+              <pre class='context'>45</pre>
+            </td>
+            <td class='context'>
               <pre class='context'>    else</pre>
+            </td>
+          </tr>
+          <tr class='context alt'>
+            <td class='context_line'>
+              <pre class='context'>46</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>      render :action =&gt; &quot;edit&quot;</pre>
+            </td>
+          </tr>
+          <tr class='context'>
+            <td class='context_line'>
+              <pre class='context'>47</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>    end</pre>
+            </td>
+          </tr>
+          <tr class='context alt'>
+            <td class='context_line'>
+              <pre class='context'>48</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>  end</pre>
             </td>
           </tr>
 </table></div></td>
@@ -875,7 +936,7 @@ p {
     <td><span class='med-confidence'>Medium</span></td>
     <td>admin/boxes/edit (Admin::BoxesController#edit)</td>
     <td>Cross Site Scripting</td>
-    <td><div class='warning_message' onClick="toggle('context8');toggle('message8');toggle('full_message8')" >Unsafe model attribute in link_to href near line 5: link_to(&quot;Show&quot;, [:admin, <span class="user_input">Box.find(params[:id])</span>])<table id='context8' class='context' style='display:none'><caption>/app/views/admin/boxes/edit.html.haml</caption>        <tr class='context first'>
+    <td><div class='warning_message' onClick="toggle('context10');toggle('message10');toggle('full_message10')" ><span id='message10' style='display:block' >Unsafe model attribute in link_to href near line 5: link_to(&quot;Show&quot;, [:admin, CasillaPresenter.new(Box...</span><span id='full_message10' style='display:none'>Unsafe model attribute in link_to href near line 5: link_to(&quot;Show&quot;, [:admin, CasillaPresenter.new(<span class="user_input">Box.find(params[:id])</span>)])</span><table id='context10' class='context' style='display:none'><caption>/app/views/admin/boxes/edit.html.haml</caption>        <tr class='context first'>
           <td class='context_line'>
             <pre class='context'>1</pre>
           </td>

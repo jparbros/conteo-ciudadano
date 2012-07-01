@@ -1,0 +1,6 @@
+.row-fluid
+  .span12
+    #resultados-container
+
+- content_for :scripts do
+  = high_chart("resultados-container", Highchart.results_percentage)

@@ -81,11 +81,14 @@
           = link_to image_tag('/assets/twitter_64.png'), '/auth/twitter'
           = link_to image_tag('/assets/facebook_64.png'), '/auth/facebook'
 
+
 %script{ src: 'https://maps.google.com/maps/api/js?sensor=true&key=AIzaSyBJAXhLpxM-_qcJVWzVL03m-Y1b2b8Hpps&libraries=geometry', type: 'text/javascript'}
+
 = javascript_include_tag "application"
+= javascript_include_tag :highcharts
 %script{type: 'text/javascript'}
   = yield :javascripts
-  = yield :scripts
+= yield :scripts
 
 #fb-root
 %script{src: ' https://connect.facebook.net/es_LA/all.js#xfbml=1&appId=194392060651235', type: 'text/javascript'}
