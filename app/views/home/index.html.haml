@@ -2,3 +2,30 @@
   = render partial: 'charts'
 - else
   = render partial: 'explain'
+
+#exit-poll.modal.hide
+  .modal-header
+    %h2
+      Encuesta de salida
+
+  .modal-body
+    .row-fluid
+      .span12
+        %p
+          Si ya acudiste a votar participa en la encuesta de salida de Conteo Ciudadano.
+        = render partial: (user_signed_in? ? 'exit_poll' : 'ingresar')
+
+        .alert
+          El voto en ningun momento sera ligado a la cuenta, simplemente es para controlar que se voto una vez. Este es un ejercicio con los usuarios de Conteo Ciudadano y no tiene valides estadístico.
+  .modal-footer
+    = link_to 'Cerrar', '', 'data-dismiss' => 'modal', class: 'btn primary'
+    = link_to 'No deseo participar', '', class: 'btn btn-danger'
+
+- unless cookies['conteo_ciudadano_exit_poll']
+  - content_for :javascripts do
+    $('#exit-poll').modal('show')
+
+    $('.modal-footer .btn-danger').click(function(){
+    $.cookie('conteo_ciudadano_exit_poll','true');
+    $('#exit-poll').modal('hide');
+    });

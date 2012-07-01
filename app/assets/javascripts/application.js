@@ -18,6 +18,7 @@
 //= require google_maps
 //= require boxes
 //= require home
+//= require jquery.cookie
 
 $(document).ready(function() {
   $('#login-modal').modal({

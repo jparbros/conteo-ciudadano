@@ -1,0 +1,43 @@
+.row-fluid
+  .span12
+    = form_tag exit_polls_path, method: :post, class: 'form-horizontal' do
+      .control-group
+        %label.control-label
+          Josefina Vazquez Mota
+        .controls
+          = radio_button_tag 'exit_poll_result','jvm'
+
+      .control-group
+        %label.control-label
+          Enrique Peña Nieto
+        .controls
+          = radio_button_tag 'exit_poll_result','epn'
+
+      .control-group
+        %label.control-label
+          Andres Manuel Lopez Obrador
+        .controls
+          = radio_button_tag 'exit_poll_result','amlo'
+
+      .control-group
+        %label.control-label
+          Gabriel Quadri
+        .controls
+          = radio_button_tag 'exit_poll_result','gqt'
+
+      .control-group
+        %label.control-label
+          Candidato No Registrado
+        .controls
+          = radio_button_tag 'exit_poll_result','others'
+
+      .control-group
+        %label.control-label
+          Nulo
+        .controls
+          = radio_button_tag 'exit_poll_result','null'
+
+      .control-group
+        %label.control-label
+        .controls
+          = submit_tag 'Enviar', class: ['btn','btn-primary']

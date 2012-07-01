@@ -39,6 +39,15 @@ class User < ActiveRecord::Base
     @twitter_user
   end
 
+  def can_vote?
+    !vote
+  end
+
+  def voted!
+    self.vote = true
+    save
+  end
+
   protected
 
   def apply_facebook(omniauth)

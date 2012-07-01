@@ -14,6 +14,7 @@ Conteo::Application.routes.draw do
 
   match '/casillas/:estado/:section', to: 'buscar_casillas#show', as: 'buscar_casillas_show'
 
+  resources :exit_polls, only: :create
   resources :casillas, only: [:show, :update] do
     resources :tickets, only: [:create], path: '/tickets/new'
   end

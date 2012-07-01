@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120701143530) do
+ActiveRecord::Schema.define(:version => 20120701195141) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -86,6 +86,17 @@ ActiveRecord::Schema.define(:version => 20120701143530) do
     t.text     "comment"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
+  end
+
+  create_table "exit_polls", :force => true do |t|
+    t.boolean  "jvm"
+    t.boolean  "epn"
+    t.boolean  "amlo"
+    t.boolean  "gqt"
+    t.boolean  "null"
+    t.boolean  "other"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "historical_results", :force => true do |t|
@@ -174,6 +185,7 @@ ActiveRecord::Schema.define(:version => 20120701143530) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
+    t.boolean  "vote"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email"

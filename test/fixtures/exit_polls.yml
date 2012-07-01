@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  jvm: false
+  epn: false
+  amlo: false
+  gqt: false
+  null: false
+  other: false
+
+two:
+  jvm: false
+  epn: false
+  amlo: false
+  gqt: false
+  null: false
+  other: false

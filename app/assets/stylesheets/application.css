@@ -122,9 +122,13 @@ body > .container-fluid {
 
 dl {color: #545454;}
 
-#login-modal p {
+#login-modal p, #exit-poll p {
   font-size: 16px;
   text-align: center;
+}
+
+#exit-poll h2 {
+  margin-bottom: 10px;
 }
 
 #busqueda-casilla {
