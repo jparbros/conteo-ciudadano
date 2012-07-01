@@ -36,4 +36,5 @@ Conteo::Application.routes.draw do
   end
 
   mount Resque::Server.new, :at => "/resque"
+  match '/images/logo-desktop.png' => redirect('/assets/main-img.png')
 end
