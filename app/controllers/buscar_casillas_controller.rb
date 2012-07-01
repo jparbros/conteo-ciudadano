@@ -1,10 +1,11 @@
 class BuscarCasillasController < ApplicationController
 
   def show
-    @estado = State.find_by_name(params[:estado].capitalize)
-    puts @estado
-    casillas = Box.find_boxes(@estado.id, params[:section])
-    @casillas = CasillasPresenter.new(casillas, current_user)
+    @estado = State.find_by_name(state_parsed)
+    if @estado
+      casillas = Box.find_boxes(@estado.id, params[:section])
+      @casillas = CasillasPresenter.new(casillas, current_user)
+    end
     redirect_to :new unless @estado || @casillas
   end
 
@@ -17,5 +18,9 @@ class BuscarCasillasController < ApplicationController
 
   def section
     @section = params[:section].present? ? params[:section] : 'especiales'
+  end
+
+  def state_parsed
+    params[:estado].capitalize.gsub('+',' ').gsub('_',' ').gsub('-',' ')
   end
 end
