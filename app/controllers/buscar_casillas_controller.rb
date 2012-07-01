@@ -1,7 +1,7 @@
 class BuscarCasillasController < ApplicationController
 
   def show
-    @estado = State.find_by_name params[:estado].capitalize
+    @estado = State.find_by_name(params[:estado]).try(:capitalize)
     casillas = Box.find_boxes(@estado.id, params[:section])
     @casillas = CasillasPresenter.new(casillas, current_user)
     redirect_to :new unless @estado || @casillas
