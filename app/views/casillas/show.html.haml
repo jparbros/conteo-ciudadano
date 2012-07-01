@@ -1,3 +1,9 @@
+- unless user_signed_in?
+  .row-fluid
+    .alert.span12
+      Para poder ingresar informaci&oacute;n a las casillas es necesario logearse al sitio. Puede hacerlo
+      = link_to('aqui','#login-modal','data-toggle' => "modal")
+
 %h1
   Detalles de la Casilla
 
