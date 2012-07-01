@@ -65,7 +65,7 @@ class Box < ActiveRecord::Base
       klass = klass.where(param.first.to_s => param.last) if column_names.include? param.first.to_s
       if param.first.to_s == 'state'
         klass = klass.includes(:state)
-        klass = klass.where('state.name' => param.last )
+        klass = klass.where(["state = ? and variants @@ ?", param.last.capitalize, param.last.capitalize])
       end
     end
     klass

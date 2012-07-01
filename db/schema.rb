@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120630100842) do
+ActiveRecord::Schema.define(:version => 20120701143530) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -146,6 +146,7 @@ ActiveRecord::Schema.define(:version => 20120630100842) do
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.text     "variants"
   end
 
   add_index "states", ["name"], :name => "index_states_on_name"
