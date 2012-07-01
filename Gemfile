@@ -17,8 +17,8 @@ group :production do
   gem 'pg'
   gem 'fog'
   gem 'unicorn'
-  gem "airbrake"
 end
+
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -26,6 +26,7 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+gem "airbrake"
 gem 'newrelic_rpm'
 gem 'jquery-rails'
 gem 'devise'

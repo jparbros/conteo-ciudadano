@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120701195141) do
+ActiveRecord::Schema.define(:version => 20120701224511) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -99,6 +99,13 @@ ActiveRecord::Schema.define(:version => 20120701195141) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "external_urls", :force => true do |t|
+    t.integer  "box_id"
+    t.string   "url"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "historical_results", :force => true do |t|
     t.integer  "jvm"
     t.integer  "epn"
@@ -170,6 +177,19 @@ ActiveRecord::Schema.define(:version => 20120701195141) do
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
     t.integer  "admin_id"
+  end
+
+  create_table "tuit_scaneds", :force => true do |t|
+    t.string   "twitter_id"
+    t.boolean  "created"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "twitter_ids", :force => true do |t|
+    t.string   "last_twitter_id"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
   create_table "users", :force => true do |t|
