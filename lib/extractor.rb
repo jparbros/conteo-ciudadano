@@ -41,7 +41,9 @@ class Extractor
   end
 
   def self.search
-    @result ||= Twitter.search('#voto2012', result_type: 'recent', rpp: 100, include_entities: true, since_id: TwitterId.last.try(:last_twitter_id)).results
+    last_id = TwitterId.last.try(:last_twitter_id)
+    @result ||= Twitter.search('#voto2012', result_type: 'recent', rpp: 100, include_entities: true, since_id: last_id).results
+    @result.sort!{|x,y| y[:id] <=> x[:id] }
     TwitterId.create(last_twitter_id: @result.last[:id])
   end
 
