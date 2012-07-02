@@ -102,4 +102,9 @@ class Box < ActiveRecord::Base
     self.result.present? && (self.result.new? || self.result.ready_to_revision?)
   end
 
+  def verified?
+    result.try(:verified?)
+
+  end
+
 end

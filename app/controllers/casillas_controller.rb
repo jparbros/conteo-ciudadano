@@ -22,7 +22,7 @@ class CasillasController < ApplicationController
     Box::NO_EDITABLE_FIELDS.each do |no_editable_field|
       params[:box].delete(no_editable_field)
     end
-    params[:box].delete(:result_attributes) unless current_user && @casilla.has_results?
+    params[:box].delete(:result_attributes) unless current_user && !@casilla.verified?
     params[:box]
   end
 end
