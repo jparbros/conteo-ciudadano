@@ -60,7 +60,7 @@ class Extractor
         if state
           boxes = Box.where(state_id: state.id, section: parsed[4])
 
-          if parsed[5].size > 1
+          if parsed[5].size > 1 && parsed[5].first != 'B'
             box = boxes.where(kind: KINDS[parsed[5].first.upcase], number: parsed[5].last ).first
           else
             box = boxes.where(kind: KINDS[parsed[5].first.upcase]).first
@@ -70,7 +70,7 @@ class Extractor
 
           result.media.each do |media|
             result_image = box.result_images.new
-            result_image.blanket = media.media_url
+            result_image.remote_blanket_url = media.media_url
             result_image.save!
           end
 
