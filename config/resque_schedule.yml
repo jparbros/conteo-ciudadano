@@ -1,8 +1,9 @@
-# HistoricalResults:
-#   every: 5m
-#   queue: HistoricalResults
-#   class: HistoricalResultsJob
-#   description: This job get the results every 5 minutes
+HistoricalResults:
+  every: 5m
+  queue: HistoricalResults
+  class: HistoricalResultsJob
+  description: This job get the results every 5 minutes
+
 ExtractTuits:
   every: 1m
   queue: ExtractTuits
