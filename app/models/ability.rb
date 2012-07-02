@@ -7,7 +7,7 @@ class Ability
     elsif user.role == 'admin'
       can :manage, [Box,Admin,Ticket,Result]
     elsif user.role == 'manager'
-      can :manage, [Box,Ticket,Result]
+      can :manage, [Ticket,Result]
     elsif user.role == 'observer'
        can :read, [Box]
     end
