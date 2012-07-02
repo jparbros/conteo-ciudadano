@@ -53,7 +53,7 @@ class Extractor
   def self.parse_tuit
     @result.each do |result|
       parsed = result[:text].match /([a-zA-Z]+)-([a-zA-Z]+)-([0-9]+)-([0-9]+)-([a-zA-Z]+)/
-      if parsed && !TuitScaned.exists?(twitter_id: result[:id])
+      if parsed && !TuitScaned.exists?(twitter_id: result[:id].to_s)
         tuit_scaned = TuitScaned.create(twitter_id: result[:id])
         state = State.find_by_name(STATES[parsed[1]])
 
