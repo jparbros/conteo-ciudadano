@@ -51,7 +51,7 @@ class Extractor
       parsed = result[:text].match /([a-zA-Z]+)-([a-zA-Z]+)-([0-9]+)-([0-9]+)-([a-zA-Z]+)/
       if parsed
         begin
-          tuit_scaned = TuitScaned.create(result[:id])
+          tuit_scaned = TuitScaned.create(twitter_id: result[:id])
           state = State.find_by_name(STATES[parsed[1]])
 
           if state
