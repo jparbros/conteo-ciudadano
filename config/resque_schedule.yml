@@ -5,7 +5,7 @@ HistoricalResults:
   description: This job get the results every 5 minutes
 
 ExtractTuits:
-  every: 1m
+  every: 5m
   queue: ExtractTuits
   class: ExtractTuitsJob
   description: This job get the results every 5 minutes

@@ -39,6 +39,7 @@
           %th Estado
           %th Sección
           %th Tipo
+          %th Captura
           %th Acciones
       %tbody
         -@boxes.each do |box|
@@ -47,6 +48,7 @@
             %td= box.state_name
             %td= box.section
             %td= box.kind
+            %td= box.result.captured? ? 'Si' : 'No'
             %td
               %ul
                 %li

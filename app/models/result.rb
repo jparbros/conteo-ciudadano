@@ -57,4 +57,8 @@ class Result < ActiveRecord::Base
       pt_mc: result.pt_mc
     }
   end
+
+  def captured?
+    pan > 0 && pri > 0 && prd > 0
+  end
 end

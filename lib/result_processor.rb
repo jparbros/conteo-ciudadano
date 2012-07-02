@@ -94,7 +94,7 @@ module ResultProcessor
   end
 
   def jvm_percentage
-    ((jvm*100)/totals.to_f).round(2)
+    ((jvm*100)/totals.to_f).round(2) || 0
   end
 
   def epn_percentage

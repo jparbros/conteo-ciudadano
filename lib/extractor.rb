@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class Extractor
 
   STATES = {
@@ -35,6 +36,8 @@ class Extractor
     "ZAC" => "Zacatecas"
   }
 
+  KINDS = {'B' => 'Básica', 'C' => 'Contigua', 'E' => 'Especial', 'EX' => 'Extraordinaria'}
+
   def self.extract_tuits
     search
     parse_tuit
@@ -49,32 +52,35 @@ class Extractor
 
   def self.parse_tuit
     @result.each do |result|
-
       parsed = result[:text].match /([a-zA-Z]+)-([a-zA-Z]+)-([0-9]+)-([0-9]+)-([a-zA-Z]+)/
-      if parsed
-        begin
-          tuit_scaned = TuitScaned.create(twitter_id: result[:id])
-          state = State.find_by_name(STATES[parsed[1]])
+      if parsed && !TuitScaned.exists?(twitter_id: result[:id])
+        tuit_scaned = TuitScaned.create(twitter_id: result[:id])
+        state = State.find_by_name(STATES[parsed[1]])
 
-          if state
-            box = Box.find_boxes(state.id, parsed[4])
-            result[:entities][:media].each do |media|
-              result_image = box.result_images.new
-              result_image.blanket = media[:media_url]
-              result_image.save!
-            end
+        if state
+          boxes = Box.where(state_id: state.id, section: parsed[4])
 
-            result[:entities][:urls].each do |url|
-              external_url = box.external_urls.new
-              external_url.url = url[:display_url]
-              external_url.save!
-            end
+          if parsed[5].size > 1
+            box = boxes.where(kind: KINDS[parsed[5].first.upcase], number: parsed[5].last ).first
+          else
+            box = boxes.where(kind: KINDS[parsed[5].first.upcase]).first
           end
 
-          tuit_scaned.create!
-        rescue Exception => e
-          Airbrake.notify(e)
+          puts box
+
+          result.media.each do |media|
+            result_image = box.result_images.new
+            result_image.blanket = media.media_url
+            result_image.save!
+          end
+
+          result.urls.each do |url|
+            external_url = box.external_urls.new
+            external_url.url = url.display_url
+            external_url.save!
+          end
         end
+        tuit_scaned.create!
       end
     end
   end
