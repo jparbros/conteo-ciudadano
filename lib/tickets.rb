@@ -46,6 +46,10 @@ module Tickets
     create_twitter('La casilla se reporto como no instalada.')
   end
 
+  def photo_illegible
+    create_twitter('La fotografía es ilegible.')
+  end
+
   def get_map_tickets
     tickets.where(issue: 'Google Maps no funciona.')
   end

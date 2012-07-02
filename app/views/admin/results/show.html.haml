@@ -161,6 +161,9 @@
                 = link_to 'Sobrevotación', admin_tickets_path(box_id: @casilla.id, reason: 'overvoting'), method: :post, data: {confirm: '¿Seguro desea reportar la casilla como "Sobrevotación"?'}
               %li
                 = link_to 'Casilla no instalada', admin_tickets_path(box_id: @casilla.id, reason: 'box_not_installed'), method: :post, data: {confirm: '¿Seguro desea reportar la casilla como "Casilla no instalada"?'}
+              %li
+                = link_to 'Ilegible', admin_tickets_path(box_id: @casilla.id, reason: 'photo_illegible'), method: :post, data: {confirm: '¿Seguro desea reportar la casilla como "Ilegible"?'}
+
 
           %i{class: 'icon-question-sign', id: 'popover-tickets'}
   .span6.well
