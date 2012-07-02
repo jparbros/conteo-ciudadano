@@ -120,6 +120,6 @@ module ResultProcessor
   private
   def where_last_id
     @last_id ||= Result.last.id
-    @result ||= Result.where('id <= ?', @last_id)
+    @result ||= Result.where('state = ? AND id <= ?', 'verified', @last_id)
   end
 end
