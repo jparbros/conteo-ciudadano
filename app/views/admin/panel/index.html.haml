@@ -32,6 +32,16 @@
     %h2
       Casillas a verificar
 
+    .row-fluid
+      .alert.alert-info.span6
+        Casillas verificadas: #{@verified}
+      .alert.alert-error.span6
+        Casillas rechazadas: #{@rejected}
+
+    .row-fluid
+      .alert.span12
+        Casillas por verificar #{@total}
+
     %table.table.table-striped.table-bordered.table-condensed
       %thead
         %tr
@@ -57,5 +67,3 @@
                   = link_to 'Editar', edit_admin_box_path(box)
                 %li
                   = link_to 'Resultados', admin_box_results_path(box)
-    %p
-      = "Falta por verificar #{@total}"

@@ -179,7 +179,15 @@
         .span12.foto-details{id: "map-#{index}"}
           .row-fluid
             .span12
-              = image_tag image.blanket
+              %a{href: '#', id: 'rotate-left', class: 'btn btn-primary float-left', 'data-image-index' => index}
+                %i{class: 'icon-arrow-left'}
+                Girar izquierda
+              %a{href: '#', id: 'rotate-right', class: 'btn btn-primary float-right', 'data-image-index' => index}
+                Girar derecha
+                %i{class: 'icon-arrow-right'}
+          .row-fluid
+            .span12
+              = image_tag image.blanket, id: "image-#{index}"
           .row-fluid
             .span6
               %label

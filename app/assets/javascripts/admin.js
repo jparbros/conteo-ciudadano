@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require bootstrap.min
 //= require google_maps
+//= require jquery.rotate
 
 $(document).ready(function() {
   $('.foto-details').hide();
@@ -40,6 +41,18 @@ $(document).ready(function() {
   $('#popover-verified').popover({title: 'Casilla verificada', content: 'Si la casilla no presenta ninguna anomalia y la fotografia concuerda con los resultados y la información. Se puede mandar como verificada.', placement: 'top'});
 
   $('#popover-tickets').popover({title: 'Razones de rechazho', content: '<ul><li>Falta Fotografia: La casilla no presenta ninguna fotografía</li><li>Fotografia alterada: La fotografia parece que fue alterada.</li><li>Información dudosa: La información de la fotografia o de la casilla es dudosa o levanta sospecha.</li><li>Casilla Sospechosa: Se reportaron irregularidades en la casilla y los resultados son dudosos.</li><li>Sobrevotación: El total de votos es mayor a la lista nominal de la casilla.</li><li>Casilla no instalada: La casilla se reporto como no instalda.</li></ul>', placement: 'top'});
+
+  $('a#rotate-left').click(function(e){
+    event.preventDefault()
+    imageIndex = $(this).data('image-index');
+    $('#image-' + imageIndex).rotateLeft(90);
+  });
+
+  $('a#rotate-right').click(function(event) {
+    event.preventDefault()
+    imageIndex = $(this).data('image-index');
+    $('#image-' + imageIndex).rotateRight(90);
+  });
 });
 
 count_votes = function() {
