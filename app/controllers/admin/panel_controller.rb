@@ -1,7 +1,8 @@
 class Admin::PanelController < Admin::BaseController
 
   def index
-    @boxes = CasillasPresenter.new Box.to_verified.limit(10)
+    @total = Box.to_verified.count
+    @boxes = CasillasPresenter.new Box.to_verified.limit(50)
     @tickets = Ticket.to_attend.limit(10)
   end
 
