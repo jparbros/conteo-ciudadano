@@ -59,6 +59,6 @@ class Result < ActiveRecord::Base
   end
 
   def captured?
-    pan > 0 && pri > 0 && prd > 0
+    (pan||0) > 0 && (pri||0) > 0 && (prd||0) > 0
   end
 end

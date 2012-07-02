@@ -95,7 +95,7 @@ class Box < ActiveRecord::Base
   end
 
   def self.to_verified
-    includes(:result).where('results.state = ?','ready_to_revision').limit(50).order('results.created_at ASC')
+    includes(:result).where('results.state = ?','ready_to_revision').order('results.created_at ASC')
   end
 
   def has_results?
