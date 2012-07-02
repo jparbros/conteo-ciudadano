@@ -23,8 +23,6 @@
 
 - unless cookies['conteo_ciudadano_exit_poll']
   - content_for :javascripts do
-    $('#exit-poll').modal('show')
-
     $('.modal-footer .btn-danger').click(function(){
     $.cookie('conteo_ciudadano_exit_poll','true');
     $('#exit-poll').modal('hide');
