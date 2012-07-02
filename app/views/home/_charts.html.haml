@@ -2,5 +2,23 @@
   .span12
     #resultados-container
 
+.row-fluid
+  .span3.alert.alert-info
+    Casillas recibidas:
+    %strong
+      = Result.count_total
+  .span3.alert.alert-success
+    Casillas verificadas:
+    %strong
+      = Result.count_verified
+  .span3.alert.alert-error
+    Casillas rechazadas:
+    %strong
+      = Result.count_rejected
+  .span3.alert
+    Casillas por verificar:
+    %strong
+      = Result.count_to_verified
+
 - content_for :scripts do
   = high_chart("resultados-container", Highchart.results_percentage)

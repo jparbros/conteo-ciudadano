@@ -58,6 +58,22 @@ class Result < ActiveRecord::Base
     }
   end
 
+  def self.count_total
+    self.count
+  end
+
+  def self.count_to_verified
+    where(state: 'ready_to_revision').count
+  end
+
+  def self.count_verified
+    where(state: 'verified').count
+  end
+
+  def self.count_rejected
+    where(state: 'rejected').count
+  end
+
   def captured?
     (pan||0) > 0 && (pri||0) > 0 && (prd||0) > 0
   end
