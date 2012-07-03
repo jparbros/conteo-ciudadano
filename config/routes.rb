@@ -10,9 +10,11 @@ Conteo::Application.routes.draw do
   match '/&fref=fb', to: 'home#index'
   match '/auth/:provider/callback', to: 'authentications#create'
 
-  resource :buscar_casillas, only: [:new,  :show, :create], path: '/casillas/buscar'
-
   match '/casillas/:estado/:section', to: 'buscar_casillas#show', as: 'buscar_casillas_show'
+  match '/casillas/buscar', to: 'buscar_casillas#new', via: :get
+
+
+  resource :buscar_casillas, only: [:new, :show, :create], path: '/casillas/buscar'
 
   resources :exit_polls, only: :create
   resources :casillas, only: [:show, :update, :create] do
@@ -23,6 +25,9 @@ Conteo::Application.routes.draw do
 
   match '/faltantes/:estado', to: 'faltantes#show', as: 'faltante'
   match '/faltantes/:estado/:page', to: 'faltantes#show', as: 'faltante'
+
+  match '/verificacion', to: 'verificacion#show', as: 'verificacion'
+  match '/verificacion', to: 'verificacion#update', as: 'verificacion', via: :put
 
   namespace :admin do
     root to: 'panel#index'
