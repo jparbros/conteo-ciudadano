@@ -33,7 +33,7 @@ class Box < ActiveRecord::Base
   #
   # Scopes
   #
-  default_scope order('boxes.id asc')
+  # default_scope order('boxes.id asc')
 
   #
   # Constants

@@ -5,7 +5,7 @@ class FaltantesController < ApplicationController
   end
 
   def show
-    casillas = Box.missing_image_by_state(state_parsed).page(params[:page]).per(25)
+    casillas = Box.missing_image_by_state(state_parsed).order('boxes.id asc').page(params[:page]).per(25)
     @casillas = CasillasPresenter.new(casillas, current_user)
   end
 
