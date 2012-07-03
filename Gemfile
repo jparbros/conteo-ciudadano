@@ -43,10 +43,12 @@ gem 'resque-scheduler', :require => 'resque_scheduler'
 
 gem 'twitter'
 gem 'fb_graph'
+gem 'ocr'
 
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'kaminari'
+gem 'bootstrap-kaminari-views'
 gem 'cancan'
 gem 'simple_audit', git: 'https://github.com/jparbros/simple_audit.git'
 gem 'lazy_high_charts'

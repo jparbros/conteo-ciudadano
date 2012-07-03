@@ -1,0 +1,26 @@
+%h1
+  Casilla faltantes de #{@estado}
+
+- @casillas.each do |casilla|
+  .row-fluid
+    .well.span12.box-result
+      .row-fluid
+        %strong.span3
+          Casilla:
+        .span9
+          = casilla.kind_and_number
+      .row-fluid
+        %strong.span3
+          Ubicación:
+        .span9
+          = casilla.complete_address
+      .row-fluid
+        %strong.span3
+          Delegación/Municipio:
+        .span9
+          = casilla.district_head
+      .row-fluid
+        .span3
+          = link_to 'Detalles de la casilla', casilla_path(id: casilla.id), class: [:btn, :'btn-primary']
+
+= paginate @casillas, :theme => 'twitter-bootstrap'

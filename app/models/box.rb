@@ -72,6 +72,10 @@ class Box < ActiveRecord::Base
     klass
   end
 
+  def self.missing_image_by_state(state)
+    self.joins('LEFT JOIN result_images rs ON boxes.id = rs.box_id').includes(:state).where('states.name = ?',state)
+  end
+
   def as_json(options = {})
     options.merge!(FORMAT_DEFAULT_OPTIONS)
     super(options)
@@ -104,7 +108,8 @@ class Box < ActiveRecord::Base
 
   def verified?
     result.try(:verified?)
-
   end
+
+
 
 end

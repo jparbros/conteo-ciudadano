@@ -15,11 +15,14 @@ Conteo::Application.routes.draw do
   match '/casillas/:estado/:section', to: 'buscar_casillas#show', as: 'buscar_casillas_show'
 
   resources :exit_polls, only: :create
-  resources :casillas, only: [:show, :update] do
+  resources :casillas, only: [:show, :update, :create] do
     resources :tickets, only: [:create], path: '/tickets/new'
   end
 
-  #match '/casillas/:id' => 'casillas#update', via: :post
+  resources :faltantes, only: [:index]
+
+  match '/faltantes/:estado', to: 'faltantes#show', as: 'faltante'
+  match '/faltantes/:estado/:page', to: 'faltantes#show', as: 'faltante'
 
   namespace :admin do
     root to: 'panel#index'

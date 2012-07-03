@@ -1,0 +1,12 @@
+%h1
+  Casillas sin imagenes
+
+.row-fluid
+  .span12
+    %p
+      Selecciona un estado para ver las casillas sin fotografias.
+
+- State.find_in_batches batch_size: 6 do |states|
+  .row-fluid
+    - states.each do |state|
+      = link_to state.name, "/faltantes/#{state.name.parameterize}", class: 'btn span2'
