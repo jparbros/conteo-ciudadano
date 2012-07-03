@@ -7,7 +7,7 @@ class Admin::ResultImagesController < ApplicationController
     image.box_id = box.id
     result = box.result.present? ? box.result : box.create_result
     result.filled! if result.can_filled?
-    old_box.result.back!
+    old_box.result.back! if old_box.result.can_back?
     if image.save
       redirect_to admin_root_url, flash: {notice: 'La fotografia fue reasiganda.'}
     else
