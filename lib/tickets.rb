@@ -15,7 +15,7 @@ module Tickets
 
   def create_twitter(issue)
     tickets.create(issue: issue)
-    self.result.try(:rejecting!)
+    self.result.try(:rejecting!) if self.result.try(:can_rejecting?)
   end
 
   def map_ticket

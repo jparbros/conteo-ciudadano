@@ -19,6 +19,7 @@
 //= require boxes
 //= require home
 //= require jquery.cookie
+//= require jquery.jqzoom-core
 
 $(document).ready(function() {
   $('#login-modal').modal({
@@ -77,6 +78,8 @@ $(document).ready(function() {
       $('html, body').animate({scrollTop:0}, 'slow');
     }
   });
+
+  $('.cloud-zoom-gallery').jqzoom({zoomType: 'innerzoom', preloadImages: true});
 })
 
 

@@ -1,4 +1,4 @@
-= form_for @casilla, url: casilla_path, method: :put do |form|
+= form_for @casilla, url: (form_url rescue nil || casilla_path), method: :put do |form|
   = form.fields_for :result do |form_result|
     .row-fluid
       .span6

@@ -7,4 +7,8 @@ class HomeController < ApplicationController
   def api
   end
 
+  def encuesta
+
+  end
+
 end

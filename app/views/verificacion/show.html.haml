@@ -1,0 +1,37 @@
+.row-fluid
+  .span12.well
+    .row-fluid
+      %strong.span3
+        Casilla:
+      .span3
+        = @casilla.kind_and_number
+      %strong.span3
+        Sección:
+      .span3
+        = @casilla.section
+
+    .row-fluid
+      %strong.span3
+        Delegación/Municipio:
+      .span3
+        = @casilla.district_head
+      %strong.span3
+        Estado:
+      .span3
+        = @casilla.state_name
+
+    .row-fluid
+      %strong.span3
+        Ubicación:
+      .span9
+        = @casilla.complete_address
+
+.row-fluid
+  .span6.well
+    = render :partial => ((@casilla.result.try(:ready_to_revision?) and current_user) ? '/casillas/results_form' : '/casillas/results'), locals: {form_url: verificacion_path}
+
+  .span6.well
+    - @casilla.result_images.each do |result_image|
+      .zoom-small-image
+        %a{href: "#{result_image.blanket.url}", class: 'cloud-zoom-gallery',  rel: "position: 'inside' , showTitle: false, adjustX:-4, adjustY:-4" }
+          = image_tag result_image.blanket.small
