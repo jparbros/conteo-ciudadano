@@ -19,6 +19,10 @@ class Result < ActiveRecord::Base
     state :rejected
     state :reported
 
+    event :back do
+      transition ready_to_revision: :new
+    end
+
     event :filled do
       transition new: :ready_to_revision
     end

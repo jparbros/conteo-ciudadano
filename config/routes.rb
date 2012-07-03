@@ -31,6 +31,8 @@ Conteo::Application.routes.draw do
       resource :results, only: [:show, :update, :create]
     end
 
+    resources :result_images, only: :update
+
     resources :admins
     resources :tickets, only: [:index, :create, :update, :destroy]
   end

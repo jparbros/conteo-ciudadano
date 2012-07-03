@@ -6,13 +6,13 @@ class Admin::BoxesController < Admin::BaseController
   def index
     if params[:state].present? && params[:section].present?
       @boxes = Box.by_state_and_section(params[:state], params[:section]).page(params[:page])
-
     else
       @boxes = Box.page(params[:page])
     end
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html
+      format.json { render :json => @boxes }
     end
   end
 

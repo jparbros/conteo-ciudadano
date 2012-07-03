@@ -15,6 +15,7 @@
 //= require bootstrap.min
 //= require google_maps
 //= require jquery.rotate
+//= require underscore
 
 $(document).ready(function() {
   $('.foto-details').hide();
@@ -52,6 +53,15 @@ $(document).ready(function() {
     event.preventDefault()
     imageIndex = $(this).data('image-index');
     $('#image-' + imageIndex).rotateRight(90);
+  });
+
+  $('form#search-boxes').bind('ajax:success', function(xhr, data, status) {
+    template = _.template($('#box-templete').html());
+    form = $('form#update-result-image');
+    form.show();
+    _.each(data, function(box) {
+      form.prepend(template(box))
+    });
   });
 });
 

@@ -219,6 +219,21 @@
                 Software:
               = image.exif[:software]
 
+          .row-fluid
+            .span12
+              %h4
+                Cambiar de casilla
+              = form_tag admin_boxes_path(:format => :json), class: 'form-inline', remote: true, method: :get, id: 'search-boxes' do
+                = select_tag :state, options_from_collection_for_select(State.all, :id, :name)
+                = text_field_tag :section, ''
+                = submit_tag 'Buscar', class: [:btn, 'btn-primary']
+
+          .row-fluid#update-image
+            .span12
+              = form_tag admin_result_image_path(image), class: 'form-horizontal hide', method: :put, id: 'update-result-image' do
+
+                = submit_tag 'Enviar', class: [:btn, 'btn-primary']
+
           - if image.exif[:location]
             .row-fluid
               .span12.box-map{id: "box-map-#{index}"}
@@ -238,3 +253,13 @@
       #collapseOne.accordion-body.collapse.out
         .accordion-inner
           = render_audits @result
+
+%script#box-templete
+  <div class='control-group'>
+  <label class='control-label'>
+  <%= kind %> <%= number %>
+  </label>
+  <div class='controls'>
+  <input name="casilla_id" type="radio" value="<%= id %>" />
+  </div>
+  </div>
