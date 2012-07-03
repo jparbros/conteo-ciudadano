@@ -20,7 +20,7 @@ class CasillasController < ApplicationController
   private
   def box_params
     Box::NO_EDITABLE_FIELDS.each do |no_editable_field|
-      params[:box].delete(no_editable_field)
+      params[:box].delete(no_editable_field) if params[:box][no_editable_field].present?
     end
     params[:box].delete(:result_attributes) unless current_user && !@casilla.verified?
     params[:box]
