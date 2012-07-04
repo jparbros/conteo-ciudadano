@@ -28,4 +28,28 @@ class CasillaPresenter < SimpleDelegator
   def map_reported?
     !get_map_tickets.blank?
   end
+
+  def verified!
+    if can_verified?
+      verified_result
+      verifications.create(user_id: @current_user.id, checker_ip: User.remote_ip)
+    end
+  end
+
+  def can_verified?
+    return true if verifications.blank?
+    verifications.each do |verification|
+      return false if verification.checker_ip == User.remote_ip || verification.user_id == @current_user.id
+    end
+    return true
+  end
+
+  def verified_result
+    if result.can_pre_approved?
+      result.pre_approved!
+    else
+      result.approved! if result.can_approved?
+    end
+  end
+
 end

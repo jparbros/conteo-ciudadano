@@ -27,7 +27,7 @@ Conteo::Application.routes.draw do
   match '/faltantes/:estado/:page', to: 'faltantes#show', as: 'faltante'
 
   match '/verificacion', to: 'verificacion#show', as: 'verificacion'
-  match '/verificacion', to: 'verificacion#update', as: 'verificacion', via: :put
+  match '/verificacion/:id', to: 'verificacion#update', as: 'verificacion', via: :put
 
   namespace :admin do
     root to: 'panel#index'

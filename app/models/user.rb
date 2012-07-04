@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
   # Attributes accessor
   #
   attr_accessible :email, :password, :password_confirmation, :remember_me
-  cattr_accessor :current
+  cattr_accessor :current, :remote_ip
 
   def apply_omniauth(omniauth)
     case omniauth['provider']

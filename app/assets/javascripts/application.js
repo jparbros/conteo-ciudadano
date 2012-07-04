@@ -79,25 +79,14 @@ $(document).ready(function() {
     }
   });
 
-  $('.cloud-zoom-gallery').jqzoom({zoomType: 'innerzoom', preloadImages: true});
-})
-
-
-$(function() {
-  $('#html5_uploader').pluploadQueue({
-    // General settings
-    runtimes : 'html5',
-    url : '/casillas/' + $('#html5_uploader').data('box-id'),
-    max_file_size : '5mb',
-    chunk_size : '1mb',
-    unique_names : true,
-
-    // Specify what files to browse for
-    filters : [
-      {title : "Image files", extensions : "jpg,gif,png"},
-    ]
+  $('input[type=number]').change(function() {
+    count_votes();
   });
-});
+
+  count_votes();
+
+  $('#popover-tickets').popover({title: 'Razones de rechazo', content: '<ul><li>Falta Fotografía: La casilla no presenta ninguna fotografía</li><li>Fotografía alterada: La fotografía parece que fue alterada.</li><li>Información dudosa: La información de la fotografía o de la casilla es dudosa o levanta sospecha.</li><li>Casilla Sospechosa: Se reportaron irregularidades en la casilla y los resultados son dudosos.</li><li>Sobrevotación: El total de votos es mayor a la lista nominal de la casilla.</li><li>Casilla no instalada: La casilla se reporto como no instalda.</li></ul>', placement: 'top'});
+})
 
 $(function() {
   $('form.form-inline input#special').click(function() {
@@ -111,3 +100,11 @@ $(function() {
     }
   });
 });
+
+count_votes = function() {
+  var total_votes = 0;
+  $('input[type=number]').each(function(value){
+    total_votes += parseInt($(this).val());
+  });
+  $('#total-casilla').html(total_votes);
+}

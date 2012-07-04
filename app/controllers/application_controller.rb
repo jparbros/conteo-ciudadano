@@ -9,5 +9,6 @@ class ApplicationController < ActionController::Base
   private
   def set_current_user
     User.current= current_user || current_admin
+    User.remote_ip = request.remote_ip
   end
 end

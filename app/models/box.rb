@@ -18,6 +18,7 @@ class Box < ActiveRecord::Base
   has_one :result
   has_many :result_images
   has_many :external_urls
+  has_many :verifications
 
   #
   # Nested attributes
@@ -109,7 +110,5 @@ class Box < ActiveRecord::Base
   def verified?
     result.try(:verified?)
   end
-
-
 
 end

@@ -15,6 +15,7 @@ class Result < ActiveRecord::Base
   #
   state_machine :state, :initial => :new do
     state :ready_to_revision
+    state :pre_verified
     state :verified
     state :rejected
     state :reported
@@ -23,12 +24,16 @@ class Result < ActiveRecord::Base
       transition ready_to_revision: :new
     end
 
+    event :pre_approved do
+      transition [:ready_to_revision] => :pre_verified
+    end
+
     event :filled do
       transition new: :ready_to_revision
     end
 
     event :approved do
-      transition [:ready_to_revision, :rejected, :reported] => :verified
+      transition [:ready_to_revision, :rejected, :reported, :pre_verified] => :verified
     end
 
     event :rejecting do

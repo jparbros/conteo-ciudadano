@@ -1,4 +1,14 @@
 .row-fluid
+  .span12.alert
+    %ol
+      %li
+        Asegurarse que la fotografía pertenezca a la casilla. Que el estado, la sección y el tipo de casilla concuerden.
+      %li
+        Los votos deben de coincidir con las fotografía.
+      %li
+        Los votos emitidos no deben de exceder la lista nominal.
+
+.row-fluid
   .span12.well
     .row-fluid
       %strong.span3
@@ -27,11 +37,51 @@
         = @casilla.complete_address
 
 .row-fluid
-  .span6.well
-    = render :partial => ((@casilla.result.try(:ready_to_revision?) and current_user) ? '/casillas/results_form' : '/casillas/results'), locals: {form_url: verificacion_path}
+  .span6
+    .row-fluid
+      .span12.well
+        = render :partial => ((@casilla.result.try(:ready_to_revision?) and current_user) ? '/casillas/results_form' : '/casillas/results'), locals: {form_url: verificacion_path(@casilla.id)}
+
+    .row-fluid
+      .span12.well
+        .row-fluid
+          .span6
+            .row-fluid
+              .span6
+                Lista nominal:
+              .span6
+                = @casilla.nominal_list
+          .span6
+            .row-fluid
+              .span6
+                Votos en la casilla:
+              .span6
+                #total-casilla
+        .row-fluid
+          .span12
+            .btn-group
+              - if current_user
+                %a{class: "btn btn-danger dropdown-toggle", "data-toggle" => "dropdown", href: "#"}
+                  Reportar Casilla
+                  %span{class: "caret"}
+                %ul{class: "dropdown-menu"}
+                  %li
+                    = link_to 'Falta Fotografia', casilla_tickets_path(casilla_id: @casilla.id, reason: 'missing_photo'), method: :post, data: {confirm: '¿Seguro desea reportar la casilla como "Falta Fotografia"?'}
+                  %li
+                    = link_to 'Fotografia alterada', casilla_tickets_path(casilla_id: @casilla.id, reason: 'photo_altered'), method: :post, data: {confirm: '¿Seguro desea reportar la casilla como "Fotografia alterada"?'}
+                  %li
+                    = link_to 'Información dudosa', casilla_tickets_path(casilla_id: @casilla.id, reason: 'dubious_information'), method: :post, data: {confirm: '¿Seguro desea reportar la casilla como "Información dudosa"?'}
+                  %li
+                    = link_to 'Casilla sospechosa', casilla_tickets_path(casilla_id: @casilla.id, reason: 'suspicious_box'), method: :post, data: {confirm: '¿Seguro desea reportar la casilla como "Casilla sospechosa"?'}
+                  %li
+                    = link_to 'Sobrevotación', casilla_tickets_path(casilla_id: @casilla.id, reason: 'overvoting'), method: :post, data: {confirm: '¿Seguro desea reportar la casilla como "Sobrevotación"?'}
+                  %li
+                    = link_to 'Casilla no instalada', casilla_tickets_path(casilla_id: @casilla.id, reason: 'box_not_installed'), method: :post, data: {confirm: '¿Seguro desea reportar la casilla como "Casilla no instalada"?'}
+
+                %i{class: 'icon-question-sign', id: 'popover-tickets'}
 
   .span6.well
     - @casilla.result_images.each do |result_image|
       .zoom-small-image
-        %a{href: "#{result_image.blanket.url}", class: 'cloud-zoom-gallery',  rel: "position: 'inside' , showTitle: false, adjustX:-4, adjustY:-4" }
-          = image_tag result_image.blanket.small
+        = link_to result_image.blanket.url, target: '_blank' do
+          = image_tag result_image.blanket.url, class: :span12
