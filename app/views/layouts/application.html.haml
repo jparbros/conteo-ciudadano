@@ -32,11 +32,13 @@
       .container-fluid
         %ul#main-nav.nav
           %li
-            =link_to "Buscar Casillas", new_buscar_casillas_path
+            = link_to "Buscar Casillas", new_buscar_casillas_path
           %li
-            =link_to "Desarrolladores", api_path
+            = link_to "Desarrolladores", api_path
           %li
-            =link_to "Casillas sin imagenes", faltantes_path
+            = link_to "Casillas sin imagenes", faltantes_path
+          %li
+            = link_to "Verificación de casillas", '/verificacion'
 
 
         %ul.nav.pull-right
