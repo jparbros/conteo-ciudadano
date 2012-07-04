@@ -19,7 +19,6 @@
 //= require boxes
 //= require home
 //= require jquery.cookie
-//= require jquery.jqzoom-core
 
 $(document).ready(function() {
   $('#login-modal').modal({

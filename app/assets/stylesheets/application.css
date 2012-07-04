@@ -4,7 +4,6 @@
  *= require_self
  *= require 'boxes'
  *= require 'home'
- *= require 'jquery.jqzoom'
 */
 
 body {
